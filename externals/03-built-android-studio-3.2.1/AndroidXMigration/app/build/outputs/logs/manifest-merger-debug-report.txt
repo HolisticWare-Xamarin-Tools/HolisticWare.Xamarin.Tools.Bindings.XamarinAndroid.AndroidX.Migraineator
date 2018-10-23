@@ -1,0 +1,172 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:2:1-24:12
+MERGED from [com.android.support:design:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/3819842333758119500eff2f3e58658e/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/6111d23b5306196067d8b8ab68efa441/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/moljac/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/61935b699fcd5349d57dc90f2cb8c6a1/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/6979bbee1619d7459ed97ad82af0d317/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/8945af25d9741f8d3d1b4263b348480d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/ca845ff031612a6a81662aa5acb4aa98/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/3ece9988b9bb7f679e081fbb09c181e8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/bf9346177c3f7a5257a1294a5e449473/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/fe56140ade5d99080316cd34e9f9e26f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/transition-28.0.0.aar/2fd455518c3b12e2f2f26a69631fe909/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/cb8113a996e06e5b6b8ac501720e2e38/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/4216aec76bcc6ba6f317b6d8cfc03d1d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/350c79fbe634069075282af3d4cc451e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/e5bccbb80243e9731707a870694984cb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/20558a806d7ce3d2901a61a04742b9bf/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/3d0d6824923d5fe36529c76fc3d367ab/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/3e888729a277193413b58ec4adf9421b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/9d92c111656eab4d57ab7b13da899cd7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/b326c6abe89f306b493359f9b8df5d63/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/547dc9d071ecc35818ffcf7de0efc675/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/3f60f7dffcb58d417073f52dd473f1a4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/2a67047f834790a429300c127b85b8ae/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/8d9033b76a36c6a2ae4823627d923dca/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/da6831f73fa49f99f2e96775d75065a0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/d21bef5a0eb23f3bff87eb3320f0bd24/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/ce5c8ef56cac0326867ef3fb39fdf3eb/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/1731093d3d2b8233369539d185d09c66/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/61179e6bb5e9ba3d2935b53af99f96ea/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/50affdef908cd7b7e9213b485ce98561/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/24b43f4d22ef1c96e42fed12b331b2e8/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/6a6b5a5f1a45557f73e7cd18627a1956/AndroidManifest.xml:17:1-22:12
+INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:2:1-24:12
+	package
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:3:5-56
+		INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+		INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:2:1-24:12
+		INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:2:1-24:12
+		INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:5:5-22:19
+MERGED from [com.android.support:design:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/3819842333758119500eff2f3e58658e/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/3819842333758119500eff2f3e58658e/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/moljac/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/61935b699fcd5349d57dc90f2cb8c6a1/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/moljac/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/61935b699fcd5349d57dc90f2cb8c6a1/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/b326c6abe89f306b493359f9b8df5d63/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/b326c6abe89f306b493359f9b8df5d63/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/547dc9d071ecc35818ffcf7de0efc675/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/547dc9d071ecc35818ffcf7de0efc675/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/b326c6abe89f306b493359f9b8df5d63/AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:11:9-40
+activity#com.holisticware.moljac.androidxmigration.MainActivity
+ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:12:9-21:20
+	android:label
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:14:13-45
+	android:theme
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:15:13-56
+	android:name
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:13:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:16:13-20:29
+action#android.intent.action.MAIN
+ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml:19:27-74
+uses-sdk
+INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/3819842333758119500eff2f3e58658e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/3819842333758119500eff2f3e58658e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/6111d23b5306196067d8b8ab68efa441/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/6111d23b5306196067d8b8ab68efa441/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/moljac/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/61935b699fcd5349d57dc90f2cb8c6a1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/moljac/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/61935b699fcd5349d57dc90f2cb8c6a1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/6979bbee1619d7459ed97ad82af0d317/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/6979bbee1619d7459ed97ad82af0d317/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/8945af25d9741f8d3d1b4263b348480d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/8945af25d9741f8d3d1b4263b348480d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/ca845ff031612a6a81662aa5acb4aa98/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/ca845ff031612a6a81662aa5acb4aa98/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/3ece9988b9bb7f679e081fbb09c181e8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/3ece9988b9bb7f679e081fbb09c181e8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/bf9346177c3f7a5257a1294a5e449473/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/bf9346177c3f7a5257a1294a5e449473/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/fe56140ade5d99080316cd34e9f9e26f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/fe56140ade5d99080316cd34e9f9e26f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/transition-28.0.0.aar/2fd455518c3b12e2f2f26a69631fe909/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/transition-28.0.0.aar/2fd455518c3b12e2f2f26a69631fe909/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/cb8113a996e06e5b6b8ac501720e2e38/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/cb8113a996e06e5b6b8ac501720e2e38/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/4216aec76bcc6ba6f317b6d8cfc03d1d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/4216aec76bcc6ba6f317b6d8cfc03d1d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/350c79fbe634069075282af3d4cc451e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/350c79fbe634069075282af3d4cc451e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/e5bccbb80243e9731707a870694984cb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/e5bccbb80243e9731707a870694984cb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/20558a806d7ce3d2901a61a04742b9bf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/20558a806d7ce3d2901a61a04742b9bf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/3d0d6824923d5fe36529c76fc3d367ab/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/3d0d6824923d5fe36529c76fc3d367ab/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/3e888729a277193413b58ec4adf9421b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/3e888729a277193413b58ec4adf9421b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/9d92c111656eab4d57ab7b13da899cd7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/9d92c111656eab4d57ab7b13da899cd7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/b326c6abe89f306b493359f9b8df5d63/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/b326c6abe89f306b493359f9b8df5d63/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/547dc9d071ecc35818ffcf7de0efc675/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/547dc9d071ecc35818ffcf7de0efc675/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/3f60f7dffcb58d417073f52dd473f1a4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/3f60f7dffcb58d417073f52dd473f1a4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/2a67047f834790a429300c127b85b8ae/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/2a67047f834790a429300c127b85b8ae/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/8d9033b76a36c6a2ae4823627d923dca/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/8d9033b76a36c6a2ae4823627d923dca/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/da6831f73fa49f99f2e96775d75065a0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/da6831f73fa49f99f2e96775d75065a0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/d21bef5a0eb23f3bff87eb3320f0bd24/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/d21bef5a0eb23f3bff87eb3320f0bd24/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/ce5c8ef56cac0326867ef3fb39fdf3eb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/ce5c8ef56cac0326867ef3fb39fdf3eb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/1731093d3d2b8233369539d185d09c66/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/1731093d3d2b8233369539d185d09c66/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/61179e6bb5e9ba3d2935b53af99f96ea/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/moljac/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/61179e6bb5e9ba3d2935b53af99f96ea/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/50affdef908cd7b7e9213b485ce98561/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/50affdef908cd7b7e9213b485ce98561/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/24b43f4d22ef1c96e42fed12b331b2e8/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/24b43f4d22ef1c96e42fed12b331b2e8/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/6a6b5a5f1a45557f73e7cd18627a1956/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/moljac/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/6a6b5a5f1a45557f73e7cd18627a1956/AndroidManifest.xml:20:5-44
+INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+		INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+		ADDED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
+		INJECTED from /Projects/hw-tools/AndroidX.Migraineator/externals/03-built-android-studio-3.2.1/AndroidXMigration/app/src/main/AndroidManifest.xml
