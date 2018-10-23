@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Projects/hw-tools/AndroidX.Migraineator/externals/02-end-migrated/AndroidXMigration/app/src/main/assets"/><source path="/Projects/hw-tools/AndroidX.Migraineator/externals/02-end-migrated/AndroidXMigration/app/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Projects/hw-tools/AndroidX.Migraineator/externals/02-end-migrated/AndroidXMigration/app/src/debug/assets"/></dataSet></merger>
