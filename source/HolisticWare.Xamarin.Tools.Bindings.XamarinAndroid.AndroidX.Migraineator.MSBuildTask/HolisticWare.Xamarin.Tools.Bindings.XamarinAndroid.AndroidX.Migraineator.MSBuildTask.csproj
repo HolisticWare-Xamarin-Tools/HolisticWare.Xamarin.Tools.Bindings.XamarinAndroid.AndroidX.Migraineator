@@ -1,0 +1,129 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- 
+  HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.csproj 
+  -->
+  <PropertyGroup>
+    <!--
+    <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
+    -->
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <DefaultItemExcludes>$(DefaultItemExcludes);.\**\.DS_Store</DefaultItemExcludes>
+    <PackOnBuild>true</PackOnBuild>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+    <!--
+    Project as a NuGet package.
+    -->
+    <PropertyGroup>
+        <PackOnBuild>true</PackOnBuild>
+        <!-- 
+        Suppresses the warnings about the package not having assemblies in lib/*/.dll.
+        -->
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+        <!-- 
+        Change the default location where NuGet will put the build output 
+        
+           This changes the default folder where assemblies will be placed in the package.
+            The default is 'lib', but that is incorrect since these assemblies are mean to be used
+            by MSBuild, and to meant to be referenced as API from the NuGet package.
+        
+            tools/
+            tasks/
+        -->
+        <BuildOutputTargetFolder>tools</BuildOutputTargetFolder>
+        <!-- 
+        put the package output into a nuget test folder 
+        -->
+        <PackageOutputPath>$(HOME)/nuget-local</PackageOutputPath>
+        
+        <!-- 
+        nuget packaging
+        -->
+        <PackageId>HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator</PackageId>
+        <Title>
+            HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator
+        </Title>
+        <Summary>
+            MSBuild targets/tasks to add decompiling support to Xamarin.Android bindings projects
+        </Summary>
+        <Description>
+            MSBuild targets/tasks to add decompiling support to Xamarin.Android bindings projects
+        </Description>
+        <Owners>HolisticWare</Owners>
+        <Authors>HolisticWare</Authors>
+        <Copyright>2018</Copyright>
+        <RepositoryUrl>
+            https://github.com/moljac/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator
+        </RepositoryUrl>
+        <VersionPrefix>0.0.1</VersionPrefix>
+        <!--
+        VersionSuffix - For debugging and local nuget feed 
+        -->        
+        <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmmss'))</VersionSuffix>
+        <PackageVersion>$(Version)</PackageVersion>
+        <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+        <PackageTags>xamarin, android, bindings, utilities, decompilers </PackageTags>
+    </PropertyGroup>
+    
+  <ItemGroup>
+    <!--
+      PrivateAssets="All" is essential. This prevents these build-only dependencies
+      from ending up in the NuGet package's list of dependencies.
+     -->
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Build.Framework" Version="15.8.166" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Build.Tasks.Core" Version="15.8.166" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.8.166" PrivateAssets="All" />
+    <!-- 
+        marks all packages as 'local only' so they don't end up in the nuspec 
+    -->
+    <PackageReference Update="@(PackageReference)" PrivateAssets="All" />        
+  </ItemGroup>
+
+    
+    <PropertyGroup>  
+        <!--
+        <EnableDefaultItems>false</EnableDefaultItems>
+        -->
+        <BindingsHelperFolder>$(MSBuildThisFileDirectory)/holisticware-generated</BindingsHelperFolder>  
+        <BindingsHelperFolderDecompilerOutput>$(BindingsHelperFolder)/decompilers</BindingsHelperFolderDecompilerOutput>  
+        <BindingsHelperFolderLibs>$(BindingsHelperFolder)/lib</BindingsHelperFolderLibs>  
+    </PropertyGroup>  
+    
+    <ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)/build/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.targets" PackagePath="build/" Pack="true">
+        </None>
+        <None Include="$(MSBuildThisFileDirectory)/build/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.props" PackagePath="build/" Pack="true">
+        </None>
+        <!--
+        https://docs.microsoft.com/en-us/dotnet/core/tools/csproj#contenttargetfolders
+        https://docs.microsoft.com/en-us/nuget/reference/msbuild-targets#including-content-in-a-package
+        
+        PackagePath="lib"
+        -->
+        <Content Include="$(BindingsHelperFolder)/.gitignore" Pack="true">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="$(BindingsHelperFolderDecompilerOutput)/.gitignore" Pack="true">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="$(BindingsHelperFolderLibs)/.gitignore" Pack="true">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <None Include="$(BindingsHelperFolderLibs)/procyon-decompiler-0.5.30.jar" Pack="true" PackagePath="lib/">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="$(BindingsHelperFolderLibs)/cfr_0_132.jar" Pack="true" PackagePath="lib/">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="$(BindingsHelperFolderLibs)/Bytecode-Viewer-2.9.11.jar" Pack="true" PackagePath="lib/">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="AndroidXMigraineatorTask.cs" />
+  </ItemGroup>
+</Project>

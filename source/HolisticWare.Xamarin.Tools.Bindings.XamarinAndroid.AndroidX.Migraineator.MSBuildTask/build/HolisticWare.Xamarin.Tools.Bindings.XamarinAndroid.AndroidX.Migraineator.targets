@@ -1,0 +1,35 @@
+﻿<!--
+  NuGet automatically imports this file into any project that has a PackageReference to 'SampleTasks'.
+  To see this in action, execute "dotnet restore" on the 3-NuGet example and look in the obj/ folder for
+  a file named Web.csproj.g.nuget.targets. You'll see inside that it contains an "Import" to this file.
+ -->
+<Project>
+
+    <PropertyGroup>  
+        <!--
+        <EnableDefaultItems>false</EnableDefaultItems>
+        -->
+        <BindingsHelperFolder>holisticware-generated</BindingsHelperFolder>  
+        <BindingsHelperFolderInProject>$(MSBuildProjectDirectory)/$(BindingsHelperFolder)</BindingsHelperFolderInProject>          
+        <BindingsHelperFolderDecompilerOutput>$(BindingsHelperFolderInProject)/androidx.migraineator</BindingsHelperFolderDecompilerOutput>  
+    </PropertyGroup>  
+        
+    <ItemGroup>
+        <MetadataFiles Include="./**/Metadata*.xml">
+        </MetadataFiles>
+    </ItemGroup>
+
+    <Target 
+        Name="AndroidX_Migraineator"
+        BeforeTargets="Build"
+        >
+        <Message Importance="high" Text="mc++ MetadataFiles:"/>
+        <!--Pass all in one call ';' seperated-->        
+        <Message Importance="high" Text="@(MetadataFiles)"/>
+
+        <!--Call Target once for each file-->
+        <Message Importance="high" Text="%(MetadataFiles.FullPath)"/>        
+        <Message Importance="high" Text="%(MetadataFiles.RelativePath)"/>        
+    </Target>
+
+</Project>

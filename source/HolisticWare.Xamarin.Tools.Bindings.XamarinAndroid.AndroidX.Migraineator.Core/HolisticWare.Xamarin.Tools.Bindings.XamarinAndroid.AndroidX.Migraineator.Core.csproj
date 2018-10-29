@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DefaultItemExcludes>$(DefaultItemExcludes);.\**\.DS_Store</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="FileLoader.config" />
+    <None Remove="mappings\android-support-to-androidx-mappings-artifacts.tsv" />
+    <None Remove="mappings\android-support-to-androidx-mappings-namespaces.tsv" />
+    <None Remove="mappings\android-support-to-androidx-mappings-classes.tsv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="mappings\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="mappings\android-support-to-androidx-mappings-artifacts.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mappings\android-support-to-androidx-mappings-namespaces.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mappings\android-support-to-androidx-mappings-classes.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+    <PackageReference Include="System.Runtime" Version="4.3.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    <PackageReference Include="System.IO" Version="4.3.0" />
+    <PackageReference Include="System.Text.Encoding" Version="4.3.0" />
+  </ItemGroup>
+</Project>
