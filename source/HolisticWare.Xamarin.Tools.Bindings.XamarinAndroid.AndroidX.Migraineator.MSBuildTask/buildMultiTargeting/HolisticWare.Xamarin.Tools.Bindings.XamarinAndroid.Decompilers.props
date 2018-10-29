@@ -1,0 +1,6 @@
+﻿<!-- 
+    buildMultiTargeting/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Decompilers.props 
+-->
+<Project>
+  <Import Project="..\build\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Decompilers.props" />
+</Project>

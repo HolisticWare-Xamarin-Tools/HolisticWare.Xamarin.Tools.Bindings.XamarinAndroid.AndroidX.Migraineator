@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core", "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.csproj", "{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask", "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask.csproj", "{595A2FA7-70BF-46C5-A3BC-5252675E85F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{595A2FA7-70BF-46C5-A3BC-5252675E85F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{595A2FA7-70BF-46C5-A3BC-5252675E85F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{595A2FA7-70BF-46C5-A3BC-5252675E85F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{595A2FA7-70BF-46C5-A3BC-5252675E85F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
