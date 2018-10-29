@@ -1,0 +1,59 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.XamarinAndroid.Bindings.Library", "Sample.XamarinAndroid.Bindings.Library\Sample.XamarinAndroid.Bindings.Library.csproj", "{AA25D9AC-03CA-4275-88FA-489F2F5D8DA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.XamarinAndroid.Bindings.SDK", "Sample.XamarinAndroid.Bindings.SDK\Sample.XamarinAndroid.Bindings.SDK.csproj", "{CFD90C6D-400D-4A33-9984-3433D6AFCE40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AB99CC60-863A-48DC-B414-7C417BFA94E7}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core", "..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.csproj", "{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask", "..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask.csproj", "{595A2FA7-70BF-46C5-A3BC-5252675E85F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Migraineator.ConsoleApp", "Sample.Migraineator.ConsoleApp\Sample.Migraineator.ConsoleApp.csproj", "{80E38EE4-C2D3-4F9D-A385-5AD1EC02E7B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA25D9AC-03CA-4275-88FA-489F2F5D8DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA25D9AC-03CA-4275-88FA-489F2F5D8DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA25D9AC-03CA-4275-88FA-489F2F5D8DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA25D9AC-03CA-4275-88FA-489F2F5D8DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFD90C6D-400D-4A33-9984-3433D6AFCE40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD90C6D-400D-4A33-9984-3433D6AFCE40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD90C6D-400D-4A33-9984-3433D6AFCE40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD90C6D-400D-4A33-9984-3433D6AFCE40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{595A2FA7-70BF-46C5-A3BC-5252675E85F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{595A2FA7-70BF-46C5-A3BC-5252675E85F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{595A2FA7-70BF-46C5-A3BC-5252675E85F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{595A2FA7-70BF-46C5-A3BC-5252675E85F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E38EE4-C2D3-4F9D-A385-5AD1EC02E7B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E38EE4-C2D3-4F9D-A385-5AD1EC02E7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E38EE4-C2D3-4F9D-A385-5AD1EC02E7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E38EE4-C2D3-4F9D-A385-5AD1EC02E7B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C} = {B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}
+		{595A2FA7-70BF-46C5-A3BC-5252675E85F8} = {B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE413921-D015-4D86-87E8-6FDA1853CBCF}
+	EndGlobalSection
+EndGlobal
