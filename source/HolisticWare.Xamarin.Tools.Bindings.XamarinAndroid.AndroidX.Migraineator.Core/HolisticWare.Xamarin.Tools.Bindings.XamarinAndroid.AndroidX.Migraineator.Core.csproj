@@ -8,22 +8,14 @@
   <ItemGroup>
     <None Remove="FileLoader.config" />
     <None Remove="mappings\android-support-to-androidx-mappings-artifacts.tsv" />
-    <None Remove="mappings\android-support-to-androidx-mappings-namespaces.tsv" />
     <None Remove="mappings\android-support-to-androidx-mappings-classes.tsv" />
+    <None Remove="mappings\android-support-to-androidx-mappings-artifacts.csv" />
+    <None Remove="mappings\android-support-to-androidx-mappings-namespaces.csv" />
+    <None Remove="mappings\android-support-to-androidx-mappings-classes.csv" />
+    <None Remove="mappings\android-support-to-xamarin-android-support-mappings-packages.csv" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="mappings\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="mappings\android-support-to-androidx-mappings-artifacts.tsv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="mappings\android-support-to-androidx-mappings-namespaces.tsv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="mappings\android-support-to-androidx-mappings-classes.tsv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Collections" Version="4.3.0" />
@@ -31,5 +23,27 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     <PackageReference Include="System.IO" Version="4.3.0" />
     <PackageReference Include="System.Text.Encoding" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Class1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="mappings\android-support-to-androidx-mappings-artifacts.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="mappings\android-support-to-androidx-mappings-artifacts.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mappings\android-support-to-androidx-mappings-namespaces.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mappings\android-support-to-androidx-mappings-classes.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mappings\android-support-to-xamarin-android-support-mappings-packages.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
