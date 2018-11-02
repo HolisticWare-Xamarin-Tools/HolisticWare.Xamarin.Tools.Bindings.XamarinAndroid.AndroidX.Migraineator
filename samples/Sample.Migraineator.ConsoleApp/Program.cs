@@ -7,6 +7,24 @@ namespace Sample.Migraineator.ConsoleApp
 {
     class Program
     {
+        //------------------------------------------------------------------------------------------------------------------
+        /*
+        _ _  ____ _______ ______                                              
+         | \ | |/ __ \__ __|  ____|_                                            
+         |  \| | |  | | | |  | |__(_)
+         | . ` | |  | | | |  |  __|                                               
+         | |\  | |__| | | |  | |____ _                                            
+         |_|_\_|\____/  |_|  |______(_)                       _ _   _             
+         |  ____(_) |                                        (_) | (_)            
+         | |__ _| | ___ _____   _____ _ ____ ___ __ _| |_ _ _ __   __ _ 
+         |  __| | | |/ _ \  / _ \ \ / / _ \ '__\ \ /\ / / '__| | __| | '_ \ / _` |
+         | |    | | |  __/ | (_) \ V /  __/ |   \ V V /| |  | | |_| | | | | (_| |
+         |_|    |_|_|\___|  \___/ \_/ \___|_|    \_/\_/ |_|  |_|\__|_|_| |_|\__, |
+                                                                             __/ |
+                                                                            |___/ 
+        */
+        static bool overwrite_files = true;
+        //------------------------------------------------------------------------------------------------------------------
         static int verbosity;
         static AndroidXMigrator androidx_migrator = null;
 
@@ -113,27 +131,37 @@ namespace Sample.Migraineator.ConsoleApp
         {
             #if DEBUG && NETCOREAPP
              await androidx_migrator.InitializeAsync("./bin/Debug/netcoreapp2.1/mappings/");
-#else
+            #else
             androidx_migrator.Initialize("./mappings/");
-#endif
+            #endif
 
             Console.WriteLine($"Migrating files: ");
-            string[] files = System.IO.Directory.GetFiles
+
+
+            Console.WriteLine($"    Metadata.xml: ");
+            string[] files_metadata_xml = System.IO.Directory.GetFiles
                                                         (
                                                             folder_input,
                                                             "Metadata*.xml",
                                                             System.IO.SearchOption.AllDirectories
                                                         );
 
-            await MigrateFilesMedtadataSequentialAsync(files);
-
+            await MigrateFilesMedtadataXmlSequentialAsync(files_metadata_xml);
             //MigrateFilesParallel(files);
 
+            Console.WriteLine($"    EnumMethods.xml: ");
+            string[] files_enummethods_xml = System.IO.Directory.GetFiles
+                                                        (
+                                                            folder_input,
+                                                            "EnumMethods.xml",
+                                                            System.IO.SearchOption.AllDirectories
+                                                        );
+            await MigrateFilesEnumMethodsXmlSequentialAsync(files_enummethods_xml);
 
             return;
         }
 
-        private static async Task MigrateFilesMedtadataSequentialAsync(string[] files)
+        private static async Task MigrateFilesMedtadataXmlSequentialAsync(string[] files)
         {
             for (int i = 0; i < files.Length; i++)
             {
@@ -142,10 +170,39 @@ namespace Sample.Migraineator.ConsoleApp
 
                 try
                 {
-                    string content_migrated = await androidx_migrator.MigrateMetadataFileNamespacesAsync(file);
+                    string content_migrated = await androidx_migrator.MigrateMetadataXmlFileNamespacesAsync(file);
 
-                    //System.IO.File.WriteAllText(file, content_migrated);
-                    System.IO.File.WriteAllText($"{file}", content_migrated);
+                    if(overwrite_files)
+                    {
+                        System.IO.File.WriteAllText($"{file}", content_migrated);
+                    }
+                }
+                catch (AggregateException exc)
+                {
+                    Console.WriteLine($"AndroidXMigrator Exception {exc.Message}");
+
+                    throw;
+                }
+            }
+
+            return;
+        }
+
+        private static async Task MigrateFilesEnumMethodsXmlSequentialAsync(string[] files)
+        {
+            for (int i = 0; i < files.Length; i++)
+            {
+                string file = files[i];
+                Console.WriteLine($"    {file}");
+
+                try
+                {
+                    string content_migrated = await androidx_migrator.MigrateEnumMethodsXmlFileNamespacesAsync(file);
+
+                    if (overwrite_files)
+                    {
+                        System.IO.File.WriteAllText($"{file}", content_migrated);
+                    }
                 }
                 catch (AggregateException exc)
                 {
@@ -189,7 +246,7 @@ namespace Sample.Migraineator.ConsoleApp
                                     content = await reader.ReadToEndAsync();
                                 }
                                 //string content = System.IO.File.ReadAllText(file);
-                                string content_migrated = await androidx_migrator.MigrateMetadataFileNamespacesAsync(content);
+                                string content_migrated = await androidx_migrator.MigrateMetadataXmlFileNamespacesAsync(content);
                                 //System.IO.File.WriteAllText(file, content_migrated);
                             }
                             catch (AggregateException exc)
