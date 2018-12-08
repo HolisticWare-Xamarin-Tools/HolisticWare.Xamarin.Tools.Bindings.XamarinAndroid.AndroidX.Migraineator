@@ -12,7 +12,15 @@
         <AndroidUseIntermediateDesignerFile>True</AndroidUseIntermediateDesignerFile>
         <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
 
+        <TargetFrameworks>MonoAndroid90</TargetFrameworks>
+        <!--
+    
+        Error: The TargetFramework value 'MonoAndroid81' was not recognized. It may be misspelled. 
+        If not, then the TargetFrameworkIdentifier and/or TargetFrameworkVersion properties must be 
+        specified explicitly. 
+
         <TargetFrameworks>MonoAndroid81</TargetFrameworks>
+        -->
         <IsBindingProject>true</IsBindingProject>
         <AndroidClassParser>class-parse</AndroidClassParser>
         <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
