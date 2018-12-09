@@ -132,6 +132,8 @@ namespace Sample.Migraineator.ConsoleApp
         {
             #if DEBUG && NETCOREAPP
              await androidx_migrator.InitializeAsync("./bin/Debug/netcoreapp2.1/mappings/");
+            #elif RELEASE && NETCOREAPP
+            await androidx_migrator.InitializeAsync("./bin/Debug/netcoreapp2.1/mappings/");
             #else
             androidx_migrator.Initialize("./mappings/");
             #endif
