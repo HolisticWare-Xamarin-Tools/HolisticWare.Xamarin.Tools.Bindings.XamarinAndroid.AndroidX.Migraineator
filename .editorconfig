@@ -1,0 +1,12 @@
+# https://docs.microsoft.com/en-us/visualstudio/mac/editorconfig
+# https://github.com/MicrosoftDocs/visualstudio-docs/blob/master/docs/ide/editorconfig-code-style-settings-reference.md
+
+#----------------------------------------------------------------------------------------------------------------------
+# CSharp code style settings:
+[*.cs]
+
+# BE INCLUSIVE - think of junior and inexperienced devs USE EXPLICIT TYPES
+csharp_style_var_for_built_in_types = false:warning
+csharp_style_var_when_type_is_apparent = false:warning
+csharp_style_var_elsewhere = false:warning
+#----------------------------------------------------------------------------------------------------------------------
