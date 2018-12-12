@@ -4,6 +4,8 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Generated;
+using System.Xml.Serialization;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core
 {
@@ -356,5 +358,107 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
             return;
         }
+
+
+        public ApiDiff ApiDiff(string file_input)
+        {
+            ApiDiff api_diff = null;            
+
+            StreamReader sr = null;
+            XmlSerializer serializer = new XmlSerializer(typeof(ApiDiff));
+
+            try
+            {
+                sr = new StreamReader(file_input);
+                api_diff = (ApiDiff)serializer.Deserialize(sr);
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                sr.Close();
+            }
+
+            return api_diff;
+        }
+
+        public 
+            (
+                List<string> namespaces, 
+                List<string> namespaces_new_suspicious, 
+                List<string> namespaces_old_suspicious, 
+                List<string> classes
+            ) 
+                Analyse(ApiDiff api_diff)
+        {
+            List<string> namespaces = new List<string>();
+            List<string> namespaces_new_suspicious = new List<string>();
+            List<string> namespaces_old_suspicious = new List<string>();
+
+            List<string> classes = new List<string>();
+
+            foreach (Namespace n in api_diff.Assembly.Namespaces.Namespace)
+            {
+                string namespace_name = n.Name;
+                namespaces.Add(namespace_name);
+
+                if (namespace_name.StartsWith("Androidx."))
+                {
+                    namespaces_new_suspicious.Add(namespace_name);
+                }
+                else if (namespace_name.StartsWith("Android."))
+                {
+                    namespaces_old_suspicious.Add(namespace_name);
+                }
+
+                try
+                {
+                    if (n.Classes != null)
+                    {
+                        foreach (Class c in n?.Classes.Class)
+                        {
+                            string class_name = c?.Name;
+                            string class_name_fq = $"{n.Name}.{class_name}";
+                            classes.Add($"{class_name_fq},                                 ,{class_name}");
+                        }
+                    }
+                }
+                catch
+                {
+                    throw;
+                }
+
+            }
+
+            return
+                (
+                    namespaces,
+                    namespaces_new_suspicious,
+                    namespaces_old_suspicious,
+                    classes
+                );
+        }
+
+        public void DumpToFiles(ApiDiff api_diff, string version)
+        {
+            (
+                List<string> namespaces,
+                List<string> namespaces_new_suspicious,
+                List<string> namespaces_old_suspicious,
+                List<string> classes
+            ) = this.Analyse(api_diff);
+
+            System.IO.File.WriteAllLines($"namespaces_{version}.txt", namespaces);
+            System.IO.File.WriteAllLines($"namespaces_new_suspicious_{version}.txt", namespaces_new_suspicious);
+            System.IO.File.WriteAllLines($"namespaces_old_suspicious_{version}.txt", namespaces_old_suspicious);
+            System.IO.File.WriteAllLines($"classes_{version}.txt", classes);
+
+            return;
+
+        }
+
+
     }
 }
