@@ -1,0 +1,7 @@
+Androidx.Browser.Browseractions
+Androidx.Core.Graphics.Drawable
+Androidx.Heifwriter
+Androidx.Media
+Androidx.Versionedparcelable
+Androidx.Webkit
+Androidx.Webkit.Internal
