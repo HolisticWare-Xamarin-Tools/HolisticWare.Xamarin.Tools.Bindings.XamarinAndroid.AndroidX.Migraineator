@@ -29,11 +29,11 @@ namespace Sample.Migraineator.ConsoleApp
         static bool overwrite_files = true;
         //------------------------------------------------------------------------------------------------------------------
         static int verbosity;
-        static AndroidXDiffComparer androidx_diff_comparer = null;
+        static AndroidXDiffComparer api_info_comparer = null;
 
         public static void Main(string[] args)
         {
-            androidx_diff_comparer = new AndroidXDiffComparer();
+            api_info_comparer = new AndroidXDiffComparer();
 
             bool show_help = false;
             List<string> names = new List<string>();
@@ -102,24 +102,24 @@ namespace Sample.Migraineator.ConsoleApp
             if (string.IsNullOrWhiteSpace(file_output))
             {
                 file_output =
-                    @"../../../../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidX.api-diff.xml"
+                    @"../../../../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidX.api-info.xml"
                     ;
             }
             if ( file_input_androidx == null || string.IsNullOrWhiteSpace(file_input_androidx) )
             {
                 file_input_androidx =
-                    @"../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.api-diff.xml"
+                    @"../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.api-info.xml"
                     //@"../../../../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.api-diff.xml"
                     ;
             }
             if (file_input_android_support_28_0_0 == null || string.IsNullOrWhiteSpace(file_input_android_support_28_0_0))
             {
                 file_input_android_support_28_0_0 =
-                    @"../../../../X/AndroidSupportComponents-28.0.0-binderate/output/AndroidSupport.api-diff.xml"
+                    @"../../../../X/AndroidSupportComponents-28.0.0-binderate/output/AndroidSupport.api-info.xml"
                     ;
             }
 
-            Task t = ProcessMetadataFilesAsync
+            Task t = ProcessApiInfoFilesAsync
                             (
                                 file_input_androidx, 
                                 file_input_android_support_28_0_0,
@@ -128,46 +128,40 @@ namespace Sample.Migraineator.ConsoleApp
 
             Task.WaitAll(t);
 
+            api_info_comparer.GetType();
+
             return;
         }
 
-        private static async Task ProcessMetadataFilesAsync
+        private static async Task ProcessApiInfoFilesAsync
                                                 (
                                                     string file_input_androidx,
                                                     string file_input_android_support_28_0_0,
                                                     string file_output
                                                 )
         {
-            #if DEBUG && NETCOREAPP
-            await androidx_diff_comparer.InitializeAsync("./bin/Debug/netcoreapp2.1/mappings/");
-            #elif RELEASE && NETCOREAPP
+            #if DEBUG && NETCOREAPP && NETCOREAPP2_1
+            await api_info_comparer.InitializeAsync("./bin/Debug/netcoreapp2.1/mappings/");
+            #elif RELEASE && NETCOREAPP && NETCOREAPP2_1
             await androidx_diff_comparer.InitializeAsync("./bin/Debug/netcoreapp2.1/mappings/");
             #else
             androidx_diff_comparer.Initialize("./mappings/");
             #endif
 
-            ApiDiff api_diff_androidx = androidx_diff_comparer.ApiDiff(file_input_androidx);
-            ApiDiff api_diff_previous_androidsupport_28_0_0 = androidx_diff_comparer.ApiDiff(file_input_android_support_28_0_0); ;
+            api_info_comparer.ApiInfoFileNew = file_input_androidx;
+            api_info_comparer.ApiInfoFileOld = file_input_android_support_28_0_0;
 
+            api_info_comparer.ApiInfoDataNew = await api_info_comparer.ApiInfo(file_input_androidx);
+            api_info_comparer.ApiInfoDataOld = await api_info_comparer.ApiInfo(file_input_android_support_28_0_0);
 
-            (
-                List<string> namespaces_x,
-                List<string> namespaces_x_new_suspicious,
-                List<string> namespaces_x_old_suspicious,
-                List<string> classes_x
-            ) = androidx_diff_comparer.Analyse(api_diff_androidx);
+            await api_info_comparer.ApiInfo(file_input_android_support_28_0_0); ;
 
-            androidx_diff_comparer.DumpToFiles(api_diff_androidx, "AndroidX");
-
-
-            (
-                List<string> namespaces_28,
-                List<string> namespaces_28_new_suspicious,
-                List<string> namespaces_28_old_suspicious,
-                List<string> classes_28
-            ) = androidx_diff_comparer.Analyse(api_diff_previous_androidsupport_28_0_0);
-
-            androidx_diff_comparer.DumpToFiles(api_diff_previous_androidsupport_28_0_0, "AndroidSupport_28_0_0");
+            api_info_comparer.MappingApiInfoMatertial();
+            api_info_comparer.ModifyApiInfo
+                                        (
+                                            api_info_comparer.ContentApiInfoNew,
+                                            api_info_comparer.ApiInfoDataOld
+                                        );
 
             return;
         }
@@ -183,6 +177,45 @@ namespace Sample.Migraineator.ConsoleApp
 
             return;
         }
+
+        static async Task Analyse()
+        {
+            /*
+            (
+                List<string> namespaces_28,
+                List<string> namespaces_28_new_suspicious,
+                List<string> namespaces_28_old_suspicious,
+                List<string> classes_28
+            ) = androidx_diff_comparer.Analyse(api_info_previous_androidsupport_28_0_0.api_info_previous);
+
+            androidx_diff_comparer.DumpToFiles
+            (
+                api_info_previous_androidsupport_28_0_0.api_info_previous, 
+                "AndroidSupport_28_0_0"
+            );
+
+            (
+                string content_new,
+                ApiInfo api_info_new
+            )
+                api_info_androidx = await androidx_diff_comparer.ApiInfo(file_input_androidx);
+
+            (
+                List<string> namespaces_x,
+                List<string> namespaces_x_new_suspicious,
+                List<string> namespaces_x_old_suspicious,
+                List<string> classes_x
+            ) = androidx_diff_comparer.Analyse(api_info_androidx.api_info_new);
+
+            androidx_diff_comparer.DumpToFiles
+            (
+                api_info_androidx.api_info_new, 
+                "AndroidX"
+            );
+            */
+
+        }
+
 
         static void Debug(string format, params object[] args)
         {

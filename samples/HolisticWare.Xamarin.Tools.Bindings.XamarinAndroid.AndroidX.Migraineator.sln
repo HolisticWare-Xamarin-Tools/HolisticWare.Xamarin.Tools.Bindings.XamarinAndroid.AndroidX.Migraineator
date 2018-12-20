@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Migraineator.Console
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Migraineator.ApiDiffComparer.ConsoleApp", "Sample.Migraineator.ApiDiffComparer.ConsoleApp\Sample.Migraineator.ApiDiffComparer.ConsoleApp.csproj", "{74F39A39-F3A8-4F6E-9B00-102EC7C272D0}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared", "..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.shproj", "{47B94FCE-FAFC-4388-81E8-88B3747EEF51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C} = {B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}
 		{595A2FA7-70BF-46C5-A3BC-5252675E85F8} = {B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}
+		{47B94FCE-FAFC-4388-81E8-88B3747EEF51} = {B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE413921-D015-4D86-87E8-6FDA1853CBCF}
