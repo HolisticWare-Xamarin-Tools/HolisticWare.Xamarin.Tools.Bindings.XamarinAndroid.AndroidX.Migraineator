@@ -363,7 +363,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     }
 
     [XmlRoot(ElementName = "assemblies")]
-    public class ApiDiff
+    public class ApiInfo
     {
         [XmlElement(ElementName = "assembly")]
         public Assembly Assembly { get; set; }
