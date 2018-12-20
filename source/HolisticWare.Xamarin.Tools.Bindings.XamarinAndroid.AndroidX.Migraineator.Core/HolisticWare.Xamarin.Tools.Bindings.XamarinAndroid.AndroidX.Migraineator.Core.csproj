@@ -6,17 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="FileLoader.config" />
-    <None Remove="mappings\android-support-to-androidx-mappings-artifacts.tsv" />
-    <None Remove="mappings\android-support-to-androidx-mappings-classes.tsv" />
-    <None Remove="mappings\android-support-to-androidx-mappings-artifacts.csv" />
-    <None Remove="mappings\android-support-to-androidx-mappings-namespaces.csv" />
-    <None Remove="mappings\android-support-to-androidx-mappings-classes.csv" />
-    <None Remove="mappings\android-support-to-xamarin-android-support-mappings-packages.csv" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="mappings\" />
-    <Folder Include="generated\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Collections" Version="4.3.0" />
@@ -24,27 +14,47 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     <PackageReference Include="System.IO" Version="4.3.0" />
     <PackageReference Include="System.Text.Encoding" Version="4.3.0" />
+    <PackageReference Include="System.Memory" Version="4.5.1" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Class1.cs" />
+    <None Remove="mappings\mappings-android-support-artifacts-to-androidx-artifacts.csv" />
+    <None Remove="mappings\mappings-android-support-artifacts-to-xamarin-android-support-assembly.csv" />
+    <None Remove="mappings\mappings-androidx-artifacts-with-old-packagenames.csv" />
+    <None Remove="mappings\mappings-androidx-material-packages-to-xamarin-namespaces.csv" />
+    <None Remove="mappings\mappings-classes-android-support-to-androidx.csv" />
+    <None Remove="mappings\mappings-packages-android-support-to-androidx.csv" />
+    <None Remove="mappings\mappings-packages-android-support-to-xamarin-android-support.csv" />
+    <None Remove="mappings\xamarin-google-play-services-and-firebase-packages.csv" />
+    <None Remove="mappings\mappings-namespaces-android-support-to-androidx.csv" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="mappings\android-support-to-androidx-mappings-artifacts.csv">
+    <Content Include="mappings\mappings-android-support-artifacts-to-androidx-artifacts.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
+    <Content Include="mappings\mappings-android-support-artifacts-to-xamarin-android-support-assembly.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mappings\mappings-androidx-artifacts-with-old-packagenames.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mappings\mappings-androidx-material-packages-to-xamarin-namespaces.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mappings\mappings-classes-android-support-to-androidx.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mappings\mappings-packages-android-support-to-androidx.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mappings\mappings-packages-android-support-to-xamarin-namespace.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mappings\xamarin-google-play-services-and-firebase-packages.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mappings\mappings-namespaces-android-support-to-androidx.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="mappings\android-support-to-androidx-mappings-artifacts.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="mappings\android-support-to-androidx-mappings-namespaces.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="mappings\android-support-to-androidx-mappings-classes.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="mappings\android-support-to-xamarin-android-support-mappings-packages.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+  <Import Project="..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.projitems" Label="Shared" Condition="Exists('..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.projitems')" />
 </Project>
