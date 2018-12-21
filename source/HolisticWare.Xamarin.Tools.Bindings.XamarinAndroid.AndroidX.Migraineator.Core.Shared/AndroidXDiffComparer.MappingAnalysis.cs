@@ -110,7 +110,106 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             List<(string ClassName, string NamespaceOld, string NamespaceNew)> classes_material_mapping;
             classes_material_mapping = new List<(string ClassName, string NamespaceOld, string NamespaceNew)>();
 
+            foreach ( (string ClassName, string NamespaceName) cn in classes_material)
+            {
+                string namespace_name_new = cn.NamespaceName;
+
+                foreach (Namespace n in ApiInfoDataOld.Assembly.Namespaces.Namespace)
+                {
+                    string namespace_name_old = n.Name;
+
+                    try
+                    {
+                        if (n.Classes != null)
+                        {
+                            foreach (Class c in n?.Classes.Class)
+                            {
+                                string class_name_old = c?.Name;
+                                if (cn.ClassName == class_name_old)
+                                {
+                                    classes_material_mapping.Add
+                                        (
+                                            (
+                                                ClassName: class_name_old,
+                                                NamespaceOld: namespace_name_old,
+                                                NamespaceNew: namespace_name_new
+                                            )
+                                        );
+                                }
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        throw;
+                    }
+
+                }
+            }
+
+            this.DumpToFileXamarinMaterialMappings(classes_material_mapping);
+
             return classes_material_mapping;
+        }
+
+        private void DumpToFileXamarinMaterialMappings
+                                        (
+                                            List
+                                                <
+                                                    (
+                                                        string ClassName, 
+                                                        string NamespaceOld, 
+                                                        string NamespaceNew
+                                                    )
+                                                > classes_material_mapping
+                                        )
+        {
+            int n = classes_material_mapping.Count();
+
+            int length_class = 0;
+            int length_namepsace_new = 0;
+            int length_namepsace_old = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                int lci = classes_material_mapping[i].ClassName.Length;
+                if (classes_material_mapping[i].ClassName.Length > length_class)
+                {
+                    length_class = lci;
+                }
+                int lnoi = classes_material_mapping[i].NamespaceOld.Length;
+                if (classes_material_mapping[i].NamespaceOld.Length > length_namepsace_old)
+                {
+                    length_namepsace_old = lnoi;
+                }
+                int lnni = classes_material_mapping[i].NamespaceNew.Length;
+                if (classes_material_mapping[i].NamespaceNew.Length > length_namepsace_new)
+                {
+                    length_namepsace_new = lnni;
+                }
+            }
+
+            int padding = 3;
+            string fmt0 = "{0,-" + (length_class + padding) + "}";
+            string fmt1 = ",{1,-" + (length_namepsace_old + padding) + "}";
+            string fmt2 = ",{2}";
+
+            string fmt = fmt0 + fmt1 + fmt2;
+
+            string file_content = null;
+            for (int i = 0; i < n; i++)
+            {
+                string c = classes_material_mapping[i].ClassName;
+                string no = classes_material_mapping[i].NamespaceOld;
+                string nn = classes_material_mapping[i].NamespaceNew;
+
+                file_content += String.Format(fmt, c + ",", no + ",", nn);
+                file_content += Environment.NewLine;
+            }
+
+            System.IO.File.WriteAllText("mapping-xamarin-android-support-to-androidx.csv", file_content);
+
+            return;
         }
     }
 }
