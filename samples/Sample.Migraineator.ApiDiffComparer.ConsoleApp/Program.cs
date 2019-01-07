@@ -115,7 +115,8 @@ namespace Sample.Migraineator.ConsoleApp
             if (file_input_android_support_28_0_0 == null || string.IsNullOrWhiteSpace(file_input_android_support_28_0_0))
             {
                 file_input_android_support_28_0_0 =
-                    @"../../../../X/AndroidSupportComponents-28.0.0-binderate/output/AndroidSupport.api-info.xml"
+                    //@"../../../../X/AndroidSupportComponents-28.0.0-binderate/output/AndroidSupport.api-info.xml"
+                    @"../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.api-info.previous.xml"
                     ;
             }
 
