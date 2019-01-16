@@ -19,13 +19,15 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 List<string> namespaces,
                 List<string> namespaces_new_suspicious,
                 List<string> namespaces_old_suspicious,
-                List<string> classes
+                List< (string ClassName, string ClassNameFullyQualified)> classes
             ) = this.Analyse(api_info);
 
             System.IO.File.WriteAllLines($"namespaces_{version}.txt", namespaces);
             System.IO.File.WriteAllLines($"namespaces_new_suspicious_{version}.txt", namespaces_new_suspicious);
             System.IO.File.WriteAllLines($"namespaces_old_suspicious_{version}.txt", namespaces_old_suspicious);
-            System.IO.File.WriteAllLines($"classes_{version}.txt", classes);
+
+
+            //System.IO.File.WriteAllLines($"classes_{version}.txt", classes);
 
             return;
 

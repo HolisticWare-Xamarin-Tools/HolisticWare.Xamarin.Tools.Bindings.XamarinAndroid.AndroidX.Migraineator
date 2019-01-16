@@ -18,15 +18,30 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 List<string> namespaces,
                 List<string> namespaces_new_suspicious,
                 List<string> namespaces_old_suspicious,
-                List<string> classes
+                List<(string ClassName, string ClassNameFullyQualified)> classes
             )
                                     Analyse(ApiInfo api_info)
         {
+            List<(string PackageJava, string NamespaceManaged)> namespaces_from_attributes = null;
+            namespaces_from_attributes = new List<(string PackageJava, string NamespaceManaged)>();
+
+            foreach (Generated.Attribute a in api_info.Assembly.Attributes.Attribute)
+            {
+                string attribute_name = a.Name;
+                if (attribute_name.Contains("Android.Support"))
+                {
+
+                }
+            }
+
             List<string> namespaces = new List<string>();
             List<string> namespaces_new_suspicious = new List<string>();
             List<string> namespaces_old_suspicious = new List<string>();
 
-            List<string> classes = new List<string>();
+            List<(string ClassName, string ClassNameFullyQualified)> classes = null;
+
+            classes = new List<(string ClassName, string ClassNameFullyQualified)>();
+
 
             foreach (Namespace n in api_info.Assembly.Namespaces.Namespace)
             {
@@ -42,6 +57,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     namespaces_old_suspicious.Add(namespace_name);
                 }
 
+                int ClassNameLength = 0;
+                int ClassNameFullyQualifiedLength = 0;
                 try
                 {
                     if (n.Classes != null)
@@ -49,8 +66,17 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                         foreach (Class c in n?.Classes.Class)
                         {
                             string class_name = c?.Name;
+                            if (class_name.Length > ClassNameLength)
+                            {
+                                ClassNameLength = class_name.Length;
+                            }
+
                             string class_name_fq = $"{n.Name}.{class_name}";
-                            classes.Add($"{class_name_fq},                                 ,{class_name}");
+                            if (class_name_fq.Length > ClassNameFullyQualifiedLength)
+                            {
+                                ClassNameFullyQualifiedLength = class_name_fq.Length;
+                            }
+                            classes.Add((ClassName: class_name, ClassNameFullyQualified: class_name_fq));
                         }
                     }
                 }
@@ -59,19 +85,34 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     throw;
                 }
 
+                try
+                {
+                    //if (n.Interfaces != null)
+                    {
+                        //foreach (Interface i in n?.Interfaces.Interface)
+                        {
+                            //string interface_name = i?.Name;
+                        }
+                    }
+                }
+                catch
+                {
+                    throw;
+                }
             }
 
             return
-                (
-                    namespaces,
-                    namespaces_new_suspicious,
-                    namespaces_old_suspicious,
-                    classes
-                );
+                    (
+                        namespaces,
+                        namespaces_new_suspicious,
+                        namespaces_old_suspicious,
+                        classes
+                    );
         }
 
-        public List<(string ClassName, string NamespaceOld, string NamespaceNew)>
-            MappingApiInfoMatertial()
+        public 
+            List<(string ClassName, string NamespaceOld, string NamespaceNew)>
+                                    MappingApiInfoMatertial()
         {
             List<(string ClassName, string NamespaceName)> classes_material = null;
 
