@@ -1,30 +1,43 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.XamarinAndroid.Bindings.Library", "Sample.XamarinAndroid.Bindings.Library\Sample.XamarinAndroid.Bindings.Library.csproj", "{AA25D9AC-03CA-4275-88FA-489F2F5D8DA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.XamarinAndroid.Bindings.SDK", "Sample.XamarinAndroid.Bindings.SDK\Sample.XamarinAndroid.Bindings.SDK.csproj", "{CFD90C6D-400D-4A33-9984-3433D6AFCE40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.XamarinAndroid.Bindings.SDK", "Sample.XamarinAndroid.Bindings.SDK\Sample.XamarinAndroid.Bindings.SDK.csproj", "{CFD90C6D-400D-4A33-9984-3433D6AFCE40}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AB99CC60-863A-48DC-B414-7C417BFA94E7}"
 	ProjectSection(SolutionItems) = preProject
-		..\README.md = ..\README.md
 		..\.editorconfig = ..\.editorconfig
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core", "..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.csproj", "{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core", "..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.csproj", "{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask", "..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask.csproj", "{595A2FA7-70BF-46C5-A3BC-5252675E85F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask", "..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask.csproj", "{595A2FA7-70BF-46C5-A3BC-5252675E85F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Migraineator.ConsoleApp", "Sample.Migraineator.ConsoleApp\Sample.Migraineator.ConsoleApp.csproj", "{80E38EE4-C2D3-4F9D-A385-5AD1EC02E7B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Migraineator.ConsoleApp", "Sample.Migraineator.ConsoleApp\Sample.Migraineator.ConsoleApp.csproj", "{80E38EE4-C2D3-4F9D-A385-5AD1EC02E7B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Migraineator.ApiDiffComparer.ConsoleApp", "Sample.Migraineator.ApiDiffComparer.ConsoleApp\Sample.Migraineator.ApiDiffComparer.ConsoleApp.csproj", "{74F39A39-F3A8-4F6E-9B00-102EC7C272D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Migraineator.ApiDiffComparer.ConsoleApp", "Sample.Migraineator.ApiDiffComparer.ConsoleApp\Sample.Migraineator.ApiDiffComparer.ConsoleApp.csproj", "{74F39A39-F3A8-4F6E-9B00-102EC7C272D0}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared", "..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.shproj", "{47B94FCE-FAFC-4388-81E8-88B3747EEF51}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "externals", "externals", "{6791B7E9-987E-4337-B784-BAFE7356B11A}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HolisticWare.Core.Text", "..\externals\Core.Text\source\HolisticWare.Core.Text\HolisticWare.Core.Text.shproj", "{921CFEA5-564C-4975-A20F-8CAD32EA88E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Core.Text.NetStandard10", "..\externals\Core.Text\source\HolisticWare.Core.Text.NetStandard10\HolisticWare.Core.Text.NetStandard10.csproj", "{5B8DBA01-2E5F-457A-9895-A9A4759D1D43}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Core.Text.NetStandard11", "..\externals\Core.Text\source\HolisticWare.Core.Text.NetStandard11\HolisticWare.Core.Text.NetStandard11.csproj", "{18C2D1F9-A0F6-4A04-9CFF-DF984242395B}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.projitems*{47b94fce-fafc-4388-81e8-88b3747eef51}*SharedItemsImports = 13
+		..\externals\Core.Text\source\HolisticWare.Core.Text\HolisticWare.Core.Text.projitems*{921cfea5-564c-4975-a20f-8cad32ea88e3}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -54,6 +67,14 @@ Global
 		{74F39A39-F3A8-4F6E-9B00-102EC7C272D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74F39A39-F3A8-4F6E-9B00-102EC7C272D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74F39A39-F3A8-4F6E-9B00-102EC7C272D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B8DBA01-2E5F-457A-9895-A9A4759D1D43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B8DBA01-2E5F-457A-9895-A9A4759D1D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B8DBA01-2E5F-457A-9895-A9A4759D1D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B8DBA01-2E5F-457A-9895-A9A4759D1D43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18C2D1F9-A0F6-4A04-9CFF-DF984242395B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C2D1F9-A0F6-4A04-9CFF-DF984242395B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18C2D1F9-A0F6-4A04-9CFF-DF984242395B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18C2D1F9-A0F6-4A04-9CFF-DF984242395B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,8 +83,11 @@ Global
 		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C} = {B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}
 		{595A2FA7-70BF-46C5-A3BC-5252675E85F8} = {B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}
 		{47B94FCE-FAFC-4388-81E8-88B3747EEF51} = {B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}
+		{921CFEA5-564C-4975-A20F-8CAD32EA88E3} = {6791B7E9-987E-4337-B784-BAFE7356B11A}
+		{5B8DBA01-2E5F-457A-9895-A9A4759D1D43} = {6791B7E9-987E-4337-B784-BAFE7356B11A}
+		{18C2D1F9-A0F6-4A04-9CFF-DF984242395B} = {6791B7E9-987E-4337-B784-BAFE7356B11A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DE413921-D015-4D86-87E8-6FDA1853CBCF}
+		SolutionGuid = {215510F5-7238-4944-87B4-B78A2BAF4FEB}
 	EndGlobalSection
 EndGlobal

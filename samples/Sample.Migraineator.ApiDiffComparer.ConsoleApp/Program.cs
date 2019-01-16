@@ -157,6 +157,14 @@ namespace Sample.Migraineator.ConsoleApp
 
             await api_info_comparer.ApiInfo(file_input_android_support_28_0_0); ;
 
+            (
+                List<string> namespaces,
+                List<string> namespaces_new_suspicious,
+                List<string> namespaces_old_suspicious,
+                List<(string ClassName, string ClassNameFullyQualified)> classes
+            ) analysis_data_old;
+            analysis_data_old = api_info_comparer.Analyse(api_info_comparer.ApiInfoDataOld);
+
             api_info_comparer.MappingApiInfoMatertial();
             api_info_comparer.ModifyApiInfo
                                         (
