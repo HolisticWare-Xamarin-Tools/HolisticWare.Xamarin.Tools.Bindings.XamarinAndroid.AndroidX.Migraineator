@@ -65,6 +65,12 @@ Check (number of mappings/rows):
 
     structure line included (1st line, header)
 
+## Docs
+
+*   https://paper.dropbox.com/doc/AndroidX-Migration-Plan-h3CswlPGJitJp0rx6gcI1
+
+*   https://paper.dropbox.com/doc/AndroidX-JetPacks-Planning-xMixAnoc0cahtQ8F0NsMh
+
 
 ## Analysis
 
