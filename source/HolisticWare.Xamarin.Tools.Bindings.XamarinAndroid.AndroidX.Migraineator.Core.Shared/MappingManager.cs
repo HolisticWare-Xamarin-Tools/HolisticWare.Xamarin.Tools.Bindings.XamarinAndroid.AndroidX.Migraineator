@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using Core.Text;
 
-namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared
+namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core
 {
     public partial class MappingManager
     {
@@ -19,8 +19,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         Task task_load_google_class_mappings;
 
         public async Task InitializeAsync(string path)
-        {
             task_load_google_artifact_mappings = LoadGoogleClassMappings();
+        {
             task_load_google_class_mappings = LoadGoogleArtifactMappings();
 
             return;

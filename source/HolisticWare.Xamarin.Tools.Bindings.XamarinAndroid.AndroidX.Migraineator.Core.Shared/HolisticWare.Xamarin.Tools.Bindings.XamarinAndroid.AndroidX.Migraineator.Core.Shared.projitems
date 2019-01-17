@@ -14,9 +14,6 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AndroidXDiffComparer.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)AndroidXMigrator.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <Compile Include="$(MSBuildThisFileDirectory)CharacterSeparatedValues\CharacterSeparatedValues.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <Compile Include="$(MSBuildThisFileDirectory)CharacterSeparatedValues\CharacterSeparatedValues.Memory.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <Compile Include="$(MSBuildThisFileDirectory)CharacterSeparatedValues\CharacterSeparatedValues.String.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)generated\ApiInfo.Classes.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)AndroidXDiffComparer.Dump..cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)AndroidXDiffComparer.MappingAnalysis.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />

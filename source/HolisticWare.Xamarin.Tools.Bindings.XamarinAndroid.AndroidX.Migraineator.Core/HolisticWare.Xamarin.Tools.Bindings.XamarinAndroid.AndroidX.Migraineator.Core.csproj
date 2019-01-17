@@ -34,5 +34,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <Import Project="..\..\externals\Core.Text\source\HolisticWare.Core.Text\HolisticWare.Core.Text.projitems" Label="Shared" Condition="Exists('..\..\externals\Core.Text\source\HolisticWare.Core.Text\HolisticWare.Core.Text.projitems')" />
   <Import Project="..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.projitems" Label="Shared" Condition="Exists('..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.projitems')" />
 </Project>

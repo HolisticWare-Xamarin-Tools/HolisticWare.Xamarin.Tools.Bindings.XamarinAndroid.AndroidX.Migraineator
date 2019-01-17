@@ -20,6 +20,9 @@ mappings/google-readonly-1-baseline/androidx-artifact-mapping.csv
 mappings/google-readonly-1-baseline/androidx-class-mapping.csv
 ```
 
+[androidx-artifact-mapping.csv](mappings/google-readonly-1-baseline/androidx-artifact-mapping.csv)
+[androidx-class-mapping.csv](mappings/google-readonly-1-baseline/androidx-class-mapping.csv)
+
 Number of mappings/rows:
 
 *   `google-readonly-2-baseline-prettyfied/androidx-artifact-mapping.csv`
