@@ -36,104 +36,17 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         private string content_mappings_namespaces;
         private string content_mappings_classes;
 
+        MappingManager mapping_manager;
+
         public AndroidXDiffComparer()
         {
+            mapping_manager = new MappingManager();
+
             return;
         }
 
         string path_mappings = null;
 
-        //-------------------------------------------------------------------------------------------------------------------
-        CharacterSeparatedValues csv_mappings_android_support_artifacts_to_androidx_artifacts;
-        IEnumerable<string[]> map_android_support_artifacts_to_androidx_artifacts;
-        IEnumerable
-            <
-                (
-                    string AndroidSupportArtifact,
-                    string AndroidXArtifact
-                )
-            > map_typed_android_support_artifacts_to_androidx_artifacts;
-        public
-            List
-            <
-                (
-                    string AndroidSupportArtifact,
-                    string AndroidXArtifact
-                )
-            > MapAndroidSupportArtifactsToAndroidXArtifacts
-        {
-            get 
-            {
-                return map_typed_android_support_artifacts_to_androidx_artifacts.ToList();
-            }
-        }
-
-        public
-            IEnumerable
-                <
-                    (
-                        string AndroidSupportArtifact,
-                        string AndroidXArtifact
-                    )
-                >
-                MapAndroidSupportArtifactToAndroidXArtifact(IEnumerable<string[]> untyped_data)
-        {
-            foreach (string[] row in untyped_data)
-            {
-                yield return
-                        (
-                            AndroidSupportArtifact: row[0],
-                            AndroidXArtifact: row[2]
-                        );
-            }
-        }
-        //-------------------------------------------------------------------------------------------------------------------
-
-        //-------------------------------------------------------------------------------------------------------------------
-        CharacterSeparatedValues csv_mappings_android_support_artifacts_to_xamarin_android_support_assembly;
-        IEnumerable<string[]> map_android_support_artifacts_to_xamarin_android_support_assembly;
-        IEnumerable
-            <
-                (
-                    string AndroidSupportArtifact,
-                    string XamarinAndroidSupportAssembly
-                )
-            > map_typed_android_support_artifacts_to_xamarin_android_support_assembly;
-        public
-            List
-            <
-                (
-                    string AndroidSupportArtifact,
-                    string XamarinAndroidSupportAssembly
-                )
-            > MapAndroidSupportArtifactsToXamarinAndroidSupportAssembly
-        {
-            get
-            {
-                return map_typed_android_support_artifacts_to_xamarin_android_support_assembly.ToList();
-            }
-        }
-
-        public
-            IEnumerable
-                <
-                    (
-                        string AndroidSupportArtifact,
-                        string XamarinAndroidSupportAssembly
-                    )
-                >
-                MapAndroidSupportArtifactToXamarinAndroidSupportAssembly(IEnumerable<string[]> untyped_data)
-        {
-            foreach (string[] row in untyped_data)
-            {
-                yield return
-                        (
-                            AndroidSupportArtifact: row[0],
-                            XamarinAndroidSupportAssembly: row[2]
-                        );
-            }
-        }
-        //-------------------------------------------------------------------------------------------------------------------
 
 
         //-------------------------------------------------------------------------------------------------------------------
@@ -183,50 +96,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         //-------------------------------------------------------------------------------------------------------------------
 
 
-        //-------------------------------------------------------------------------------------------------------------------
-        CharacterSeparatedValues csv_mappings_androidx_material_packages_to_xamarin_namespaces;
-        IEnumerable<string[]> map_androidx_material_packages_to_xamarin_namespaces;
-        IEnumerable
-            <
-                (
-                    string AndroidXMaterialPackage,
-                    string XamarinNamespace
-                )
-            > map_typed_androidx_material_packages_to_xamarin_namespaces;
-        public
-            List
-            <
-                (
-                    string AndroidXMaterialPackage,
-                    string XamarinNamespace
-                )
-            > MapAndroidXMaterialPackagesToXamarinNamespaces
-        {
-            get
-            {
-                return map_typed_androidx_material_packages_to_xamarin_namespaces.ToList();
-            }
-        }
-
-        public
-            IEnumerable
-                <
-                    (
-                        string AndroidXMaterialPackage,
-                        string XamarinNamespace
-                    )
-                >
-                MapAndroidXMaterialPackageToXamarinNamespace(IEnumerable<string[]> untyped_data)
-        {
-            foreach (string[] row in untyped_data)
-            {
-                yield return
-                        (
-                            AndroidXMaterialPackage: row[0],
-                            XamarinNamespace: row[2]
-                        );
-            }
-        }
 
         public void ModifyApiInfo
                                 (
@@ -524,126 +393,118 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
         public async Task InitializeAsync(string path)
         {
-            path_mappings = path;
+            await mapping_manager.LoadGoogleArtifactMappings();
+            await mapping_manager.LoadGoogleClassMappings();
 
-            string file = null;
 
-            file = path_mappings + "mappings-android-support-artifacts-to-androidx-artifacts.csv";
-            csv_mappings_android_support_artifacts_to_androidx_artifacts = new CharacterSeparatedValues();
-            await csv_mappings_android_support_artifacts_to_androidx_artifacts.LoadAsync(file);
-            map_android_support_artifacts_to_androidx_artifacts =
-                            csv_mappings_android_support_artifacts_to_androidx_artifacts
-                                        .ParseTemporaryImplementation()
-                                        .ToList()
-                                        ;
-            map_typed_android_support_artifacts_to_androidx_artifacts =
-                    MapAndroidSupportArtifactToAndroidXArtifact(map_android_support_artifacts_to_androidx_artifacts)
-                    .ToList()
-                    ;
+            //map_typed_android_support_artifacts_to_androidx_artifacts =
+            //        MapAndroidSupportArtifactToAndroidXArtifact(map_android_support_artifacts_to_androidx_artifacts)
+            //        .ToList()
+            //        ;
 
-            file = path_mappings + "mappings-android-support-artifacts-to-xamarin-android-support-assembly.csv";
-            csv_mappings_android_support_artifacts_to_xamarin_android_support_assembly = new CharacterSeparatedValues();
-            await csv_mappings_android_support_artifacts_to_xamarin_android_support_assembly.LoadAsync(file);
-            map_android_support_artifacts_to_xamarin_android_support_assembly =
-                            csv_mappings_android_support_artifacts_to_xamarin_android_support_assembly
-                                        .ParseTemporaryImplementation()
-                                        .ToList()
-                                        ;
-            map_typed_android_support_artifacts_to_androidx_artifacts = 
-                    MapAndroidSupportArtifactToXamarinAndroidSupportAssembly(map_android_support_artifacts_to_xamarin_android_support_assembly)
-                    .ToList()
-                    ;
+            //file = path_mappings + "mappings-android-support-artifacts-to-xamarin-android-support-assembly.csv";
+            //csv_mappings_android_support_artifacts_to_xamarin_android_support_assembly = new CharacterSeparatedValues();
+            //await csv_mappings_android_support_artifacts_to_xamarin_android_support_assembly.LoadAsync(file);
+            //map_android_support_artifacts_to_xamarin_android_support_assembly =
+            //                csv_mappings_android_support_artifacts_to_xamarin_android_support_assembly
+            //                            .ParseTemporaryImplementation()
+            //                            .ToList()
+            //                            ;
+            //map_typed_android_support_artifacts_to_androidx_artifacts = 
+            //        MapAndroidSupportArtifactToXamarinAndroidSupportAssembly(map_android_support_artifacts_to_xamarin_android_support_assembly)
+            //        .ToList()
+            //        ;
 
-            file = path_mappings + "mappings-androidx-artifacts-with-old-packagenames.csv";
-            csv_mappings_androidx_artifacts_with_old_packagenames = new CharacterSeparatedValues();
-            await csv_mappings_androidx_artifacts_with_old_packagenames.LoadAsync(file);
-            map_androidx_artifacts_with_old_packagenames =
-                            csv_mappings_androidx_artifacts_with_old_packagenames
-                                        .ParseTemporaryImplementation()
-                                        .ToList()
-                                        ;
-            map_typed_androidx_artifacts_with_old_packagenames =
-                    MapAndroidXArtifactToOldPackagename(map_androidx_artifacts_with_old_packagenames)
-                    .ToList()
-                    ;
+            //file = path_mappings + "mappings-androidx-artifacts-with-old-packagenames.csv";
+            //csv_mappings_androidx_artifacts_with_old_packagenames = new CharacterSeparatedValues();
+            //await csv_mappings_androidx_artifacts_with_old_packagenames.LoadAsync(file);
+            //map_androidx_artifacts_with_old_packagenames =
+            //                csv_mappings_androidx_artifacts_with_old_packagenames
+            //                            .ParseTemporaryImplementation()
+            //                            .ToList()
+            //                            ;
+            //map_typed_androidx_artifacts_with_old_packagenames =
+            //MapAndroidXArtifactToOldPackagename(map_androidx_artifacts_with_old_packagenames)
+            //.ToList()
+            //;
 
-            file = path_mappings + "mappings-androidx-material-packages-to-xamarin-namespaces.csv";
-            csv_mappings_androidx_material_packages_to_xamarin_namespaces = new CharacterSeparatedValues();
-            await csv_mappings_androidx_material_packages_to_xamarin_namespaces.LoadAsync(file);
-            map_androidx_material_packages_to_xamarin_namespaces =
-                            csv_mappings_androidx_material_packages_to_xamarin_namespaces
-                                        .ParseTemporaryImplementation()
-                                        .ToList()
-                                        ;
-            map_typed_androidx_material_packages_to_xamarin_namespaces =
-                    MapAndroidXMaterialPackageToXamarinNamespace(map_androidx_material_packages_to_xamarin_namespaces)
-                    .ToList()
-                    ;
+            //file = path_mappings + "mappings-androidx-material-packages-to-xamarin-namespaces.csv";
+            //csv_mappings_androidx_material_packages_to_xamarin_namespaces = new CharacterSeparatedValues();
+            //await csv_mappings_androidx_material_packages_to_xamarin_namespaces.LoadAsync(file);
+            //map_androidx_material_packages_to_xamarin_namespaces =
+            //                csv_mappings_androidx_material_packages_to_xamarin_namespaces
+            //                            .ParseTemporaryImplementation()
+            //                            .ToList()
+            //                            ;
+            //map_typed_androidx_material_packages_to_xamarin_namespaces =
+            //        MapAndroidXMaterialPackageToXamarinNamespace(map_androidx_material_packages_to_xamarin_namespaces)
+            //        .ToList()
+            //        ;
 
-            file = path_mappings + "mappings-classes-android-support-to-androidx.csv";
-            csv_mappings_classes_android_support_to_androidx = new CharacterSeparatedValues();
-            await csv_mappings_classes_android_support_to_androidx.LoadAsync(file);
-            map_classes_android_support_to_androidx =
-                            csv_mappings_classes_android_support_to_androidx
-                                        .ParseTemporaryImplementation()
-                                        .ToList()
-                                        ;
-            map_typed_classes_android_support_to_androidx =
-                    MapClassesAndroidSupportClassToAndroidXClass(map_classes_android_support_to_androidx)
-                    .ToList()
-                    ;
+            //file = path_mappings + "mappings-classes-android-support-to-androidx.csv";
+            //csv_mappings_classes_android_support_to_androidx = new CharacterSeparatedValues();
+            //await csv_mappings_classes_android_support_to_androidx.LoadAsync(file);
+            //map_classes_android_support_to_androidx =
+            //                csv_mappings_classes_android_support_to_androidx
+            //                            .ParseTemporaryImplementation()
+            //                            .ToList()
+            //                            ;
+            //map_typed_classes_android_support_to_androidx =
+            //        MapClassesAndroidSupportClassToAndroidXClass(map_classes_android_support_to_androidx)
+            //        .ToList()
+            //        ;
 
-            file = path_mappings + "mappings-packages-android-support-to-androidx.csv";
-            csv_mappings_packages_android_support_to_androidx = new CharacterSeparatedValues();
-            await csv_mappings_packages_android_support_to_androidx.LoadAsync(file);
-            map_packages_android_support_to_androidx =
-                            csv_mappings_packages_android_support_to_androidx
-                                        .ParseTemporaryImplementation()
-                                        .ToList()
-                                        ;
-            map_typed_packages_android_support_to_androidx =
-                    MapPackagesAndroidSupportPackageToAndroidXPackage(map_packages_android_support_to_androidx)
-                    .ToList()
-                    ;
+            //file = path_mappings + "mappings-packages-android-support-to-androidx.csv";
+            //csv_mappings_packages_android_support_to_androidx = new CharacterSeparatedValues();
+            //await csv_mappings_packages_android_support_to_androidx.LoadAsync(file);
+            //map_packages_android_support_to_androidx =
+            //                csv_mappings_packages_android_support_to_androidx
+            //                            .ParseTemporaryImplementation()
+            //                            .ToList()
+            //                            ;
+            //map_typed_packages_android_support_to_androidx =
+            //MapPackagesAndroidSupportPackageToAndroidXPackage(map_packages_android_support_to_androidx)
+            //.ToList()
+            //;
 
-            file = path_mappings + "mappings-packages-android-support-to-xamarin-namespace.csv";
-            csv_mappings_packages_android_support_to_xamarin_namespace = new CharacterSeparatedValues();
-            await csv_mappings_packages_android_support_to_xamarin_namespace.LoadAsync(file);
-            map_packages_android_support_to_xamarin_namespace =
-                            csv_mappings_packages_android_support_to_xamarin_namespace
-                                        .ParseTemporaryImplementation()
-                                        .ToList()
-                                        ;
-            map_typed_packages_android_support_to_xamarin_namespace =
-                    MapAndroidSupportPackageToXamarinAndroidSupportNamespace(map_packages_android_support_to_xamarin_namespace)
-                    .ToList()
-                    ;
+            //file = path_mappings + "mappings-packages-android-support-to-xamarin-namespace.csv";
+            //csv_mappings_packages_android_support_to_xamarin_namespace = new CharacterSeparatedValues();
+            //await csv_mappings_packages_android_support_to_xamarin_namespace.LoadAsync(file);
+            //map_packages_android_support_to_xamarin_namespace =
+            //                csv_mappings_packages_android_support_to_xamarin_namespace
+            //                            .ParseTemporaryImplementation()
+            //                            .ToList()
+            //                            ;
+            //map_typed_packages_android_support_to_xamarin_namespace =
+            //        MapAndroidSupportPackageToXamarinAndroidSupportNamespace(map_packages_android_support_to_xamarin_namespace)
+            //        .ToList()
+            //        ;
 
-            file = path_mappings + "xamarin-google-play-services-and-firebase-packages.csv";
-            csv_xamarin_google_play_services_and_firebase_packages = new CharacterSeparatedValues();
-            await csv_xamarin_google_play_services_and_firebase_packages.LoadAsync(file);
-            map_xamarin_google_play_services_and_firebase_packages =
-                            csv_xamarin_google_play_services_and_firebase_packages
-                                        .ParseTemporaryImplementation()
-                                        .ToList()
-                                        ;
-            map_typed_xamarin_google_play_services_and_firebase_packages =
-                    MapXamarinGooglePlayServiceAndFirebaseNamespaces(map_xamarin_google_play_services_and_firebase_packages)
-                    .ToList()
-                    ;
+            //file = path_mappings + "xamarin-google-play-services-and-firebase-packages.csv";
+            //csv_xamarin_google_play_services_and_firebase_packages = new CharacterSeparatedValues();
+            //await csv_xamarin_google_play_services_and_firebase_packages.LoadAsync(file);
+            //map_xamarin_google_play_services_and_firebase_packages =
+            //                csv_xamarin_google_play_services_and_firebase_packages
+            //                            .ParseTemporaryImplementation()
+            //                            .ToList()
+            //                            ;
+            //map_typed_xamarin_google_play_services_and_firebase_packages =
+            //        MapXamarinGooglePlayServiceAndFirebaseNamespaces(map_xamarin_google_play_services_and_firebase_packages)
+            //        .ToList()
+            //        ;
 
-            file = path_mappings + "mappings-namespaces-android-support-to-androidx.csv";
-            csv_mappings_namespaces_android_support_to_androidx = new CharacterSeparatedValues();
-            await csv_mappings_namespaces_android_support_to_androidx.LoadAsync(file);
-            map_namespaces_android_support_to_androidx =
-                            csv_mappings_namespaces_android_support_to_androidx
-                                        .ParseTemporaryImplementation()
-                                        .ToList()
-                                        ;
-            map_typed_namespaces_android_support_to_androidx =
-                    MapAndroidSupportNamsepcaeToAndroidXNamespace(map_namespaces_android_support_to_androidx)
-                    .ToList()
-                    ;
+            //file = path_mappings + "mappings-namespaces-android-support-to-androidx.csv";
+            //csv_mappings_namespaces_android_support_to_androidx = new CharacterSeparatedValues();
+            //await csv_mappings_namespaces_android_support_to_androidx.LoadAsync(file);
+            //map_namespaces_android_support_to_androidx =
+            //                csv_mappings_namespaces_android_support_to_androidx
+            //                            .ParseTemporaryImplementation()
+            //                            .ToList()
+            //                            ;
+            //map_typed_namespaces_android_support_to_androidx =
+            //MapAndroidSupportNamsepcaeToAndroidXNamespace(map_namespaces_android_support_to_androidx)
+            //.ToList()
+            //;
 
             return;
         }

@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)generated\ApiInfo.Classes.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)AndroidXDiffComparer.Dump..cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)AndroidXDiffComparer.MappingAnalysis.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="$(MSBuildThisFileDirectory)MappingManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CharacterSeparatedValues\" />
