@@ -4,30 +4,11 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core;
-using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Generated;
 
 namespace Sample.Migraineator.ConsoleApp
 {
     class Program
     {
-        //------------------------------------------------------------------------------------------------------------------
-        /*
-        _ _  ____ _______ ______                                              
-         | \ | |/ __ \__ __|  ____|_                                            
-         |  \| | |  | | | |  | |__(_)
-         | . ` | |  | | | |  |  __|                                               
-         | |\  | |__| | | |  | |____ _                                            
-         |_|_\_|\____/  |_|  |______(_)                       _ _   _             
-         |  ____(_) |                                        (_) | (_)            
-         | |__ _| | ___ _____   _____ _ ____ ___ __ _| |_ _ _ __   __ _ 
-         |  __| | | |/ _ \  / _ \ \ / / _ \ '__\ \ /\ / / '__| | __| | '_ \ / _` |
-         | |    | | |  __/ | (_) \ V /  __/ |   \ V V /| |  | | |_| | | | | (_| |
-         |_|    |_|_|\___|  \___/ \_/ \___|_|    \_/\_/ |_|  |_|\__|_|_| |_|\__, |
-                                                                             __/ |
-                                                                            |___/ 
-        */
-        static bool overwrite_files = true;
-        //------------------------------------------------------------------------------------------------------------------
         static int verbosity;
         static AndroidXDiffComparer api_info_comparer = null;
 
@@ -129,8 +110,7 @@ namespace Sample.Migraineator.ConsoleApp
 
             Task.WaitAll(t);
 
-            api_info_comparer.GetType();
-
+           
             return;
         }
 
@@ -141,21 +121,45 @@ namespace Sample.Migraineator.ConsoleApp
                                                     string file_output
                                                 )
         {
-            #if DEBUG && NETCOREAPP && NETCOREAPP2_1
-            await api_info_comparer.InitializeAsync("./bin/Debug/netcoreapp2.1/mappings/");
-            #elif RELEASE && NETCOREAPP && NETCOREAPP2_1
-            await androidx_diff_comparer.InitializeAsync("./bin/Debug/netcoreapp2.1/mappings/");
+            #if NETCOREAPP && NETCOREAPP2_1
+            #if DEBUG
+            await api_info_comparer.InitializeAsync("./bin/Debug/netcoreapp2.1/");
+            #elif RELEASE
+            await androidx_diff_comparer.InitializeAsync("./bin/Release/netcoreapp2.1/");
+            #endif
             #else
             androidx_diff_comparer.Initialize("./mappings/");
             #endif
 
+
+
+            ApiInfo api_info_old_android_support = new ApiInfo(file_input_android_support_28_0_0);
+            await api_info_old_android_support.LoadAsync();
+            ApiInfo api_info_new_androidx = new ApiInfo(file_input_androidx);
+            await api_info_new_androidx.LoadAsync();
+
+            await api_info_old_android_support.XmlDeserializerData.Deserialize();
+            await api_info_new_androidx.XmlDeserializerData.Deserialize();
+
+
+
+            Task.WaitAll();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             api_info_comparer.ApiInfoFileNew = file_input_androidx;
             api_info_comparer.ApiInfoFileOld = file_input_android_support_28_0_0;
-
-            api_info_comparer.ApiInfoDataNew = await api_info_comparer.ApiInfo(file_input_androidx);
-            api_info_comparer.ApiInfoDataOld = await api_info_comparer.ApiInfo(file_input_android_support_28_0_0);
-
-            await api_info_comparer.ApiInfo(file_input_android_support_28_0_0); ;
 
             (
                 List<string> namespaces,
@@ -163,14 +167,34 @@ namespace Sample.Migraineator.ConsoleApp
                 List<string> namespaces_old_suspicious,
                 List<(string ClassName, string ClassNameFullyQualified)> classes
             ) analysis_data_old;
-            analysis_data_old = api_info_comparer.Analyse(api_info_comparer.ApiInfoDataOld);
 
-            api_info_comparer.MappingApiInfoMatertial();
-            api_info_comparer.ModifyApiInfo
-                                        (
-                                            api_info_comparer.ContentApiInfoNew,
-                                            api_info_comparer.ApiInfoDataOld
-                                        );
+            //var merge1 =
+            //api_info_comparer.MappingManager.Merge_Old_AndroidSupport
+            //                        (
+            //                            api_info_comparer.MappingManager.GoogleArtifactMappings,
+            //                            api_info_comparer.ApiInfoDataOld
+            //                        );
+            //await api_info_comparer.MappingManager.Merge_New_AndroidSupport
+            //                        (
+            //                            api_info_comparer.MappingManager.GoogleArtifactMappings,
+            //                            api_info_comparer.ApiInfoDataNew
+            //                        );
+
+
+            //analysis_data_old = api_info_comparer.Analyse(api_info_comparer.ApiInfoDataOld);
+
+            //api_info_comparer.MappingApiInfoMatertial();
+
+
+
+
+
+
+            //api_info_comparer.ModifyApiInfo
+                                        //(
+                                        //    api_info_comparer.ContentApiInfoNew,
+                                        //    api_info_comparer.ApiInfoDataOld
+                                        //);
 
             return;
         }

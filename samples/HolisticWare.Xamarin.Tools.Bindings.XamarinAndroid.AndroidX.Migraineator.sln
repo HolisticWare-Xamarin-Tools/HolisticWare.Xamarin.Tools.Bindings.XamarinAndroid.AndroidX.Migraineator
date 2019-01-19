@@ -33,6 +33,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Core.Text.NetS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Core.Text.NetStandard11", "..\externals\Core.Text\source\HolisticWare.Core.Text.NetStandard11\HolisticWare.Core.Text.NetStandard11.csproj", "{18C2D1F9-A0F6-4A04-9CFF-DF984242395B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data", "..\externals\AndroidX.Data\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data.csproj", "{11EE2D62-BB5F-45B7-8591-C76C25104F97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Text.NetStandard13", "..\externals\Core.Text\source\HolisticWare.Core.Text.NetStandard13\HolisticWare.Core.Text.NetStandard13.csproj", "{8A07A5BF-9DD1-4CB2-B623-8E2F4B2F88A9}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.projitems*{47b94fce-fafc-4388-81e8-88b3747eef51}*SharedItemsImports = 13
@@ -75,6 +79,14 @@ Global
 		{18C2D1F9-A0F6-4A04-9CFF-DF984242395B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18C2D1F9-A0F6-4A04-9CFF-DF984242395B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18C2D1F9-A0F6-4A04-9CFF-DF984242395B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11EE2D62-BB5F-45B7-8591-C76C25104F97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11EE2D62-BB5F-45B7-8591-C76C25104F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11EE2D62-BB5F-45B7-8591-C76C25104F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11EE2D62-BB5F-45B7-8591-C76C25104F97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A07A5BF-9DD1-4CB2-B623-8E2F4B2F88A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A07A5BF-9DD1-4CB2-B623-8E2F4B2F88A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A07A5BF-9DD1-4CB2-B623-8E2F4B2F88A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A07A5BF-9DD1-4CB2-B623-8E2F4B2F88A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +98,8 @@ Global
 		{921CFEA5-564C-4975-A20F-8CAD32EA88E3} = {6791B7E9-987E-4337-B784-BAFE7356B11A}
 		{5B8DBA01-2E5F-457A-9895-A9A4759D1D43} = {6791B7E9-987E-4337-B784-BAFE7356B11A}
 		{18C2D1F9-A0F6-4A04-9CFF-DF984242395B} = {6791B7E9-987E-4337-B784-BAFE7356B11A}
+		{11EE2D62-BB5F-45B7-8591-C76C25104F97} = {6791B7E9-987E-4337-B784-BAFE7356B11A}
+		{8A07A5BF-9DD1-4CB2-B623-8E2F4B2F88A9} = {6791B7E9-987E-4337-B784-BAFE7356B11A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {215510F5-7238-4944-87B4-B78A2BAF4FEB}
