@@ -25,7 +25,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             List<(string PackageJava, string NamespaceManaged)> namespaces_from_attributes = null;
             namespaces_from_attributes = new List<(string PackageJava, string NamespaceManaged)>();
 
-            foreach (Generated.Attribute a in api_info.Assembly.Attributes.Attribute)
+            foreach (Generated.Attribute a in api_info.XmlDeserializerData.ApiInfo.Assembly.Attributes.Attribute)
             {
                 string attribute_name = a.Name;
                 if (attribute_name.Contains("Android.Support"))
@@ -43,7 +43,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             classes = new List<(string ClassName, string ClassNameFullyQualified)>();
 
 
-            foreach (Namespace n in api_info.Assembly.Namespaces.Namespace)
+            foreach (Namespace n in api_info.XmlDeserializerData.ApiInfo.Assembly.Namespaces.Namespace)
             {
                 string namespace_name = n.Name;
                 namespaces.Add(namespace_name);
@@ -118,7 +118,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
             classes_material = new List<(string ClassName, string NamespaceName)>();
 
-            foreach (Namespace n in ApiInfoDataNew.Assembly.Namespaces.Namespace)
+            foreach (Namespace n in ApiInfoDataNew.XmlDeserializerData.ApiInfo.Assembly.Namespaces.Namespace)
             {
                 string namespace_name = n.Name;
 
@@ -155,7 +155,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             {
                 string namespace_name_new = cn.NamespaceName;
 
-                foreach (Namespace n in ApiInfoDataOld.Assembly.Namespaces.Namespace)
+                foreach (Namespace n in ApiInfoDataOld.XmlDeserializerData.ApiInfo.Assembly.Namespaces.Namespace)
                 {
                     string namespace_name_old = n.Name;
 

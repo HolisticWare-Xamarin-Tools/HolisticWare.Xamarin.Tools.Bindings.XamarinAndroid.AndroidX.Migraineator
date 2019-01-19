@@ -71,6 +71,9 @@ Check (number of mappings/rows):
 
 *   https://paper.dropbox.com/doc/AndroidX-JetPacks-Planning-xMixAnoc0cahtQ8F0NsMh
 
+*   https://paper.dropbox.com/doc/AndroidX-Binding-Discussion--AVzw~JQhBD1XoGWnkZbazyUcAg-1gs1DHcPsFtDyKC2lIeJ5
+
+
 
 ## Analysis
 
@@ -130,3 +133,13 @@ Xamarin.Android bindings), fixes will be provided in for of deltas (diff or csv)
 Filename.csv
 Filename.TimeStamp.csv
 ```
+
+
+## References / Links
+
+*   https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/extern-alias
+
+*   https://paper.dropbox.com/doc/AndroidX-Binding-Discussion--AVzw~JQhBD1XoGWnkZbazyUcAg-1gs1DHcPsFtDyKC2lIeJ5
+
+*   https://android-developers.googleblog.com/2018/05/hello-world-androidx.html
+

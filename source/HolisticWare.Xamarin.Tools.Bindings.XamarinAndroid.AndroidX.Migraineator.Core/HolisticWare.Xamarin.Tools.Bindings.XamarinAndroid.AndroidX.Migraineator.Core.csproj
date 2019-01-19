@@ -2,12 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <DefaultItemExcludes>$(DefaultItemExcludes);.\**\.DS_Store;.\mappings\**\*.csv</DefaultItemExcludes>
+    <DefaultItemExcludes>$(DefaultItemExcludes);**\.DS_Store;.\mappings\**\*.csv</DefaultItemExcludes>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="mappings\" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Collections" Version="4.3.0" />
     <PackageReference Include="System.Runtime" Version="4.3.0" />
@@ -15,25 +12,12 @@
     <PackageReference Include="System.IO" Version="4.3.0" />
     <PackageReference Include="System.Text.Encoding" Version="4.3.0" />
     <PackageReference Include="System.Memory" Version="4.5.1" />
+    <PackageReference Include="System.Xml.XDocument" Version="4.3.0" />
+    <PackageReference Include="System.Xml.Linq" Version="3.5.21022.801" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="mappings\google-readonly-1-baseline\androidx-artifact-mapping.csv" />
-    <Content Include="mappings\google-readonly-1-baseline\androidx-artifact-mapping.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Remove="mappings\google-readonly-1-baseline\androidx-class-mapping.csv" />
-    <Content Include="mappings\google-readonly-1-baseline\androidx-class-mapping.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Remove="mappings\google-readonly-2-baseline-prettyfied\androidx-artifact-mapping.csv" />
-    <Content Include="mappings\google-readonly-2-baseline-prettyfied\androidx-artifact-mapping.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Remove="mappings\google-readonly-2-baseline-prettyfied\androidx-class-mapping.csv" />
-    <Content Include="mappings\google-readonly-2-baseline-prettyfied\androidx-class-mapping.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <ProjectReference Include="..\..\externals\Core.Text\source\HolisticWare.Core.Text.NetStandard13\HolisticWare.Core.Text.NetStandard13.csproj" />
+    <ProjectReference Include="..\..\externals\AndroidX.Data\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data.csproj" />
   </ItemGroup>
-  <Import Project="..\..\externals\Core.Text\source\HolisticWare.Core.Text\HolisticWare.Core.Text.projitems" Label="Shared" Condition="Exists('..\..\externals\Core.Text\source\HolisticWare.Core.Text\HolisticWare.Core.Text.projitems')" />
   <Import Project="..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.projitems" Label="Shared" Condition="Exists('..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.projitems')" />
 </Project>

@@ -365,6 +365,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     [XmlRoot(ElementName = "assemblies")]
     public class ApiInfo
     {
+        public ApiInfo()
+        {
+        }
+
         [XmlElement(ElementName = "assembly")]
         public Assembly Assembly { get; set; }
     }

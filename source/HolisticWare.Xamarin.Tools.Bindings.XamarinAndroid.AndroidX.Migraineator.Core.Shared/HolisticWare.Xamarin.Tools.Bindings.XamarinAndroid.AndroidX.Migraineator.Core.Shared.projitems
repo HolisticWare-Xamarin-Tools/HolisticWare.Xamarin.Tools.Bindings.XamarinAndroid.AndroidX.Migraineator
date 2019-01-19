@@ -18,6 +18,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)AndroidXDiffComparer.Dump..cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)AndroidXDiffComparer.MappingAnalysis.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)MappingManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MappingManager.Merge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.XmlSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.XDocument.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CharacterSeparatedValues\" />

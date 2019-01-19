@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Core.Text;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Generated;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core
 {
@@ -18,10 +19,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         Task task_load_google_artifact_mappings;
         Task task_load_google_class_mappings;
 
-        public async Task InitializeAsync(string path)
-            task_load_google_artifact_mappings = LoadGoogleClassMappings();
+        public async Task InitializeAsync(string path_working_directory)
         {
-            task_load_google_class_mappings = LoadGoogleArtifactMappings();
+            task_load_google_artifact_mappings = LoadGoogleClassMappings(path_working_directory);
+            task_load_google_class_mappings = LoadGoogleArtifactMappings(path_working_directory);
 
             return;
         }
@@ -30,6 +31,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         string file = null;
 
         //-------------------------------------------------------------------------------------------------------------------
+        // Google provided mappings for Artifacts
         public
             ReadOnlyCollection<
                                     (
@@ -45,9 +47,16 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
         public async
             Task
-                LoadGoogleArtifactMappings()
+                LoadGoogleArtifactMappings(string path_working_directory)
         {
-            file = Path.Combine(path_mappings, "androidx-artifact-mapping.csv");
+            string[] path = new string[]
+            {
+                path_working_directory,
+                path_mappings,
+                "google-readonly-1-baseline",
+                "androidx-artifact-mapping.csv",
+            };
+            file = Path.Combine(path);
 
             CharacterSeparatedValues csv = new CharacterSeparatedValues();
             string content = await csv.LoadAsync(file);
@@ -82,7 +91,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 yield return
                         (
                             AndroidSupportArtifact: row[0],
-                            AndroidXArtifact: row[2]
+                            AndroidXArtifact: row[1]
                         );
             }
         }
@@ -104,9 +113,16 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
         public async
             Task
-                LoadGoogleClassMappings()
+                LoadGoogleClassMappings(string path_working_directory)
         {
-            file = Path.Combine(path_mappings, "androidx-class-mapping.csv");
+            string[] path = new string[]
+            {
+                path_working_directory,
+                path_mappings,
+                "google-readonly-1-baseline",
+                "androidx-class-mapping.csv",
+            };
+            file = Path.Combine(path);
 
             CharacterSeparatedValues csv = new CharacterSeparatedValues();
             string content = await csv.LoadAsync(file);
@@ -120,7 +136,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                 string AndroidSupportClass,
                                 string AndroidXClass
                             )
-                        > mapping_strongly_typed = Convert_GoogleArtifactMappings(mapping);
+                        > mapping_strongly_typed = Convert_GoogleClassMappings(mapping);
 
             GoogleClassMappings = mapping_strongly_typed.ToList().AsReadOnly();
 
@@ -147,5 +163,71 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         }
         //-------------------------------------------------------------------------------------------------------------------
 
+        //-------------------------------------------------------------------------------------------------------------------
+        public
+            ReadOnlyCollection<
+                                    (
+                                        string AndroidSupportClass,
+                                        string AndroidXClass
+                                    )
+                                >
+                GoogleClassMappingsPrettyfied
+        {
+            get;
+            private set;
+        }
+
+        public async
+            Task
+                LoadGoogleClassMappingsPrettyfied(string path_working_directory)
+        {
+            string[] path = new string[]
+            {
+                path_working_directory,
+                path_mappings,
+                "google-readonly-2-baseline-prettyfied",
+                "androidx-class-mapping.csv",
+            };
+            file = Path.Combine(path);
+
+            CharacterSeparatedValues csv = new CharacterSeparatedValues();
+            string content = await csv.LoadAsync(file);
+
+            IEnumerable<string[]> mapping = csv
+                                            .ParseTemporaryImplementation()
+                                            .ToList()
+                                            ;
+            IEnumerable<
+                            (
+                                string AndroidSupportClass,
+                                string AndroidXClass
+                            )
+                        > mapping_strongly_typed = Convert_GoogleClassMappingsPrettyfied(mapping);
+
+            GoogleClassMappingsPrettyfied = mapping_strongly_typed.ToList().AsReadOnly();
+
+            return;
+        }
+
+        private
+            IEnumerable<
+                            (
+                                string AndroidSupportClass,
+                                string AndroidXClass
+                            )
+                        >
+                Convert_GoogleClassMappingsPrettyfied(IEnumerable<string[]> untyped_data)
+        {
+            foreach (string[] row in untyped_data)
+            {
+                yield return
+                        (
+                            AndroidSupportClass: row[0],
+                            // skip column 1 - emptyt one!!
+                            AndroidXClass: row[2]
+                        );
+            }
+        }
+        //-------------------------------------------------------------------------------------------------------------------
     }
 }

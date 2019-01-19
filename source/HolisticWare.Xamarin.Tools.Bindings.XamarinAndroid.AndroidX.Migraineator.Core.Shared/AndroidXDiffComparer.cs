@@ -36,7 +36,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         private string content_mappings_namespaces;
         private string content_mappings_classes;
 
-        MappingManager mapping_manager;
 
         public AndroidXDiffComparer()
         {
@@ -47,7 +46,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
         string path_mappings = null;
 
-
+        public MappingManager MappingManager
+        {
+            get
+            {
+                return mapping_manager;
+            }
+        }
+        MappingManager mapping_manager;
 
         //-------------------------------------------------------------------------------------------------------------------
         CharacterSeparatedValues csv_mappings_androidx_artifacts_with_old_packagenames;
@@ -103,7 +109,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                     ApiInfo api_info_androidx
                                 )
         {
-            foreach (Namespace n in api_info_androidx.Assembly.Namespaces.Namespace)
+            foreach (Namespace n in api_info_androidx.XmlDeserializerData.ApiInfo.Assembly.Namespaces.Namespace)
             {
                 string namespace_name = n.Name; 
 
@@ -391,11 +397,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         //-------------------------------------------------------------------------------------------------------------------
 
 
-        public async Task InitializeAsync(string path)
+        public async Task InitializeAsync(string path_working_directory)
         {
-            await mapping_manager.LoadGoogleArtifactMappings();
-            await mapping_manager.LoadGoogleClassMappings();
+            await mapping_manager.LoadGoogleArtifactMappings(path_working_directory);
+            await mapping_manager.LoadGoogleClassMappings(path_working_directory);
 
+            await mapping_manager.LoadGoogleClassMappingsPrettyfied(path_working_directory);
 
             //map_typed_android_support_artifacts_to_androidx_artifacts =
             //        MapAndroidSupportArtifactToAndroidXArtifact(map_android_support_artifacts_to_androidx_artifacts)
