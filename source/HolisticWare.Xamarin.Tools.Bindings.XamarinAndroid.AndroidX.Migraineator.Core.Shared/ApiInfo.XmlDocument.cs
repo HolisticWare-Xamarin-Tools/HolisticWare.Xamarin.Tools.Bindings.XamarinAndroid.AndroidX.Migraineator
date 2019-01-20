@@ -202,6 +202,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 foreach (System.Xml.XmlNode node in node_list)
                 {
                     string interface_name = node.Attributes["name"].Value;
+
+                    if ( ! interface_name.StartsWith("Android.Support."))
+                    {
+                        continue;
+                    }
                     int postion_interface_name = interface_name.LastIndexOf('.');
                     string namespace_name = interface_name.Substring(0, postion_interface_name);
                     interface_name = interface_name.Replace($"{namespace_name}.", "");
@@ -224,6 +229,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 {
                     sb.AppendLine(namespace_name);
                 }
+
+                System.IO.File.WriteAllText($"{filename_base}.Namespaces.csv", sb.ToString());
 
                 return;
             }
@@ -258,11 +265,13 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 }
 
                 int padding = 3;
-                string fmt0 = "{0,-" + (length_class + padding) + "}";
-                string fmt1 = ",{1,-" + (length_namepsace + padding) + "}";
-                string fmt2 = ",{2}";
-
-                string fmt = fmt0 + fmt1 + fmt2;
+                string fmt = 
+                        "{0,-" + (length_class + padding) + "}"
+                        +
+                        ",{1,-" + (length_namepsace + padding) + "}"
+                        //+
+                        //",{2}"
+                        ;
 
                 System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
@@ -276,15 +285,73 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     )
                 {
                     string cn = c.ClassName;
+                    string nn = c.ManagedNamespace;
+                    
+                    sb.AppendLine(string.Format(fmt, cn, nn));
                 }
 
-                System.IO.File.WriteAllText("mapping-xamarin-android-support-to-androidx.csv", sb.ToString());
+                System.IO.File.WriteAllText($"{filename_base}.Classes.csv", sb.ToString());
 
                 return;
             }
 
             private void DumpInterfaces(string filename_base)
             {
+                int n = this.Interfaces.Count();
+
+                int length_interface = 0;
+                int length_namepsace = 0;
+
+                foreach
+                    (
+                        (
+                            string InterfaceName,
+                            string ManagedNamespace
+                        ) i
+                        in this.Classes
+                    )
+                {
+                    int lci = i.InterfaceName.Length;
+                    if (i.InterfaceName.Length > length_interface)
+                    {
+                        length_interface = lci;
+                    }
+                    int lnoi = i.ManagedNamespace.Length;
+                    if (i.ManagedNamespace.Length > length_namepsace)
+                    {
+                        length_namepsace = lnoi;
+                    }
+                }
+
+                int padding = 3;
+                string fmt =
+                        "{0,-" + (length_interface + padding) + "}"
+                        +
+                        ",{1,-" + (length_namepsace + padding) + "}"
+                        //+
+                        //",{2}"
+                        ;
+
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+                foreach
+                    (
+                        (
+                            string InterfaceName,
+                            string ManagedNamespace
+                        ) i
+                        in this.Interfaces
+                    )
+                {
+                    string ifn = i.InterfaceName;
+                    string nn = i.ManagedNamespace;
+
+                    sb.AppendLine(string.Format(fmt, ifn, nn));
+                }
+
+                System.IO.File.WriteAllText($"{filename_base}.InterfacesFromClasses.csv", sb.ToString());
+
+                return;
             }
 
             private void DumpInterfacesFromClasses(string filename_base)
