@@ -131,20 +131,21 @@ namespace Sample.Migraineator.ConsoleApp
             androidx_diff_comparer.Initialize("./mappings/");
             #endif
 
-
-
             ApiInfo api_info_old_android_support = new ApiInfo(file_input_android_support_28_0_0);
             await api_info_old_android_support.LoadAsync();
             ApiInfo api_info_new_androidx = new ApiInfo(file_input_androidx);
             await api_info_new_androidx.LoadAsync();
 
-            await api_info_old_android_support.XmlDeserializerData.Deserialize();
-            await api_info_new_androidx.XmlDeserializerData.Deserialize();
+            await api_info_old_android_support.XmlSerializerAPI.Deserialize();
+            await api_info_new_androidx.XmlSerializerAPI.Deserialize();
 
+            api_info_old_android_support.XmlDocumentAPI.AnayseAPI();
+            api_info_old_android_support.XmlDocumentAPI.DumpAPI("API.Android.Support.XmlDocumentAPI");
 
+            api_info_new_androidx.XmlDocumentAPI.AnayseAPI();
+            api_info_new_androidx.XmlDocumentAPI.DumpAPI("API.AndroidX.XmlDocumentAPI");
 
             Task.WaitAll();
-
 
 
 

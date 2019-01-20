@@ -41,7 +41,7 @@ to interact with Java, so we'll create it like a normal class in C#.
 
 By adding a Point.cs file with this class, it will end up in the binding library:
 
-public class Point
+public partial class Point
 {
     public int X { get; set; }
  public int Y { get; set; }

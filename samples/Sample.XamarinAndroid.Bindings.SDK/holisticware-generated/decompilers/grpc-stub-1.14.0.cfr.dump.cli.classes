@@ -1,4 +1,4 @@
-Can't load the class specified:
+﻿Can't load the class specified:
 org.benf.cfr.reader.util.CannotLoadClassException: -jar.class - java.io.IOException: No such file -jar.class
 /*
  * Decompiled with CFR 0_132.
@@ -177,9 +177,9 @@ import java.lang.annotation.Target;
 public @interface RpcMethod {
     public String fullMethodName();
 
-    public Class<?> requestType();
+    public partial class<?> requestType();
 
-    public Class<?> responseType();
+    public partial class<?> responseType();
 
     public MethodDescriptor.MethodType methodType();
 }
