@@ -21,7 +21,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)MappingManager.Merge.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.XmlSerializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.XDocument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.LinqXDocumentData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.XmlDocument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.Analysis.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CharacterSeparatedValues\" />

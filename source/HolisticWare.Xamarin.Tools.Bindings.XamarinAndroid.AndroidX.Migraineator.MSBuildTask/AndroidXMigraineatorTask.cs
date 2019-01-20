@@ -2,7 +2,7 @@
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator
 {
-    public class AndroidXMigraineatorTask : Microsoft.Build.Utilities.Task
+    public partial class AndroidXMigraineatorTask : Microsoft.Build.Utilities.Task
     {
         [Microsoft.Build.Framework.Required]
         public string Options

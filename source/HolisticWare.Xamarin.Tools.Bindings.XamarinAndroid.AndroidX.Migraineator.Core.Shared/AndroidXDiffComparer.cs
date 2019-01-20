@@ -109,7 +109,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                     ApiInfo api_info_androidx
                                 )
         {
-            foreach (Namespace n in api_info_androidx.XmlDeserializerData.ApiInfo.Assembly.Namespaces.Namespace)
+            foreach (Namespace n in api_info_androidx.XmlSerializerAPI.ApiInfo.Assembly.Namespaces.Namespace)
             {
                 string namespace_name = n.Name; 
 

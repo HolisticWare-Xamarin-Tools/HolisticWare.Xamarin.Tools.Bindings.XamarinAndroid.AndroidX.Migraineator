@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Generated
 {
     [XmlRoot(ElementName = "attribute")]
-    public class Attribute
+    public partial class Attribute
     {
         [XmlAttribute(AttributeName = "name")]
         public string Name { get; set; }
@@ -23,28 +23,28 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     }
 
     [XmlRoot(ElementName = "warning")]
-    public class Warning
+    public partial class Warning
     {
         [XmlAttribute(AttributeName = "text")]
         public string Text { get; set; }
     }
 
     [XmlRoot(ElementName = "warnings")]
-    public class Warnings
+    public partial class Warnings
     {
         [XmlElement(ElementName = "warning")]
         public List<Warning> Warning { get; set; }
     }
 
     [XmlRoot(ElementName = "attributes")]
-    public class Attributes
+    public partial class Attributes
     {
         [XmlElement(ElementName = "attribute")]
         public List<Attribute> Attribute { get; set; }
     }
 
     [XmlRoot(ElementName = "interface")]
-    public class Interface
+    public partial class Interface
     {
         [XmlAttribute(AttributeName = "name")]
         public string Name { get; set; }
@@ -53,14 +53,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     }
 
     [XmlRoot(ElementName = "interfaces")]
-    public class Interfaces
+    public partial class Interfaces
     {
         [XmlElement(ElementName = "interface")]
         public List<Interface> Interface { get; set; }
     }
 
     [XmlRoot(ElementName = "constructor")]
-    public class Constructor
+    public partial class Constructor
     {
         [XmlAttribute(AttributeName = "name")]
         public string Name { get; set; }
@@ -85,14 +85,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     }
 
     [XmlRoot(ElementName = "constructors")]
-    public class Constructors
+    public partial class Constructors
     {
         [XmlElement(ElementName = "constructor")]
         public List<Constructor> Constructor { get; set; }
     }
 
     [XmlRoot(ElementName = "property")]
-    public class Property
+    public partial class Property
     {
         [XmlAttribute(AttributeName = "name")]
         public string Name { get; set; }
@@ -125,14 +125,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     }
 
     [XmlRoot(ElementName = "properties")]
-    public class Properties
+    public partial class Properties
     {
         [XmlElement(ElementName = "property")]
         public List<Property> Property { get; set; }
     }
 
     [XmlRoot(ElementName = "method")]
-    public class Method
+    public partial class Method
     {
         [XmlAttribute(AttributeName = "name")]
         public string Name { get; set; }
@@ -161,14 +161,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     }
 
     [XmlRoot(ElementName = "methods")]
-    public class Methods
+    public partial class Methods
     {
         [XmlElement(ElementName = "method")]
         public List<Method> Method { get; set; }
     }
 
     [XmlRoot(ElementName = "class")]
-    public class Class
+    public partial class Class
     {
         [XmlElement(ElementName = "attributes")]
         public Attributes Attributes { get; set; }
@@ -223,14 +223,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     }
 
     [XmlRoot(ElementName = "classes")]
-    public class Classes
+    public partial class Classes
     {
         [XmlElement(ElementName = "class")]
         public List<Class> Class { get; set; }
     }
 
     [XmlRoot(ElementName = "namespace")]
-    public class Namespace
+    public partial class Namespace
     {
         [XmlElement(ElementName = "classes")]
         public Classes Classes { get; set; }
@@ -265,7 +265,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     }
 
     [XmlRoot(ElementName = "field")]
-    public class Field
+    public partial class Field
     {
         [XmlAttribute(AttributeName = "name")]
         public string Name { get; set; }
@@ -276,14 +276,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     }
 
     [XmlRoot(ElementName = "fields")]
-    public class Fields
+    public partial class Fields
     {
         [XmlElement(ElementName = "field")]
         public List<Field> Field { get; set; }
     }
 
     [XmlRoot(ElementName = "event")]
-    public class Event
+    public partial class Event
     {
         [XmlAttribute(AttributeName = "name")]
         public string Name { get; set; }
@@ -292,14 +292,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     }
 
     [XmlRoot(ElementName = "events")]
-    public class Events
+    public partial class Events
     {
         [XmlElement(ElementName = "event")]
         public List<Event> Event { get; set; }
     }
 
     [XmlRoot(ElementName = "parameter")]
-    public class Parameter
+    public partial class Parameter
     {
         [XmlAttribute(AttributeName = "name")]
         public string Name { get; set; }
@@ -312,21 +312,21 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     }
 
     [XmlRoot(ElementName = "parameters")]
-    public class Parameters
+    public partial class Parameters
     {
         [XmlElement(ElementName = "parameter")]
         public List<Parameter> Parameter { get; set; }
     }
 
     [XmlRoot(ElementName = "namespaces")]
-    public class Namespaces
+    public partial class Namespaces
     {
         [XmlElement(ElementName = "namespace")]
         public List<Namespace> Namespace { get; set; }
     }
 
     [XmlRoot(ElementName = "assembly")]
-    public class Assembly
+    public partial class Assembly
     {
         [XmlElement(ElementName = "attributes")]
         public Attributes Attributes { get; set; }
@@ -363,7 +363,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     }
 
     [XmlRoot(ElementName = "assemblies")]
-    public class ApiInfo
+    public partial class ApiInfo
     {
         public ApiInfo()
         {

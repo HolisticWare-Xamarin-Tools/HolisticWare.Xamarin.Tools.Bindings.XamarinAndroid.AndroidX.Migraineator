@@ -15,9 +15,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         public ApiInfo(string path)
         {
             api_info_path = path;
-            this.XmlDeserializerData = new XmlSerializerData(api_info_path);
 
-            api_info_path = path;
+            // 3 
+            this.XmlSerializerAPI = new XmlSerializerData(api_info_path);
+            this.XmlDocumentAPI = new XmlDocumentData(api_info_path);
+            this.LinqXDocumentAPI = new LinqXDocumentData(api_info_path);
 
             return;
         }
@@ -55,12 +57,22 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             return api_info_content;
         }
 
-
-        public XmlSerializerData XmlDeserializerData
+        public XmlSerializerData XmlSerializerAPI
         {
             get;
             private set;
         }
 
+        public XmlDocumentData XmlDocumentAPI
+        {
+            get;
+            private set;
+        }
+
+        public LinqXDocumentData LinqXDocumentAPI
+        {
+            get;
+            private set;
+        }
     }
 }

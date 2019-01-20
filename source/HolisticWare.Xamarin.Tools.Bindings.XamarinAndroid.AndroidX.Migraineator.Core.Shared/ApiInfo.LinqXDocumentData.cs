@@ -14,7 +14,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 {
     public partial class ApiInfo
     {
-        public class LinqXDocumentData
+        public partial class LinqXDocumentData
         {
             public LinqXDocumentData(string path)
             {

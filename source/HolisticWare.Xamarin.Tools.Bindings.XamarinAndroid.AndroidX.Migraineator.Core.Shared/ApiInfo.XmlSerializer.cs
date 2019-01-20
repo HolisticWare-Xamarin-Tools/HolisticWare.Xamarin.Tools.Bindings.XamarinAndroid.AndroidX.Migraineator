@@ -19,7 +19,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         // https://hackernoon.com/comparing-the-performance-of-various-serializers-8cc459a24c21
         // https://maxondev.com/serialization-performance-comparison-c-net-formats-frameworks-xmldatacontractserializer-xmlserializer-binaryformatter-json-newtonsoft-servicestack-text/
 
-        public class XmlSerializerData
+        public partial class XmlSerializerData
         {
             public XmlSerializerData(string path)
             {

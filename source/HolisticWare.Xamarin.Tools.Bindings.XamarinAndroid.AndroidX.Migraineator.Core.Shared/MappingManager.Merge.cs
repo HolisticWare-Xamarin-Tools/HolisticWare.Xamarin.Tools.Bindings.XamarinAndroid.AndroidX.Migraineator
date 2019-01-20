@@ -35,7 +35,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
             List<string> assemblies = new List<string>();
 
-            foreach (Namespace n in apiInfoDataOld.XmlDeserializerData.ApiInfo.Assembly.Namespaces.Namespace)
+            foreach (Namespace n in apiInfoDataOld.XmlSerializerAPI.ApiInfo.Assembly.Namespaces.Namespace)
             {
                 string namespace_name = n.Name;
 
