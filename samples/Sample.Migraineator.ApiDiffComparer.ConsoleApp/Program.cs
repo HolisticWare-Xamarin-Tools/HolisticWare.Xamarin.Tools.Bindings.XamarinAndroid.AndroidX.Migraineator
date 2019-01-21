@@ -10,11 +10,11 @@ namespace Sample.Migraineator.ConsoleApp
     class Program
     {
         static int verbosity;
-        static AndroidXDiffComparer api_info_comparer = null;
+        static ApiComparer api_comparer = null;
 
         public static void Main(string[] args)
         {
-            api_info_comparer = new AndroidXDiffComparer();
+            api_comparer = new ApiComparer();
 
             bool show_help = false;
             List<string> names = new List<string>();
@@ -123,7 +123,7 @@ namespace Sample.Migraineator.ConsoleApp
         {
             #if NETCOREAPP && NETCOREAPP2_1
             #if DEBUG
-            await api_info_comparer.InitializeAsync("./bin/Debug/netcoreapp2.1/");
+            await api_comparer.InitializeAsync("./bin/Debug/netcoreapp2.1/");
             #elif RELEASE
             await androidx_diff_comparer.InitializeAsync("./bin/Release/netcoreapp2.1/");
             #endif
@@ -145,6 +145,14 @@ namespace Sample.Migraineator.ConsoleApp
             api_info_new_androidx.XmlDocumentAPI.AnayseAPI();
             api_info_new_androidx.XmlDocumentAPI.DumpAPI("API.AndroidX.XmlDocumentAPI");
 
+
+            api_comparer.Merge
+                            (
+                                ApiComparer.GoogleClassMappings,
+                                api_info_old_android_support,
+                                api_info_new_androidx
+                            );
+
             Task.WaitAll();
 
 
@@ -159,8 +167,8 @@ namespace Sample.Migraineator.ConsoleApp
 
 
 
-            api_info_comparer.ApiInfoFileNew = file_input_androidx;
-            api_info_comparer.ApiInfoFileOld = file_input_android_support_28_0_0;
+            api_comparer.ApiInfoFileNew = file_input_androidx;
+            api_comparer.ApiInfoFileOld = file_input_android_support_28_0_0;
 
             (
                 List<string> namespaces,
