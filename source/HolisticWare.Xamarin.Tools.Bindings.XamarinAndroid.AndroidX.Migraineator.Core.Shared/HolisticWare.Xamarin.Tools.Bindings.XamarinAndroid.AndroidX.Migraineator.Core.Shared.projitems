@@ -12,11 +12,11 @@
     <None Include="$(MSBuildThisFileDirectory)android-artifacts-to-xamarin-assembly.md" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)AndroidXDiffComparer.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)AndroidXMigrator.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)generated\ApiInfo.Classes.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <Compile Include="$(MSBuildThisFileDirectory)AndroidXDiffComparer.Dump..cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <Compile Include="$(MSBuildThisFileDirectory)AndroidXDiffComparer.MappingAnalysis.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.Dump..cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.MappingAnalysis.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)MappingManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MappingManager.Merge.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.cs" />
@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.LinqXDocumentData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.XmlDocument.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.Analysis.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.ComparisonData.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CharacterSeparatedValues\" />

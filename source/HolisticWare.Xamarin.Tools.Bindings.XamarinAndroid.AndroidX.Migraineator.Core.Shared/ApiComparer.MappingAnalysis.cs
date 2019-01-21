@@ -11,7 +11,7 @@ using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.C
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core
 {
-    public partial class AndroidXDiffComparer
+    public partial class ApiComparer
     {
         public
             (

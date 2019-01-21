@@ -12,31 +12,5 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 {
     public partial class ApiInfo
     {
-        public static
-            ReadOnlyCollection<
-                                    (
-                                        string AndroidSupportArtifact,
-                                        string AndroidXArtifact
-                                    )
-                                >
-                GoogleArtifactMappings
-        {
-            get
-            {
-                return mapping_manager.GoogleArtifactMappings;
-            }
-        }
-
-        protected static MappingManager mapping_manager = new MappingManager();
-
-        public static int? GoogleArtifactMappingsCount
-        {
-            get
-            {
-                return GoogleArtifactMappings?.Count();
-            }
-        }
-
-
     }
 }
