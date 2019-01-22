@@ -13,12 +13,15 @@ GoalRow,android.support.constraint.solver.GoalRow,androidx.constraintlayout.solv
 LinearSystem,android.support.constraint.solver.LinearSystem,androidx.constraintlayout.solver.LinearSystem
 Metrics,android.support.constraint.solver.Metrics,androidx.constraintlayout.solver.Metrics
 SolverVariable,android.support.constraint.solver.SolverVariable,androidx.constraintlayout.solver.SolverVariable
+Analyzer,android.support.constraint.solver.widgets.Analyzer,androidx.constraintlayout.solver.widgets.Analyzer
 Barrier,android.support.constraint.solver.widgets.Barrier,androidx.constraintlayout.solver.widgets.Barrier
+ChainHead,android.support.constraint.solver.widgets.ChainHead,androidx.constraintlayout.solver.widgets.ChainHead
 ConstraintAnchor,android.support.constraint.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor
 ConstraintHorizontalLayout,android.support.constraint.solver.widgets.ConstraintHorizontalLayout,androidx.constraintlayout.solver.widgets.ConstraintHorizontalLayout
 ConstraintTableLayout,android.support.constraint.solver.widgets.ConstraintTableLayout,androidx.constraintlayout.solver.widgets.ConstraintTableLayout
 ConstraintWidget,android.support.constraint.solver.widgets.ConstraintWidget,androidx.constraintlayout.solver.widgets.ConstraintWidget
 ConstraintWidgetContainer,android.support.constraint.solver.widgets.ConstraintWidgetContainer,androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer
+ConstraintWidgetGroup,android.support.constraint.solver.widgets.ConstraintWidgetGroup,androidx.constraintlayout.solver.widgets.ConstraintWidgetGroup
 Guideline,android.support.constraint.solver.widgets.Guideline,androidx.constraintlayout.solver.widgets.Guideline
 Helper,android.support.constraint.solver.widgets.Helper,androidx.constraintlayout.solver.widgets.Helper
 Optimizer,android.support.constraint.solver.widgets.Optimizer,androidx.constraintlayout.solver.widgets.Optimizer

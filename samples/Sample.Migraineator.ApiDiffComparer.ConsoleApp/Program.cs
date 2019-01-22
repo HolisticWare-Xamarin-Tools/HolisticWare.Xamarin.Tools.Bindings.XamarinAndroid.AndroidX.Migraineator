@@ -121,15 +121,21 @@ namespace Sample.Migraineator.ConsoleApp
                                                     string file_output
                                                 )
         {
+
+            string working_dir = null;
+
             #if NETCOREAPP && NETCOREAPP2_1
             #if DEBUG
-            await api_comparer.InitializeAsync("./bin/Debug/netcoreapp2.1/");
+            working_dir = "./bin/Debug/netcoreapp2.1/";
             #elif RELEASE
-            await androidx_diff_comparer.InitializeAsync("./bin/Release/netcoreapp2.1/");
+            working_dir = "./bin/Release/netcoreapp2.1/";
             #endif
             #else
-            androidx_diff_comparer.Initialize("./mappings/");
+            working_dir = "./mappings/";
             #endif
+
+            await MappingManager.InitializeAsync(working_dir);
+            await MappingManager.DumpPackageNamesAsync();
 
             ApiInfo api_info_old_android_support = new ApiInfo(file_input_android_support_28_0_0);
             await api_info_old_android_support.LoadAsync();

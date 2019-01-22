@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Migraineator.ConsoleApp", "Sample.Migraineator.ConsoleApp\Sample.Migraineator.ConsoleApp.csproj", "{80E38EE4-C2D3-4F9D-A385-5AD1EC02E7B5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Migraineator.ApiDiffComparer.ConsoleApp", "Sample.Migraineator.ApiDiffComparer.ConsoleApp\Sample.Migraineator.ApiDiffComparer.ConsoleApp.csproj", "{74F39A39-F3A8-4F6E-9B00-102EC7C272D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Migraineator.ApiDiffComparer.ConsoleApp", "Sample.Migraineator.ApiDiffComparer.ConsoleApp\Sample.Migraineator.ApiDiffComparer.ConsoleApp.csproj", "{74F39A39-F3A8-4F6E-9B00-102EC7C272D0}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared", "..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.shproj", "{47B94FCE-FAFC-4388-81E8-88B3747EEF51}"
 EndProject
