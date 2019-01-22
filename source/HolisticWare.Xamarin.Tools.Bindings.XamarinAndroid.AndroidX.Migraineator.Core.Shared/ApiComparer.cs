@@ -208,6 +208,18 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     ApiInfo api_info_new_androidx
                 )
         {
+            //--------------------------------------------------------------------------------------------
+            // Data structures (tuples) for analysis
+            List<
+                    (
+                        string PackageAndroidSupport,
+                        string PackageAndroidX,
+                        string ManagedNamespaceXamarinAndroidSupport,
+                        string ManagedNamespaceXamarinAndroidX
+                    )
+                >
+                    packages_namespaces;
+
             List<
                     (
                         string ClassName,
@@ -250,9 +262,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     )
                 >
                     results_not_found_in_xax;
+            //--------------------------------------------------------------------------------------------
 
 
 
+            //--------------------------------------------------------------------------------------------
+            // Initialization
             results_found =
                 new
                     List<
@@ -263,6 +278,17 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                 string AndroidSupportClassFullyQualified,
                                 string AndroidXClassFullyQualified,
                                 // formatting space
+                                string PackageAndroidSupport,
+                                string PackageAndroidX,
+                                string ManagedNamespaceXamarinAndroidSupport,
+                                string ManagedNamespaceXamarinAndroidX
+                            )
+                        >();
+
+            packages_namespaces =
+                new
+                    List<
+                            (
                                 string PackageAndroidSupport,
                                 string PackageAndroidX,
                                 string ManagedNamespaceXamarinAndroidSupport,
@@ -297,6 +323,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                 string AndroidXClass
                             )
                         >();
+            //--------------------------------------------------------------------------------------------
 
 
 
@@ -309,15 +336,17 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 in google_class_mappings
             )
             {
-                string as_cn_fq = gm.AndroidSupportClass;
-                string ax_cn_fq = gm.AndroidXClass;
+                string gm_as_cn_fq = gm.AndroidSupportClass;
+                string gm_ax_cn_fq = gm.AndroidXClass;
 
-                if (gm.AndroidSupportClass == "Support Library class" && gm.AndroidXClass == "Android X class")
+                if (gm_as_cn_fq == "Support Library class" && gm_ax_cn_fq == "Android X class")
                 {
                     // header ignore
                     continue;
                 }
 
+                //--------------------------------------------------------------------------------------------
+                // Item declarations/definitions for Data Structures (tuples)
                 (
                     string ClassName,
                     string AndroidSupportClass,
@@ -332,6 +361,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 )
                     result_found;
 
+
+                (
+                    string PackageAndroidSupport,
+                    string PackageAndroidX,
+                    string ManagedNamespaceXamarinAndroidSupport,
+                    string ManagedNamespaceXamarinAndroidX
+                )
+                    package_namespace;
 
                 (
                     string ClassName,
@@ -356,7 +393,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 var as_c = from as_class in api_info_old_android_support.XmlDocumentAPI.Classes
                            where 
                                 (
-                                    as_cn_fq == $"{as_class.ManagedNamespace.ToLower()}.{as_class.ClassName}"
+                                    gm_as_cn_fq == $"{as_class.ManagedNamespace.ToLower()}.{as_class.ClassName}"
                                 )
                            select 
                                     as_class
@@ -365,7 +402,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 var ax_c = from ax_class in api_info_new_androidx.XmlDocumentAPI.Classes
                            where
                                 (
-                                    ax_cn_fq == $"{ax_class.ManagedNamespace.ToLower()}.{ax_class.ClassName}"
+                                    gm_ax_cn_fq == $"{ax_class.ManagedNamespace.ToLower()}.{ax_class.ClassName}"
                                 )
                            select
                                     ax_class
@@ -379,9 +416,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 string class_name_fq_xamarin_androidx = null;
                 string ns_xamarin_android_support = null;
                 string ns_xamarin_androidx = null;
-
-                string gm_as_cn_fq = gm.AndroidSupportClass;
-                string gm_ax_cn_fq = gm.AndroidXClass;
 
                 int gm_as_cn_packagename_end = gm_as_cn_fq.LastIndexOf('.');
                 int gm_ax_cn_packagename_end = gm_ax_cn_fq.LastIndexOf('.');
@@ -424,8 +458,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                         result_not_found_in_xas =
                             (
                                 ClassName: cn,
-                                AndroidSupportClass: as_cn_fq,
-                                AndroidXClass: ax_cn_fq
+                                AndroidSupportClass: gm_as_cn_fq,
+                                AndroidXClass: gm_ax_cn_fq
                             );
                         results_not_found_in_xas.Add(result_not_found_in_xas);
                     }
@@ -434,8 +468,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                         result_not_found_in_xax =
                             (
                                 ClassName: cn,
-                                AndroidSupportClass: as_cn_fq,
-                                AndroidXClass: ax_cn_fq
+                                AndroidSupportClass: gm_as_cn_fq,
+                                AndroidXClass: gm_ax_cn_fq
                             );
                         results_not_found_in_xax.Add(result_not_found_in_xax);
                     }
@@ -444,25 +478,27 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                         result_not_found_at_all =
                             (
                                 ClassName: cn,
-                                AndroidSupportClass: as_cn_fq,
-                                AndroidXClass: ax_cn_fq
+                                AndroidSupportClass: gm_as_cn_fq,
+                                AndroidXClass: gm_ax_cn_fq
                             );
                         results_not_found_at_all.Add(result_not_found_at_all);
                     }
                 }
-                else if (n_results_as_c > 1)
+                else if (n_results_as_c > 1 || n_results_ax_c > 1)
                 {
                     // found ambiguous (more results)
+                    throw new InvalidProgramException("mc++ ambiugity");
                 }
                 else
                 {
+                    throw new InvalidProgramException("mc++ nothing covered");
                 }
 
                 result_found =
                             (
                                 ClassName: cn,
-                                AndroidSupportClass: as_cn_fq,
-                                AndroidXClass: ax_cn_fq,
+                                AndroidSupportClass: gm_as_cn_fq,
+                                AndroidXClass: gm_ax_cn_fq,
                                 AndroidSupportClassFullyQualified: class_name_fq_xamarin_android_support,
                                 AndroidXClassFullyQualified: class_name_fq_xamarin_androidx,
                                 // formatting space
@@ -471,22 +507,31 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                 ManagedNamespaceXamarinAndroidSupport: ns_xamarin_android_support,
                                 ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
                             );
-
-
+                package_namespace =
+                            (
+                                PackageAndroidSupport: gm_as_pn,
+                                PackageAndroidX: gm_ax_pn,
+                                ManagedNamespaceXamarinAndroidSupport: ns_xamarin_android_support,
+                                ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
+                            );
 
                 results_found.Add(result_found);
+                packages_namespaces.Add(package_namespace);
 
                 //yield return
                 //(
-                //    AndroidSupportClass: as_cn_fq,
+                //    AndroidSupportClass: gm_as_cn_fq,
                 //    AndroidXClass: ax_cn_fq
                 //);
             }
 
+            var packages_namespaces_normalized = packages_namespaces.Distinct();
+
             this.Dump(results_found);
+            this.Dump(packages_namespaces);
             this.Dump(results_not_found_at_all, "NotFoundAtAll");
-            this.Dump(results_not_found_in_xas, "NotFoundInXamarinSupport");
-            this.Dump(results_not_found_in_xax, "NotFoundInXamarinX");
+            this.Dump(results_not_found_in_xas, "NotFoundInXamarinAndroidSupport");
+            this.Dump(results_not_found_in_xax, "NotFoundInXamarinAndroidX");
 
             return results_found;
         }
@@ -514,15 +559,15 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             int length_cn = -1;
             int length_cn_max = -1;
 
-            int length_as_cn_fq = -1;
-            int length_as_cn_fq_max = -1;
+            int length_gm_as_cn_fq = -1;
+            int length_gm_as_cn_fq_max = -1;
             int length_ax_cn_fq = -1;
             int length_ax_cn_fq_max = -1;
 
             string fmt =
                     "{0}" // ,-" + (length_cn + padding) + "}"
                     +
-                    ",{1}" //,-" + (length_as_cn_fq + padding) + "}"
+                    ",{1}" //,-" + (length_gm_as_cn_fq + padding) + "}"
                     +
                     ",{2}"
                     +
@@ -577,6 +622,80 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         }
 
         private void Dump
+            (
+                List
+                    <
+                        (
+                            string PackageAndroidSupport,
+                            string PackageAndroidX,
+                            string ManagedNamespaceXamarinAndroidSupport,
+                            string ManagedNamespaceXamarinAndroidX
+                        )
+                    >
+                    results_found
+            )
+        {
+            int length_cn = -1;
+            int length_cn_max = -1;
+
+            int length_gm_as_cn_fq = -1;
+            int length_gm_as_cn_fq_max = -1;
+            int length_ax_cn_fq = -1;
+            int length_ax_cn_fq_max = -1;
+
+            string fmt =
+                    "{0}" // ,-" + (length_cn + padding) + "}"
+                    +
+                    ",{1}" //,-" + (length_gm_as_cn_fq + padding) + "}"
+                    +
+                    ",{2}"
+                    +
+                    ",{3}"
+                        ;
+
+            StringBuilder sb = new StringBuilder();
+            foreach
+                (
+                    (
+                        string PackageAndroidSupport,
+                        string PackageAndroidX,
+                        string ManagedNamespaceXamarinAndroidSupport,
+                        string ManagedNamespaceXamarinAndroidX
+                    ) c
+                    in results_found
+                )
+            {
+                string pn_as = c.PackageAndroidSupport;
+                string pn_ax = c.PackageAndroidX;
+                string ns_xas = c.ManagedNamespaceXamarinAndroidSupport;
+                string ns_xax = c.ManagedNamespaceXamarinAndroidX;
+
+                sb.AppendLine(string.Format(fmt, pn_as, pn_ax, ns_xas, ns_xax));
+            }
+
+            string[] lines = sb.ToString().Split
+                                            (
+                                                new string[] { Environment.NewLine }, 
+                                                StringSplitOptions.RemoveEmptyEntries
+                                            );
+
+            IEnumerable<string> lines_normalized = lines.Distinct();
+            StringBuilder sb_final = new StringBuilder();
+            foreach (string line in lines_normalized)
+            {
+                if (line.EndsWith(",,"))
+                {
+                    continue;
+                }
+                sb_final.AppendLine(line);
+            }
+
+            System.IO.File.WriteAllText($"API.PackagesNamespaces.csv", sb_final.ToString());
+
+            return;
+        }
+
+        private void Dump
                         (
                             List    <
                                         (
@@ -591,8 +710,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         {
             int length_cn = -1;
             int length_cn_max = -1;
-            int length_as_cn_fq = -1;
-            int length_as_cn_fq_max = -1;
+            int length_gm_as_cn_fq = -1;
+            int length_gm_as_cn_fq_max = -1;
             int length_ax_cn_fq = -1;
             int length_ax_cn_fq_max = -1;
 
@@ -607,16 +726,16 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 )
             {
                 length_cn = c.ClassName.Length;
-                length_as_cn_fq = c.AndroidSupportClass.Length;
+                length_gm_as_cn_fq = c.AndroidSupportClass.Length;
                 length_ax_cn_fq = c.AndroidXClass.Length;
 
                 if (length_cn > length_cn_max)
                 {
                     length_cn = length_cn_max;
                 }
-                if (length_as_cn_fq > length_as_cn_fq_max)
+                if (length_gm_as_cn_fq > length_gm_as_cn_fq_max)
                 {
-                    length_as_cn_fq = length_as_cn_fq_max;
+                    length_gm_as_cn_fq = length_gm_as_cn_fq_max;
                 }
                 if (length_ax_cn_fq > length_ax_cn_fq_max)
                 {
@@ -628,7 +747,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             string fmt =
                     "{0,-" + (length_cn + padding) + "}"
                     +
-                    ",{1,-" + (length_as_cn_fq + padding) + "}"
+                    ",{1,-" + (length_gm_as_cn_fq + padding) + "}"
                     +
                     ",{2}"
                     ;
@@ -869,10 +988,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
         public async Task InitializeAsync(string path_working_directory)
         {
-            await mapping_manager.LoadGoogleArtifactMappings(path_working_directory);
-            await mapping_manager.LoadGoogleClassMappings(path_working_directory);
+            await MappingManager.LoadGoogleArtifactMappings(path_working_directory);
+            await MappingManager.LoadGoogleClassMappings(path_working_directory);
 
-            await mapping_manager.LoadGoogleClassMappingsPrettyfied(path_working_directory);
+            await MappingManager.LoadGoogleClassMappingsPrettyfied(path_working_directory);
 
             //map_typed_android_support_artifacts_to_androidx_artifacts =
             //        MapAndroidSupportArtifactToAndroidXArtifact(map_android_support_artifacts_to_androidx_artifacts)

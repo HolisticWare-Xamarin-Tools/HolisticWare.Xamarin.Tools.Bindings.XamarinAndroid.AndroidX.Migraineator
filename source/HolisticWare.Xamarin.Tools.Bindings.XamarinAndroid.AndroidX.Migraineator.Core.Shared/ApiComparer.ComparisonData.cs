@@ -25,7 +25,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             }
         }
 
-        public static
+        public static 
             ReadOnlyCollection<
                                     (
                                         string AndroidSupportArtifact,
@@ -36,7 +36,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         {
             get
             {
-                return mapping_manager.GoogleArtifactMappings;
+                return MappingManager.GoogleArtifactMappings;
             }
         }
 
@@ -60,7 +60,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         {
             get
             {
-                return mapping_manager.GoogleClassMappings;
+                return MappingManager.GoogleClassMappings;
             }
         }
 

@@ -16,23 +16,26 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         {
         }
 
-        Task task_load_google_artifact_mappings;
-        Task task_load_google_class_mappings;
+        static Task task_load_google_artifact_mappings;
+        static Task task_load_google_class_mappings;
+        static Task task_process_google_package_mappings;
 
-        public async Task InitializeAsync(string path_working_directory)
+        public static async Task InitializeAsync(string path_working_directory)
         {
-            task_load_google_artifact_mappings = LoadGoogleClassMappings(path_working_directory);
             task_load_google_class_mappings = LoadGoogleArtifactMappings(path_working_directory);
+            task_load_google_artifact_mappings = LoadGoogleClassMappings(path_working_directory);
+
+            task_process_google_package_mappings = ProcessGooglePackageMappings();
 
             return;
         }
 
-        string path_mappings = Path.Combine("mappings");
-        string file = null;
+        static string path_mappings = Path.Combine("mappings");
+        static string file = null;
 
         //-------------------------------------------------------------------------------------------------------------------
         // Google provided mappings for Artifacts
-        public
+        public static
             ReadOnlyCollection<
                                     (
                                         string AndroidSupportArtifact,
@@ -45,7 +48,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             private set;
         }
 
-        public async
+        public static async
             Task
                 LoadGoogleArtifactMappings(string path_working_directory)
         {
@@ -77,7 +80,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             return;
         }
 
-        private
+        private static
             IEnumerable<
                             (
                                 string AndroidSupportArtifact,
@@ -98,7 +101,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         //-------------------------------------------------------------------------------------------------------------------
 
         //-------------------------------------------------------------------------------------------------------------------
-        public
+        public static
             ReadOnlyCollection<
                                     (
                                         string AndroidSupportClass,
@@ -111,7 +114,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             private set;
         }
 
-        public async
+        public static async
             Task
                 LoadGoogleClassMappings(string path_working_directory)
         {
@@ -125,7 +128,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             file = Path.Combine(path);
 
             CharacterSeparatedValues csv = new CharacterSeparatedValues();
-            string content = await csv.LoadAsync(file);
+            string content = csv.LoadAsync(file).Result; // cannot await need this ASAP
 
             IEnumerable<string[]> mapping = csv
                                             .ParseTemporaryImplementation()
@@ -143,7 +146,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             return;
         }
 
-        private
+        private static
             IEnumerable<
                             (
                                 string AndroidSupportClass,
@@ -164,7 +167,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         //-------------------------------------------------------------------------------------------------------------------
 
         //-------------------------------------------------------------------------------------------------------------------
-        public
+        public static
             ReadOnlyCollection<
                                     (
                                         string AndroidSupportClass,
@@ -177,7 +180,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             private set;
         }
 
-        public async
+        public static async
             Task
                 LoadGoogleClassMappingsPrettyfied(string path_working_directory)
         {
@@ -209,7 +212,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             return;
         }
 
-        private
+        private static
             IEnumerable<
                             (
                                 string AndroidSupportClass,

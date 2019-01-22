@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.XmlDocument.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.Analysis.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.ComparisonData.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="$(MSBuildThisFileDirectory)MappingManager.Analyse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CharacterSeparatedValues\" />
