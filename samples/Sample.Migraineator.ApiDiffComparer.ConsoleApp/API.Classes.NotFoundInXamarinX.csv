@@ -1,0 +1,40 @@
+HolderFragment,android.arch.lifecycle.HolderFragment,androidx.lifecycle.HolderFragment
+DynamicAnimation,android.support.animation.DynamicAnimation,androidx.dynamicanimation.animation.DynamicAnimation
+FlingAnimation,android.support.animation.FlingAnimation,androidx.dynamicanimation.animation.FlingAnimation
+FloatPropertyCompat,android.support.animation.FloatPropertyCompat,androidx.dynamicanimation.animation.FloatPropertyCompat
+FloatValueHolder,android.support.animation.FloatValueHolder,androidx.dynamicanimation.animation.FloatValueHolder
+SpringAnimation,android.support.animation.SpringAnimation,androidx.dynamicanimation.animation.SpringAnimation
+SpringForce,android.support.animation.SpringForce,androidx.dynamicanimation.animation.SpringForce
+Dimension,android.support.annotation.Dimension,androidx.annotation.Dimension
+VisibleForTesting,android.support.annotation.VisibleForTesting,androidx.annotation.VisibleForTesting
+ClassName differs by Google!,android.support.customtabs.ICustomTabsCallback,android.support.customtabs.ICustomTabsCallback.
+ClassName differs by Google!,android.support.customtabs.ICustomTabsService,android.support.customtabs.ICustomTabsService.
+ClassName differs by Google!,android.support.customtabs.IPostMessageService,android.support.customtabs.IPostMessageService.
+NavigationView,android.support.design.widget.NavigationView,com.google.android.material.navigation.NavigationView
+VectorDrawableCommon,android.support.graphics.drawable.VectorDrawableCommon,androidx.vectordrawable.graphics.drawable.VectorDrawableCommon
+VectorDrawableCompat,android.support.graphics.drawable.VectorDrawableCompat,androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
+ExifInterface,android.support.media.ExifInterface,androidx.exifinterface.media.ExifInterface
+INotificationSideChannel,android.support.v4.app.INotificationSideChannel,androidx.core.app.INotificationSideChannel
+ConfigurationHelper,android.support.v4.content.res.ConfigurationHelper,androidx.core.content.res.ConfigurationHelper
+FontResourcesParserCompat,android.support.v4.content.res.FontResourcesParserCompat,androidx.core.content.res.FontResourcesParserCompat
+ResourcesCompat,android.support.v4.content.res.ResourcesCompat,androidx.core.content.res.ResourcesCompat
+TypedArrayUtils,android.support.v4.content.res.TypedArrayUtils,androidx.core.content.res.TypedArrayUtils
+AudioAttributesCompat,android.support.v4.media.AudioAttributesCompat,androidx.media.AudioAttributesCompat
+MediaBrowserCompatUtils,android.support.v4.media.MediaBrowserCompatUtils,androidx.media.MediaBrowserCompatUtils
+MediaBrowserProtocol,android.support.v4.media.MediaBrowserProtocol,androidx.media.MediaBrowserProtocol
+MediaBrowserServiceCompat,android.support.v4.media.MediaBrowserServiceCompat,androidx.media.MediaBrowserServiceCompat
+VolumeProviderCompat,android.support.v4.media.VolumeProviderCompat,androidx.media.VolumeProviderCompat
+IResultReceiver,android.support.v4.os.IResultReceiver,androidx.core.os.IResultReceiver
+ResultReceiver,android.support.v4.os.ResultReceiver,androidx.core.os.ResultReceiver
+AccessibilityEventCompat,android.support.v4.view.accessibility.AccessibilityEventCompat,androidx.core.view.accessibility.AccessibilityEventCompat
+AccessibilityManagerCompat,android.support.v4.view.accessibility.AccessibilityManagerCompat,androidx.core.view.accessibility.AccessibilityManagerCompat
+AccessibilityNodeInfoCompat,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat,androidx.core.view.accessibility.AccessibilityNodeInfoCompat
+AccessibilityNodeProviderCompat,android.support.v4.view.accessibility.AccessibilityNodeProviderCompat,androidx.core.view.accessibility.AccessibilityNodeProviderCompat
+AccessibilityRecordCompat,android.support.v4.view.accessibility.AccessibilityRecordCompat,androidx.core.view.accessibility.AccessibilityRecordCompat
+AccessibilityWindowInfoCompat,android.support.v4.view.accessibility.AccessibilityWindowInfoCompat,androidx.core.view.accessibility.AccessibilityWindowInfoCompat
+LookupTableInterpolator,android.support.v4.view.animation.LookupTableInterpolator,androidx.interpolator.view.animation.LookupTableInterpolator
+DrawableWrapper,android.support.v7.graphics.drawable.DrawableWrapper,androidx.appcompat.graphics.drawable.DrawableWrapper
+DrawerArrowDrawable,android.support.v7.graphics.drawable.DrawerArrowDrawable,androidx.appcompat.graphics.drawable.DrawerArrowDrawable
+LayoutState,android.support.v7.widget.LayoutState,androidx.recyclerview.widget.LayoutState
+RoundRectDrawableWithShadow,android.support.v7.widget.RoundRectDrawableWithShadow,androidx.cardview.widget.RoundRectDrawableWithShadow
+ClassName differs by Google!,android.support.wear.widget.drawer.WearableNavigationDrawerView,"androidx.wear.widget.drawer.WearableNavigationDrawerView"""
