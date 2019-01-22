@@ -190,6 +190,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                 string AndroidSupportClassFullyQualified,
                                 string AndroidXClassFullyQualified,
                                 // formatting space
+                                string PackageAndroidSupport,
+                                string PackageAndroidX,
                                 string ManagedNamespaceXamarinAndroidSupport,
                                 string ManagedNamespaceXamarinAndroidX
                             )
@@ -214,6 +216,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                         string AndroidSupportClassFullyQualified,
                         string AndroidXClassFullyQualified,
                         // formatting space
+                        string PackageAndroidSupport,
+                        string PackageAndroidX,
                         string ManagedNamespaceXamarinAndroidSupport,
                         string ManagedNamespaceXamarinAndroidX
                     )
@@ -229,6 +233,26 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 >
                     results_not_found_at_all;
 
+            List<
+                    (
+                        string ClassName,
+                        string AndroidSupportClass,
+                        string AndroidXClass
+                    )
+                >
+                    results_not_found_in_xas;
+
+            List<
+                    (
+                        string ClassName,
+                        string AndroidSupportClass,
+                        string AndroidXClass
+                    )
+                >
+                    results_not_found_in_xax;
+
+
+
             results_found =
                 new
                     List<
@@ -239,12 +263,32 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                 string AndroidSupportClassFullyQualified,
                                 string AndroidXClassFullyQualified,
                                 // formatting space
+                                string PackageAndroidSupport,
+                                string PackageAndroidX,
                                 string ManagedNamespaceXamarinAndroidSupport,
                                 string ManagedNamespaceXamarinAndroidX
                             )
                         >();
 
             results_not_found_at_all =
+                new
+                    List<
+                            (
+                                string ClassName,
+                                string AndroidSupportClass,
+                                string AndroidXClass
+                            )
+                        >();
+            results_not_found_in_xas =
+                new
+                    List<
+                            (
+                                string ClassName,
+                                string AndroidSupportClass,
+                                string AndroidXClass
+                            )
+                        >();
+            results_not_found_in_xax =
                 new
                     List<
                             (
@@ -281,12 +325,26 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     string AndroidSupportClassFullyQualified,
                     string AndroidXClassFullyQualified,
                     // formatting space
+                    string PackageAndroidSupport,
+                    string PackageAndroidX,
                     string ManagedNamespaceXamarinAndroidSupport,
                     string ManagedNamespaceXamarinAndroidX
                 )
                     result_found;
 
 
+                (
+                    string ClassName,
+                    string AndroidSupportClass,
+                    string AndroidXClass
+                )
+                    result_not_found_in_xas;
+                (
+                    string ClassName,
+                    string AndroidSupportClass,
+                    string AndroidXClass
+                )
+                    result_not_found_in_xax;
                 (
                     string ClassName,
                     string AndroidSupportClass,
@@ -358,9 +416,39 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                         class_name_fq_xamarin_androidx = $"{ns_xamarin_androidx}.{cn}";
                     }
                 }
-                else if (n_results_as_c == 0)
+                else if (n_results_as_c == 0 || n_results_ax_c == 0)
                 {
                     // not found
+                    if (n_results_as_c == 0 && n_results_ax_c >= 1)
+                    {
+                        result_not_found_in_xas =
+                            (
+                                ClassName: cn,
+                                AndroidSupportClass: as_cn_fq,
+                                AndroidXClass: ax_cn_fq
+                            );
+                        results_not_found_in_xas.Add(result_not_found_in_xas);
+                    }
+                    if (n_results_ax_c == 0 && n_results_as_c >= 1)
+                    {
+                        result_not_found_in_xax =
+                            (
+                                ClassName: cn,
+                                AndroidSupportClass: as_cn_fq,
+                                AndroidXClass: ax_cn_fq
+                            );
+                        results_not_found_in_xax.Add(result_not_found_in_xax);
+                    }
+                    if (n_results_as_c == 0 && n_results_ax_c == 0)
+                    {
+                        result_not_found_at_all =
+                            (
+                                ClassName: cn,
+                                AndroidSupportClass: as_cn_fq,
+                                AndroidXClass: ax_cn_fq
+                            );
+                        results_not_found_at_all.Add(result_not_found_at_all);
+                    }
                 }
                 else if (n_results_as_c > 1)
                 {
@@ -368,13 +456,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 }
                 else
                 {
-                    result_not_found_at_all =
-                        (
-                            ClassName: cn,
-                            AndroidSupportClass: as_cn_fq,
-                            AndroidXClass: ax_cn_fq
-                        );
-                    results_not_found_at_all.Add(result_not_found_at_all);
                 }
 
                 result_found =
@@ -385,6 +466,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                 AndroidSupportClassFullyQualified: class_name_fq_xamarin_android_support,
                                 AndroidXClassFullyQualified: class_name_fq_xamarin_androidx,
                                 // formatting space
+                                PackageAndroidSupport: gm_as_pn,
+                                PackageAndroidX: gm_ax_pn,
                                 ManagedNamespaceXamarinAndroidSupport: ns_xamarin_android_support,
                                 ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
                             );
@@ -401,7 +484,9 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             }
 
             this.Dump(results_found);
-            this.Dump(results_not_found_at_all);
+            this.Dump(results_not_found_at_all, "NotFoundAtAll");
+            this.Dump(results_not_found_in_xas, "NotFoundInXamarinSupport");
+            this.Dump(results_not_found_in_xax, "NotFoundInXamarinX");
 
             return results_found;
         }
@@ -415,7 +500,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                             string AndroidSupportClass, 
                             string AndroidXClass, 
                             string AndroidSupportClassFullyQualified, 
-                            string AndroidXClassFullyQualified, 
+                            string AndroidXClassFullyQualified,
+                            // formatting space
+                            string PackageAndroidSupport,
+                            string PackageAndroidX,
                             string ManagedNamespaceXamarinAndroidSupport, 
                             string ManagedNamespaceXamarinAndroidX
                         )
@@ -425,6 +513,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         {
             int length_cn = -1;
             int length_cn_max = -1;
+
             int length_as_cn_fq = -1;
             int length_as_cn_fq_max = -1;
             int length_ax_cn_fq = -1;
@@ -444,6 +533,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     ",{5}"
                     +
                     ",{6}"
+                    +
+                    ",{7}"
+                    +
+                    ",{8}"
                         ;
 
             StringBuilder sb = new StringBuilder();
@@ -455,6 +548,9 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                         string AndroidXClass,
                         string AndroidSupportClassFullyQualified,
                         string AndroidXClassFullyQualified,
+                        // formatting space
+                        string PackageAndroidSupport,
+                        string PackageAndroidX,
                         string ManagedNamespaceXamarinAndroidSupport,
                         string ManagedNamespaceXamarinAndroidX
                     ) c
@@ -466,10 +562,13 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 string ax_cn = c.AndroidXClass;
                 string xas_cn = c.AndroidSupportClassFullyQualified;
                 string xax_cn = c.AndroidXClassFullyQualified;
+                // formatting space
+                string pn_as = c.PackageAndroidSupport;
+                string pn_ax = c.PackageAndroidX;
                 string ns_xas = c.ManagedNamespaceXamarinAndroidSupport;
                 string ns_xax = c.ManagedNamespaceXamarinAndroidX;
 
-                sb.AppendLine(string.Format(fmt, cn, as_cn, ax_cn, xas_cn, xax_cn, ns_xas, ns_xax));
+                sb.AppendLine(string.Format(fmt, cn, as_cn, ax_cn, xas_cn, xax_cn, pn_as, pn_ax, ns_xas, ns_xax));
             }
 
             System.IO.File.WriteAllText($"API.Classes.csv", sb.ToString());
@@ -478,16 +577,17 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         }
 
         private void Dump
-        (
-            List    <
                         (
-                            string ClassName, 
-                            string AndroidSupportClass, 
-                            string AndroidXClass
+                            List    <
+                                        (
+                                            string ClassName, 
+                                            string AndroidSupportClass, 
+                                            string AndroidXClass
+                                        )
+                                    > 
+                                results_not_found_at_all,
+                            string description
                         )
-                    > 
-                results_not_found_at_all
-        )
         {
             int length_cn = -1;
             int length_cn_max = -1;
@@ -551,7 +651,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
             }
 
-            System.IO.File.WriteAllText($"API.Classes.NotFoundAtAll.csv", sb.ToString());
+            System.IO.File.WriteAllText($"API.Classes.{description}.csv", sb.ToString());
 
             return;
         }
