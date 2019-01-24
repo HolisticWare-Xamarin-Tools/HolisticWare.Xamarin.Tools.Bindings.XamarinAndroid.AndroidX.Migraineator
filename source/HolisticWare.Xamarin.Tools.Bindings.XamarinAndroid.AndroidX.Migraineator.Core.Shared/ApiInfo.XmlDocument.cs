@@ -356,8 +356,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
             private void DumpInterfacesFromClasses(string filename_base)
             {
-                int n = this.Interfaces.Count();
-
                 int length_interface = 0;
                 int length_namepsace = 0;
 
