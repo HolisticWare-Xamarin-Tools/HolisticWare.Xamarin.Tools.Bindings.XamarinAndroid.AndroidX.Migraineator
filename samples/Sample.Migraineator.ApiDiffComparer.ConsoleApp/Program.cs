@@ -4,6 +4,8 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core;
+using Mono.Cecil;
+using Mono.Cecil.Rocks;
 
 namespace Sample.Migraineator.ConsoleApp
 {
@@ -134,11 +136,18 @@ namespace Sample.Migraineator.ConsoleApp
             working_dir = "./mappings/";
             #endif
 
+
+
+            // Load Mappings (Google Android.Support <-> AndroidX
             await MappingManager.InitializeAsync(working_dir);
+            // Dump packagename mappings (not provided by Google) 
+            // this is data for our checks
             await MappingManager.DumpPackageNamesAsync();
 
+            // Load OLD Android.Support api-info.xml 
             ApiInfo api_info_old_android_support = new ApiInfo(file_input_android_support_28_0_0);
             await api_info_old_android_support.LoadAsync();
+            // Load NEW AndroidX api-info.xml 
             ApiInfo api_info_new_androidx = new ApiInfo(file_input_androidx);
             await api_info_new_androidx.LoadAsync();
 
@@ -274,6 +283,42 @@ namespace Sample.Migraineator.ConsoleApp
             }
 
             return;
+        }
+
+
+        public void Analyse(string file_path)
+        {
+            var asm = AssemblyDefinition.ReadAssembly("C:\\code\\AndroidSupport.Merged.dll"
+             //new ReaderParameters { AssemblyResolver = CreateAssemblyResolver() }
+                );
+
+            var allTypes = asm.MainModule.GetAllTypes();
+
+            var info = new List<string>();
+
+            foreach (var t in allTypes)
+            {
+                foreach (var attr in t.CustomAttributes)
+                {
+                    if (attr.AttributeType.FullName.Equals("Android.Runtime.RegisterAttribute"))
+                    {
+                        var jniType = attr.ConstructorArguments[0].Value.ToString();
+
+                        var lastSlash = jniType.LastIndexOf('/');
+
+                        var jniClass = jniType.Substring(lastSlash + 1).Replace('$', '.');
+                        var jniPkg = jniType.Substring(0, lastSlash).Replace('/', '.');
+
+                        //var mngdClass = GetTypeName(t);
+                        //var mngdNs = GetNamespace(t);
+
+                        //info.Add($"{jniPkg}, {jniClass}, {mngdNs}, {mngdClass}");
+                    }
+                }
+            }
+
+            File.WriteAllLines("C:\\code\\support-mappings.csv", info);
+
         }
     }
 }
