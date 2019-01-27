@@ -1,97 +1,245 @@
-android.arch.core.executor,androidx.arch.core.executor,Android.Arch.Core.Executor,AndroidX.Arch.Core.Executor
-android.arch.core.internal,androidx.arch.core.internal,Android.Arch.Core.Internal,AndroidX.Arch.Core.Internal
-android.arch.lifecycle,androidx.lifecycle,Android.Arch.Lifecycle,AndroidX.Lifecycle
-android.support.app.recommendation,androidx.recommendation.app,Android.Support.App.Recommendation,AndroidX.Recommendation.App
-android.support.customtabs,androidx.browser.customtabs,Android.Support.CustomTabs,AndroidX.Browser.CustomTabs
-android.support.customtabs,android.support.customtabs,Android.Support.CustomTabs,Android.Support.CustomTabs
-android.support.design.widget,androidx.coordinatorlayout.widget,Android.Support.Design.Widget,AndroidX.CoordinatorLayout.Widget
-android.support.graphics.drawable,androidx.vectordrawable.graphics.drawable,Android.Support.Graphics.Drawable,AndroidX.VectorDrawable.Graphics.Drawable
-android.support.media.tv,androidx.tvprovider.media.tv,Android.Support.Media.TV,AndroidX.TvProvider.Media.TV
-android.support.percent,androidx.percentlayout.widget,Android.Support.Percent,AndroidX.PercentLayout.Widget
-android.support.text.emoji.bundled,androidx.emoji.bundled,Android.Support.Text.Emoji.Bundled,AndroidX.Emoji.Bundled
-android.support.text.emoji,androidx.emoji.text,Android.Support.Text.Emoji,AndroidX.Emoji.Text
-android.support.text.emoji.widget,androidx.emoji.widget,Android.Support.Text.Emoji.Widget,AndroidX.Emoji.Widget
-android.support.v13.app,androidx.legacy.app,Android.Support.V13.App,AndroidX.Legacy.App
-android.support.v13.view,androidx.core.view,Android.Support.V13.View,AndroidX.Core.View
-android.support.v13.view.inputmethod,androidx.core.view.inputmethod,Android.Support.V13.View.Inputmethod,AndroidX.Core.View.InputMethod
-android.support.v17.internal.widget,androidx.leanback.preference.internal,Android.Support.V17.Internal.Widget,AndroidX.Leanback.Preference.Internal
-android.support.v17.leanback.animation,androidx.leanback.animation,Android.Support.V17.Leanback.Animation,AndroidX.Leanback.Animation
-android.support.v17.leanback.app,androidx.leanback.app,Android.Support.V17.Leanback.App,AndroidX.Leanback.App
-android.support.v17.leanback.database,androidx.leanback.database,Android.Support.V17.Leanback.Database,AndroidX.Leanback.Database
-android.support.v17.leanback.graphics,androidx.leanback.graphics,Android.Support.V17.Leanback.Graphics,AndroidX.Leanback.Graphics
-android.support.v17.leanback.media,androidx.leanback.media,Android.Support.V17.Leanback.Media,AndroidX.Leanback.Media
-android.support.v17.leanback.system,androidx.leanback.system,Android.Support.V17.Leanback.System,AndroidX.Leanback.System
-android.support.v17.leanback.transition,androidx.leanback.transition,Android.Support.V17.Leanback.Transition,AndroidX.Leanback.Transition
-android.support.v17.leanback.util,androidx.leanback.util,Android.Support.V17.Leanback.Util,AndroidX.Leanback.Util
-android.support.v17.leanback.widget,androidx.leanback.widget,Android.Support.V17.Leanback.Widget,AndroidX.Leanback.Widget
-android.support.v17.leanback.widget.picker,androidx.leanback.widget.picker,Android.Support.V17.Leanback.Widget.Picker,AndroidX.Leanback.Widget.Picker
-android.support.v4.accessibilityservice,androidx.core.accessibilityservice,Android.Support.V4.Accessibilityservice,AndroidX.Core.AccessibilityService
-android.support.v4.app,androidx.legacy.app,Android.Support.V4.App,AndroidX.Legacy.App
-android.support.v4.app,androidx.core.app,Android.Support.V4.App,AndroidX.Core.App
-android.support.v4.app,androidx.fragment.app,Android.Support.V4.App,AndroidX.Fragment.App
-android.support.v4.app,androidx.loader.app,Android.Support.V4.App,AndroidX.Loader.App
-android.support.v4.content,androidx.loader.content,Android.Support.V4.Content,AndroidX.Loader.Content
-android.support.v4.content,androidx.core.content,Android.Support.V4.Content,AndroidX.Core.Content
-android.support.v4.content,androidx.localbroadcastmanager.content,Android.Support.V4.Content,AndroidX.LocalBroadcastManager.Content
-android.support.v4.content.pm,androidx.core.content.pm,Android.Support.V4.Content.PM,AndroidX.Core.Content.PM
-android.support.v4.content,androidx.legacy.content,Android.Support.V4.Content,AndroidX.Legacy.Content
-android.support.v4.database,androidx.core.database,Android.Support.V4.Database,AndroidX.Core.Database
-android.support.v4.graphics,androidx.core.graphics,Android.Support.V4.Graphics,AndroidX.Core.Graphics
-android.support.v4.graphics.drawable,androidx.core.graphics.drawable,Android.Support.V4.Graphics.Drawable,AndroidX.Core.Graphics.Drawable
-android.support.v4.graphics.drawable,android.support.v4.graphics.drawable,Android.Support.V4.Graphics.Drawable,Android.Support.V4.Graphics.Drawable
-android.support.v4.hardware.display,androidx.core.hardware.display,Android.Support.V4.Hardware.Display,AndroidX.Core.Hardware.Display
-android.support.v4.hardware.fingerprint,androidx.core.hardware.fingerprint,Android.Support.V4.Hardware.Fingerprint,AndroidX.Core.Hardware.Fingerprint
-android.support.v4.internal.view,androidx.core.internal.view,Android.Support.V4.Internal.View,AndroidX.Core.Internal.View
-android.support.v4.math,androidx.core.math,Android.Support.V4.Math,AndroidX.Core.Math
-android.support.v4.media.app,androidx.media.app,Android.Support.V4.Media.App,AndroidX.Media.App
-android.support.v4.media,android.support.v4.media,Android.Support.V4.Media,Android.Support.V4.Media
-android.support.v4.media.session,android.support.v4.media.session,Android.Support.V4.Media.Session,Android.Support.V4.Media.Session
-android.support.v4.media.session,androidx.media.session,Android.Support.V4.Media.Session,AndroidX.Media.Session
-android.support.v4.net,androidx.core.net,Android.Support.V4.Net,AndroidX.Core.Net
-android.support.v4.os,androidx.core.os,Android.Support.V4.OS,AndroidX.Core.OS
-android.support.v4.print,androidx.print,Android.Support.V4.Print,AndroidX.Print
-android.support.v4.provider,androidx.documentfile.provider,Android.Support.V4.Provider,AndroidX.DocumentFile.Provider
-android.support.v4.provider,androidx.core.provider,Android.Support.V4.Provider,AndroidX.Core.Provider
-android.support.v4.text,androidx.core.text,Android.Support.V4.Text,AndroidX.Core.Text
-android.support.v4.text.util,androidx.core.text.util,Android.Support.V4.Text.Util,AndroidX.Core.Text.Util
-android.support.v4.util,androidx.collection,Android.Support.V4.Util,AndroidX.Collection
-android.support.v4.util,androidx.core.util,Android.Support.V4.Util,AndroidX.Core.Util
-android.support.v4.view,androidx.customview.view,Android.Support.V4.View,AndroidX.CustomView.View
-android.support.v4.view,androidx.core.view,Android.Support.V4.View,AndroidX.Core.View
-android.support.v4.view.animation,androidx.interpolator.view.animation,Android.Support.V4.View.Animation,AndroidX.Interpolator.View.Animation
-android.support.v4.view.animation,androidx.core.view.animation,Android.Support.V4.View.Animation,AndroidX.Core.View.Animation
-android.support.v4.view,androidx.asynclayoutinflater.view,Android.Support.V4.View,AndroidX.AsyncLayoutInflater.View
-android.support.v4.view,androidx.viewpager.widget,Android.Support.V4.View,AndroidX.ViewPager.Widget
-android.support.v4.widget,androidx.core.widget,Android.Support.V4.Widget,AndroidX.Core.Widget
-android.support.v4.widget,androidx.swiperefreshlayout.widget,Android.Support.V4.Widget,AndroidX.SwipeRefreshLayout.Widget
-android.support.v4.widget,androidx.cursoradapter.widget,Android.Support.V4.Widget,AndroidX.CursorAdapter.Widget
-android.support.v4.widget,androidx.coordinatorlayout.widget,Android.Support.V4.Widget,AndroidX.CoordinatorLayout.Widget
-android.support.v4.widget,androidx.drawerlayout.widget,Android.Support.V4.Widget,AndroidX.DrawerLayout.Widget
-android.support.v4.widget,androidx.customview.widget,Android.Support.V4.Widget,AndroidX.CustomView.Widget
-android.support.v4.widget,androidx.slidingpanelayout.widget,Android.Support.V4.Widget,AndroidX.SlidingPaneLayout.Widget
-android.support.v4.widget,androidx.legacy.widget,Android.Support.V4.Widget,AndroidX.Legacy.Widget
-android.support.v7.app,androidx.appcompat.app,Android.Support.V7.App,AndroidX.AppCompat.App
-android.support.v7.app,androidx.mediarouter.app,Android.Support.V7.App,AndroidX.MediaRouter.App
-android.support.v7.content.res,androidx.appcompat.content.res,Android.Support.V7.Content.Res,AndroidX.AppCompat.Content.Res
-android.support.v7.graphics,androidx.palette.graphics,Android.Support.V7.Graphics,AndroidX.Palette.Graphics
-android.support.v7.internal.widget,androidx.preference.internal,Android.Support.V7.Internal.Widget,AndroidX.Preference.Internal
-android.support.v7.media,androidx.mediarouter.media,Android.Support.V7.Media,AndroidX.MediaRouter.Media
-android.support.v7.preference.internal,androidx.preference.internal,Android.Support.V7.Preference.Internal,AndroidX.Preference.Internal
-android.support.v7.recyclerview.extensions,androidx.recyclerview.widget,Android.Support.V7.RecyclerView.Extensions,AndroidX.RecyclerView.Widget
-android.support.v7.text,androidx.appcompat.text,Android.Support.V7.Text,AndroidX.AppCompat.Text
-android.support.v7.util,androidx.recyclerview.widget,Android.Support.V7.Util,AndroidX.RecyclerView.Widget
-android.support.v7.view,androidx.appcompat.view,Android.Support.V7.View,AndroidX.AppCompat.View
-android.support.v7.view.menu,androidx.appcompat.view.menu,Android.Support.V7.View.Menu,AndroidX.AppCompat.View.Menu
-android.support.v7.widget,androidx.appcompat.widget,Android.Support.V7.Widget,AndroidX.AppCompat.Widget
-android.support.v7.widget,androidx.cardview.widget,Android.Support.V7.Widget,AndroidX.CardView.Widget
-android.support.v7.widget,androidx.recyclerview.widget,Android.Support.V7.Widget,AndroidX.RecyclerView.Widget
-android.support.v7.widget,androidx.gridlayout.widget,Android.Support.V7.Widget,AndroidX.GridLayout.Widget
-android.support.v7.widget.helper,androidx.recyclerview.widget,Android.Support.V7.Widget.Helper,AndroidX.RecyclerView.Widget
-android.support.v7.widget.util,androidx.recyclerview.widget,Android.Support.V7.Widget.Util,AndroidX.RecyclerView.Widget
-android.support.wear.activity,androidx.wear.activity,Android.Support.Wear.Activity,AndroidX.Wear.Activity
-android.support.wear.ambient,androidx.wear.ambient,Android.Support.Wear.Ambient,AndroidX.Wear.Ambient
-android.support.wear.internal.widget.drawer,androidx.wear.internal.widget.drawer,Android.Support.Wear.Internal.Widget.Drawer,AndroidX.Wear.Internal.Widget.Drawer
-android.support.wear.internal.widget,androidx.wear.internal.widget,Android.Support.Wear.Internal.Widget,AndroidX.Wear.Internal.Widget
-android.support.wear.utils,androidx.wear.utils,Android.Support.Wear.Utils,AndroidX.Wear.Utils
-android.support.wear.widget,androidx.wear.widget,Android.Support.Wear.Widget,AndroidX.Wear.Widget
-android.support.wear.widget.drawer,androidx.wear.widget.drawer,Android.Support.Wear.Widget.Drawer,AndroidX.Wear.Widget.Drawer
+android.arch.core.executor                                  ,androidx.arch.core.executor                                    ,  ,
+android.arch.core.executor.testing                          ,androidx.arch.core.executor.testing                            ,  ,
+android.arch.core.internal                                  ,androidx.arch.core.internal                                    ,  ,
+android.arch.core.util                                      ,androidx.arch.core.util                                        ,  ,
+android.arch.lifecycle                                      ,androidx.lifecycle                                             ,  ,
+android.arch.lifecycle.model                                ,androidx.lifecycle.model                                       ,  ,
+android.arch.paging                                         ,androidx.paging                                                ,  ,
+android.arch.persistence.db.framework                       ,androidx.sqlite.db.framework                                   ,  ,
+android.arch.persistence.db                                 ,androidx.sqlite.db                                             ,  ,
+android.arch.persistence.room                               ,androidx.room                                                  ,  ,
+android.arch.persistence.room.ext                           ,androidx.room.ext                                              ,  ,
+android.arch.persistence.room.guava                         ,androidx.room.guava                                            ,  ,
+android.arch.persistence.room.log                           ,androidx.room.log                                              ,  ,
+android.arch.persistence.room.migration.bundle              ,androidx.room.migration.bundle                                 ,  ,
+android.arch.persistence.room.migration                     ,androidx.room.migration                                        ,  ,
+android.arch.persistence.room.paging                        ,androidx.room.paging                                           ,  ,
+android.arch.persistence.room.parser                        ,androidx.room.parser                                           ,  ,
+android.arch.persistence.room.preconditions                 ,androidx.room.preconditions                                    ,  ,
+android.arch.persistence.room.processor.cache               ,androidx.room.processor.cache                                  ,  ,
+android.arch.persistence.room.processor                     ,androidx.room.processor                                        ,  ,
+android.arch.persistence.room.solver.binderprovider         ,androidx.room.solver.binderprovider                            ,  ,
+android.arch.persistence.room.solver                        ,androidx.room.solver                                           ,  ,
+android.arch.persistence.room.solver.query.parameter        ,androidx.room.solver.query.parameter                           ,  ,
+android.arch.persistence.room.solver.query.result           ,androidx.room.solver.query.result                              ,  ,
+android.arch.persistence.room.solver.types                  ,androidx.room.solver.types                                     ,  ,
+android.arch.persistence.room.testing                       ,androidx.room.testing                                          ,  ,
+android.arch.persistence.room.util                          ,androidx.room.util                                             ,  ,
+android.arch.persistence.room.verifier                      ,androidx.room.verifier                                         ,  ,
+android.arch.persistence.room.vo                            ,androidx.room.vo                                               ,  ,
+android.arch.persistence.room.writer                        ,androidx.room.writer                                           ,  ,
+android.databinding.adapters                                ,androidx.databinding.adapters                                  ,  ,
+android.databinding                                         ,androidx.databinding                                           ,  ,
+android.support.animation                                   ,androidx.dynamicanimation.animation                            ,  ,
+android.support.annotation                                  ,androidx.annotation                                            ,  ,
+android.support.app.recommendation                          ,androidx.recommendation.app                                    ,  ,
+android.support.compat                                      ,androidx.core                                                  ,  ,
+android.support.constraint                                  ,androidx.constraintlayout.widget                               ,  ,
+android.support.constraint.solver                           ,androidx.constraintlayout.solver                               ,  ,
+android.support.constraint.solver.widgets                   ,androidx.constraintlayout.solver.widgets                       ,  ,
+android.support.content                                     ,androidx.contentpager.content                                  ,  ,
+android.support.coordinatorlayout                           ,androidx.coordinatorlayout                                     ,  ,
+android.support.customtabs                                  ,androidx.browser.customtabs                                    ,  ,
+android.support.customtabs                                  ,android.support.customtabs                                     ,  ,
+android.support.customtabs                                  ,androidx.browser                                               ,  ,
+android.support.design.animation                            ,com.google.android.material.animation                          ,  ,
+android.support.design.behavior                             ,com.google.android.material.behavior                           ,  ,
+android.support.design.bottomappbar                         ,com.google.android.material.bottomappbar                       ,  ,
+android.support.design.bottomnavigation                     ,com.google.android.material.bottomnavigation                   ,  ,
+android.support.design.button                               ,com.google.android.material.button                             ,  ,
+android.support.design.canvas                               ,com.google.android.material.canvas                             ,  ,
+android.support.design.card                                 ,com.google.android.material.card                               ,  ,
+android.support.design.chip                                 ,com.google.android.material.chip                               ,  ,
+android.support.design.circularreveal.cardview              ,com.google.android.material.circularreveal.cardview            ,  ,
+android.support.design.circularreveal                       ,com.google.android.material.circularreveal                     ,  ,
+android.support.design.circularreveal.coordinatorlayout     ,com.google.android.material.circularreveal.coordinatorlayout   ,  ,
+android.support.design.drawable                             ,com.google.android.material.drawable                           ,  ,
+android.support.design.expandable                           ,com.google.android.material.expandable                         ,  ,
+android.support.design.internal                             ,com.google.android.material.internal                           ,  ,
+android.support.design.internal                             ,com.google.android.material.bottomnavigation                   ,  ,
+android.support.design                                      ,com.google.android.material                                    ,  ,
+android.support.design.resources                            ,com.google.android.material.resources                          ,  ,
+android.support.design.ripple                               ,com.google.android.material.ripple                             ,  ,
+android.support.design.shape                                ,com.google.android.material.shape                              ,  ,
+android.support.design.snackbar                             ,com.google.android.material.snackbar                           ,  ,
+android.support.design.stateful                             ,com.google.android.material.stateful                           ,  ,
+android.support.design.theme                                ,com.google.android.material.theme                              ,  ,
+android.support.design.transformation                       ,com.google.android.material.transformation                     ,  ,
+android.support.design.widget                               ,com.google.android.material.appbar                             ,  ,
+android.support.design.widget                               ,com.google.android.material.snackbar                           ,  ,
+android.support.design.widget                               ,com.google.android.material.bottomnavigation                   ,  ,
+android.support.design.widget                               ,com.google.android.material.bottomsheet                        ,  ,
+android.support.design.widget                               ,com.google.android.material.internal                           ,  ,
+android.support.design.widget                               ,androidx.coordinatorlayout.widget                              ,  ,
+android.support.design.widget                               ,com.google.android.material.textfield                          ,  ,
+android.support.design.widget                               ,com.google.android.material.floatingactionbutton               ,  ,
+android.support.design.widget                               ,com.google.android.material.math                               ,  ,
+android.support.design.widget                               ,com.google.android.material.navigation                         ,  ,
+android.support.design.widget                               ,com.google.android.material.shadow                             ,  ,
+android.support.design.widget                               ,com.google.android.material.behavior                           ,  ,
+android.support.design.widget                               ,com.google.android.material.tabs                               ,  ,
+android.support.graphics.drawable                           ,androidx.vectordrawable.graphics.drawable                      ,  ,
+android.support.media                                       ,androidx.exifinterface.media                                   ,  ,
+android.support.media.tv                                    ,androidx.tvprovider.media.tv                                   ,  ,
+android.support.media2                                      ,android.support.media2                                         ,  ,
+android.support.mediacompat                                 ,androidx.media                                                 ,  ,
+android.support.multidex                                    ,androidx.multidex                                              ,  ,
+android.support.percent                                     ,androidx.percentlayout.widget                                  ,  ,
+android.support.percent                                     ,androidx.percentlayout                                         ,  ,
+android.support.test.annotation                             ,androidx.test.annotation                                       ,  ,
+android.support.test.espresso.accessibility                 ,androidx.test.espresso.accessibility                           ,  ,
+android.support.test.espresso.action                        ,androidx.test.espresso.action                                  ,  ,
+android.support.test.espresso                               ,androidx.test.espresso                                         ,  ,
+android.support.test.espresso.assertion                     ,androidx.test.espresso.assertion                               ,  ,
+android.support.test.espresso.base                          ,androidx.test.espresso.base                                    ,  ,
+android.support.test.espresso.contrib                       ,androidx.test.espresso.contrib                                 ,  ,
+android.support.test.espresso.idling.concurrent             ,androidx.test.espresso.idling.concurrent                       ,  ,
+android.support.test.espresso.idling                        ,androidx.test.espresso.idling                                  ,  ,
+android.support.test.espresso.idling.net                    ,androidx.test.espresso.idling.net                              ,  ,
+android.support.test.espresso.intent                        ,androidx.test.espresso.intent                                  ,  ,
+android.support.test.espresso.intent.matcher                ,androidx.test.espresso.intent.matcher                          ,  ,
+android.support.test.espresso.intent.rule                   ,androidx.test.espresso.intent.rule                             ,  ,
+android.support.test.espresso.matcher                       ,androidx.test.espresso.matcher                                 ,  ,
+android.support.test.espresso.proto.action                  ,androidx.test.espresso.proto.action                            ,  ,
+android.support.test.espresso.proto.assertion               ,androidx.test.espresso.proto.assertion                         ,  ,
+android.support.test.espresso.proto.matcher                 ,androidx.test.espresso.proto.matcher                           ,  ,
+android.support.test.espresso.proto.matcher13               ,androidx.test.espresso.proto.matcher13                         ,  ,
+android.support.test.espresso.proto                         ,androidx.test.espresso.proto                                   ,  ,
+android.support.test.espresso.remote.annotation             ,androidx.test.espresso.remote.annotation                       ,  ,
+android.support.test.espresso.remote                        ,androidx.test.espresso.remote                                  ,  ,
+android.support.test.espresso.util                          ,androidx.test.espresso.util                                    ,  ,
+android.support.test.espresso.web.action                    ,androidx.test.espresso.web.action                              ,  ,
+android.support.test.espresso.web.assertion                 ,androidx.test.espresso.web.assertion                           ,  ,
+android.support.test.espresso.web.matcher                   ,androidx.test.espresso.web.matcher                             ,  ,
+android.support.test.espresso.web.model                     ,androidx.test.espresso.web.model                               ,  ,
+android.support.test.espresso.web.proto.action              ,androidx.test.espresso.web.proto.action                        ,  ,
+android.support.test.espresso.web.proto.assertion           ,androidx.test.espresso.web.proto.assertion                     ,  ,
+android.support.test.espresso.web.proto.matcher             ,androidx.test.espresso.web.proto.matcher                       ,  ,
+android.support.test.espresso.web.proto.model               ,androidx.test.espresso.web.proto.model                         ,  ,
+android.support.test.espresso.web.proto.sugar               ,androidx.test.espresso.web.proto.sugar                         ,  ,
+android.support.test.espresso.web.proto.webdriver           ,androidx.test.espresso.web.proto.webdriver                     ,  ,
+android.support.test.espresso.web.sugar                     ,androidx.test.espresso.web.sugar                               ,  ,
+android.support.test.espresso.web.webdriver                 ,androidx.test.espresso.web.webdriver                           ,  ,
+android.support.test.filters                                ,androidx.test.filters                                          ,  ,
+android.support.test                                        ,androidx.test                                                  ,  ,
+android.support.test.jank                                   ,androidx.test.jank                                             ,  ,
+android.support.test.orchestrator.callback                  ,androidx.test.orchestrator.callback                            ,  ,
+android.support.test.orchestrator.instrumentationlistener   ,androidx.test.orchestrator.instrumentationlistener             ,  ,
+android.support.test.orchestrator.junit                     ,androidx.test.orchestrator.junit                               ,  ,
+android.support.test.orchestrator.listeners                 ,androidx.test.orchestrator.listeners                           ,  ,
+android.support.test.orchestrator.listeners.result          ,androidx.test.orchestrator.listeners.result                    ,  ,
+android.support.test.rule                                   ,androidx.test.rule                                             ,  ,
+android.support.test.rule.logging                           ,androidx.test.rule.logging                                     ,  ,
+android.support.test.rule.provider                          ,androidx.test.rule.provider                                    ,  ,
+android.support.test.runner                                 ,androidx.test.runner                                           ,  ,
+android.support.test.runner.intent                          ,androidx.test.runner.intent                                    ,  ,
+android.support.test.runner.intercepting                    ,androidx.test.runner.intercepting                              ,  ,
+android.support.test.runner.lifecycle                       ,androidx.test.runner.lifecycle                                 ,  ,
+android.support.test.runner.permission                      ,androidx.test.runner.permission                                ,  ,
+android.support.test.runner.screenshot                      ,androidx.test.runner.screenshot                                ,  ,
+android.support.test.uiautomator                            ,androidx.test.uiautomator                                      ,  ,
+android.support.text.emoji.bundled                          ,androidx.emoji.bundled                                         ,  ,
+android.support.text.emoji                                  ,androidx.emoji.text                                            ,  ,
+android.support.text.emoji                                  ,androidx.emoji                                                 ,  ,
+android.support.text.emoji.widget                           ,androidx.emoji.widget                                          ,  ,
+android.support.transition                                  ,androidx.transition                                            ,  ,
+android.support.v13.app                                     ,androidx.legacy.app                                            ,  ,
+android.support.v13.view                                    ,androidx.core.view                                             ,  ,
+android.support.v13.view.inputmethod                        ,androidx.core.view.inputmethod                                 ,  ,
+android.support.v13.view                                    ,androidx.legacy.view                                           ,  ,
+android.support.v14.preference                              ,androidx.preference                                            ,  ,
+android.support.v17.internal.widget                         ,androidx.leanback.preference.internal                          ,  ,
+android.support.v17.leanback.animation                      ,androidx.leanback.animation                                    ,  ,
+android.support.v17.leanback.app                            ,androidx.leanback.app                                          ,  ,
+android.support.v17.leanback.database                       ,androidx.leanback.database                                     ,  ,
+android.support.v17.leanback.graphics                       ,androidx.leanback.graphics                                     ,  ,
+android.support.v17.leanback.media                          ,androidx.leanback.media                                        ,  ,
+android.support.v17.leanback                                ,androidx.leanback                                              ,  ,
+android.support.v17.leanback.system                         ,androidx.leanback.system                                       ,  ,
+android.support.v17.leanback.transition                     ,androidx.leanback.transition                                   ,  ,
+android.support.v17.leanback.util                           ,androidx.leanback.util                                         ,  ,
+android.support.v17.leanback.widget                         ,androidx.leanback.widget                                       ,  ,
+android.support.v17.leanback.widget.picker                  ,androidx.leanback.widget.picker                                ,  ,
+android.support.v17.preference                              ,androidx.leanback.preference                                   ,  ,
+android.support.v4.accessibilityservice                     ,androidx.core.accessibilityservice                             ,  ,
+android.support.v4.app                                      ,androidx.legacy.app                                            ,  ,
+android.support.v4.app                                      ,androidx.core.app                                              ,  ,
+android.support.v4.app                                      ,androidx.fragment.app                                          ,  ,
+android.support.v4.app                                      ,androidx.loader.app                                            ,  ,
+android.support.v4.content                                  ,androidx.loader.content                                        ,  ,
+android.support.v4.content                                  ,androidx.core.content                                          ,  ,
+android.support.v4.content                                  ,androidx.localbroadcastmanager.content                         ,  ,
+android.support.v4.content.pm                               ,androidx.core.content.pm                                       ,  ,
+android.support.v4.content.res                              ,androidx.core.content.res                                      ,  ,
+android.support.v4.content                                  ,androidx.legacy.content                                        ,  ,
+android.support.v4.database                                 ,androidx.core.database                                         ,  ,
+android.support.v4.database.sqlite                          ,androidx.core.database.sqlite                                  ,  ,
+android.support.v4.graphics                                 ,androidx.core.graphics                                         ,  ,
+android.support.v4.graphics.drawable                        ,androidx.core.graphics.drawable                                ,  ,
+android.support.v4.graphics.drawable                        ,android.support.v4.graphics.drawable                           ,  ,
+android.support.v4.hardware.display                         ,androidx.core.hardware.display                                 ,  ,
+android.support.v4.hardware.fingerprint                     ,androidx.core.hardware.fingerprint                             ,  ,
+android.support.v4.internal.view                            ,androidx.core.internal.view                                    ,  ,
+android.support.v4.math                                     ,androidx.core.math                                             ,  ,
+android.support.v4.media.app                                ,androidx.media.app                                             ,  ,
+android.support.v4.media                                    ,androidx.media                                                 ,  ,
+android.support.v4.media                                    ,android.support.v4.media                                       ,  ,
+android.support.v4.media.session                            ,android.support.v4.media.session                               ,  ,
+android.support.v4.media.session                            ,androidx.media.session                                         ,  ,
+android.support.v4.net                                      ,androidx.core.net                                              ,  ,
+android.support.v4.os                                       ,androidx.core.os                                               ,  ,
+android.support.v4.print                                    ,androidx.print                                                 ,  ,
+android.support.v4.provider                                 ,androidx.documentfile.provider                                 ,  ,
+android.support.v4.provider                                 ,androidx.core.provider                                         ,  ,
+android.support.v4.text                                     ,androidx.core.text                                             ,  ,
+android.support.v4.text.util                                ,androidx.core.text.util                                        ,  ,
+android.support.v4.util                                     ,androidx.collection                                            ,  ,
+android.support.v4.util                                     ,androidx.core.util                                             ,  ,
+android.support.v4.view                                     ,androidx.customview.view                                       ,  ,
+android.support.v4.view.accessibility                       ,androidx.core.view.accessibility                               ,  ,
+android.support.v4.view                                     ,androidx.core.view                                             ,  ,
+android.support.v4.view.animation                           ,androidx.interpolator.view.animation                           ,  ,
+android.support.v4.view.animation                           ,androidx.core.view.animation                                   ,  ,
+android.support.v4.view                                     ,androidx.asynclayoutinflater.view                              ,  ,
+android.support.v4.view                                     ,androidx.viewpager.widget                                      ,  ,
+android.support.v4.widget                                   ,androidx.core.widget                                           ,  ,
+android.support.v4.widget                                   ,androidx.swiperefreshlayout.widget                             ,  ,
+android.support.v4.widget                                   ,androidx.cursoradapter.widget                                  ,  ,
+android.support.v4.widget                                   ,androidx.coordinatorlayout.widget                              ,  ,
+android.support.v4.widget                                   ,androidx.drawerlayout.widget                                   ,  ,
+android.support.v4.widget                                   ,androidx.customview.widget                                     ,  ,
+android.support.v4.widget                                   ,androidx.slidingpanelayout.widget                              ,  ,
+android.support.v4.widget                                   ,androidx.legacy.widget                                         ,  ,
+android.support.v7.app                                      ,androidx.appcompat.app                                         ,  ,
+android.support.v7.app                                      ,androidx.mediarouter.app                                       ,  ,
+android.support.v7.appcompat                                ,androidx.appcompat                                             ,  ,
+android.support.v7.cardview                                 ,androidx.cardview                                              ,  ,
+android.support.v7.content.res                              ,androidx.appcompat.content.res                                 ,  ,
+android.support.v7.graphics                                 ,androidx.palette.graphics                                      ,  ,
+android.support.v7.graphics.drawable                        ,androidx.appcompat.graphics.drawable                           ,  ,
+android.support.v7.gridlayout                               ,androidx.gridlayout                                            ,  ,
+android.support.v7.internal.widget                          ,androidx.preference.internal                                   ,  ,
+android.support.v7.media                                    ,androidx.mediarouter.media                                     ,  ,
+android.support.v7.mediarouter                              ,androidx.mediarouter                                           ,  ,
+android.support.v7.preference                               ,androidx.preference                                            ,  ,
+android.support.v7.preference.internal                      ,androidx.preference.internal                                   ,  ,
+android.support.v7.recyclerview.extensions                  ,androidx.recyclerview.widget                                   ,  ,
+android.support.v7.recyclerview                             ,androidx.recyclerview                                          ,  ,
+android.support.v7.text                                     ,androidx.appcompat.text                                        ,  ,
+android.support.v7.util                                     ,androidx.recyclerview.widget                                   ,  ,
+android.support.v7.view                                     ,androidx.appcompat.view                                        ,  ,
+android.support.v7.view.menu                                ,androidx.appcompat.view.menu                                   ,  ,
+android.support.v7.widget                                   ,androidx.appcompat.widget                                      ,  ,
+android.support.v7.widget                                   ,androidx.recyclerview.widget                                   ,  ,
+android.support.v7.widget                                   ,androidx.cardview.widget                                       ,  ,
+android.support.v7.widget                                   ,androidx.gridlayout.widget                                     ,  ,
+android.support.v7.widget.helper                            ,androidx.recyclerview.widget                                   ,  ,
+android.support.v7.widget.util                              ,androidx.recyclerview.widget                                   ,  ,
+android.support.wear.activity                               ,androidx.wear.activity                                         ,  ,
+android.support.wear.ambient                                ,androidx.wear.ambient                                          ,  ,
+android.support.wear.internal.widget.drawer                 ,androidx.wear.internal.widget.drawer                           ,  ,
+android.support.wear.internal.widget                        ,androidx.wear.internal.widget                                  ,  ,
+android.support.wear                                        ,androidx.wear                                                  ,  ,
+android.support.wear.utils                                  ,androidx.wear.utils                                            ,  ,
+android.support.wear.widget                                 ,androidx.wear.widget                                           ,  ,
+android.support.wear.widget.drawer                          ,androidx.wear.widget.drawer                                    ,  ,

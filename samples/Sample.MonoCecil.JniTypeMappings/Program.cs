@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Mono.Cecil;
 using Mono.Cecil.Rocks;
 
@@ -9,9 +10,16 @@ namespace Sample.MonoCecil.JniTypeMappings
     {
         static void DumpMappings()
         {
-            var asm = AssemblyDefinition.ReadAssembly($@".\files\AndroidSupport.Merged.dll"
-            //, new ReaderParameters { AssemblyResolver = CreateAssemblyResolver() }
-                );
+            string path = Environment.CurrentDirectory;
+
+            var asm = AssemblyDefinition.ReadAssembly
+                                                (
+                                                    $@"./bin/Debug/netcoreapp2.2/Files/AndroidSupport.Merged.dll", 
+                                                    new ReaderParameters 
+                                                        { 
+                                                            AssemblyResolver = CreateAssemblyResolver() 
+                                                        }
+                                                );
 
             var allTypes = asm.MainModule.GetAllTypes();
 
@@ -30,6 +38,11 @@ namespace Sample.MonoCecil.JniTypeMappings
                         var jniClass = jniType.Substring(lastSlash + 1).Replace('$', '.');
                         var jniPkg = jniType.Substring(0, lastSlash).Replace('/', '.');
 
+                        if (jniPkg.StartsWith("mono."))
+                        {
+                            continue;
+                        }
+
                         var mngdClass = GetTypeName(t);
                         var mngdNs = GetNamespace(t);
 
@@ -38,7 +51,7 @@ namespace Sample.MonoCecil.JniTypeMappings
                 }
             }
 
-            System.IO.File.WriteAllLines("C:\\code\\support-mappings.csv", info);
+            System.IO.File.WriteAllLines("./support-mappings.csv", info);
         }
 
         static string GetNamespace(TypeDefinition typeDef)
@@ -71,6 +84,28 @@ namespace Sample.MonoCecil.JniTypeMappings
             return tn;
         }
 
+        static IAssemblyResolver CreateAssemblyResolver()
+        {
+            var VsInstallRoot = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\";
+            var TargetFrameworkVerison = "v9.0";
+
+            var resolver = new DefaultAssemblyResolver();
+            if (!string.IsNullOrEmpty(VsInstallRoot) && Directory.Exists(VsInstallRoot))
+            {
+                resolver.AddSearchDirectory(Path.Combine(
+                    VsInstallRoot,
+                    @"Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\" + TargetFrameworkVerison
+                    ));
+            }
+            else
+            {
+                resolver.AddSearchDirectory(Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+                    @"Reference Assemblies\Microsoft\Framework\MonoAndroid\" + TargetFrameworkVerison
+                ));
+            }
+            return resolver;
+        }
 
         static void Main(string[] args)
         {

@@ -86,17 +86,20 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 this.Namespaces = this.GetNamespaces();
 
                 this.Classes = this.GetClasses();
+                this.Classes = this.GetClassesInner();
 
                 this.Interfaces = this.GetInterfaces();
 
                 this.InterfacesFromClasses = this.GetInterfacesFromClasses();
 
+                return;
             }
 
             public void DumpAPI(string filename_base)
             {
                 this.DumpNamespaces(filename_base);
                 this.DumpClasses(filename_base);
+                this.DumpClassesInner(filename_base);
                 this.DumpInterfaces(filename_base);
                 this.DumpInterfacesFromClasses(filename_base);
 
@@ -130,14 +133,92 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                             >
                                 GetClasses()
             {
-                string nodes_to_find =
+                System.Xml.XmlNodeList node_list = null;
+               
+                 string nodes_to_find =
                     $@"/apixml:assemblies/apixml:assembly/apixml:namespaces/apixml:namespace"
                     +
                     $@"/apixml:classes/apixml:class"
                     ;
-                System.Xml.XmlNodeList node_list = xmldoc.SelectNodes(nodes_to_find, ns);
+
+                node_list = xmldoc.SelectNodes(nodes_to_find, ns);
 
                 foreach(System.Xml.XmlNode node in node_list)
+                {
+                    string class_name = node.Attributes["name"].Value;
+
+                    System.Xml.XmlNode node_parent = node.ParentNode.ParentNode;
+                    string namespace_name = node_parent.Attributes["name"].Value;
+
+                    System.Xml.XmlNodeList node_list_inner = null;
+                    node_list_inner = node.SelectNodes
+                                                    (
+                                                        $@"/apixml:classes/apixml:class",
+                                                        ns
+                                                    );
+                    if (node_list_inner.Count > 0)
+                    {
+                        string class_name_inner = "";
+                    }
+
+                    yield return
+                                (
+                                    ClassName: class_name,
+                                    ManagedNamespace: namespace_name
+                                );
+                }
+    
+            }
+
+            protected
+                IEnumerable<
+                                (
+                                    string ClassName,
+                                    string ManagedNamespace
+                                )
+                            >
+                                GetClassesInner()
+            {
+                System.Xml.XmlNodeList node_list = null;
+
+                string nodes_to_find =
+                    $@"/apixml:assemblies/apixml:assembly/apixml:namespaces/apixml:namespace"
+                    +
+                    $@"/apixml:classes/apixml:class"
+                    +
+                    $@"/apixml:classes/apixml:class"
+                    ;
+
+                node_list = xmldoc.SelectNodes(nodes_to_find, ns);
+
+                foreach (System.Xml.XmlNode node in node_list)
+                {
+                    string class_name = node.Attributes["name"].Value;
+
+                    System.Xml.XmlNode node_parent = node.ParentNode.ParentNode;
+                    string namespace_name = node_parent.Attributes["name"].Value;
+
+                    System.Xml.XmlNodeList node_list_inner = null;
+                    node_list_inner = node.SelectNodes
+                                                    (
+                                                        $@"/apixml:classes/apixml:class",
+                                                        ns
+                                                    );
+                    if (node_list_inner.Count > 0)
+                    {
+                        string class_name_inner = "";
+                    }
+
+                    yield return
+                                (
+                                    ClassName: class_name,
+                                    ManagedNamespace: namespace_name
+                                );
+                }
+
+                node_list = xmldoc.SelectNodes(nodes_to_find, ns);
+
+                foreach (System.Xml.XmlNode node in node_list)
                 {
                     string class_name = node.Attributes["name"].Value;
                     System.Xml.XmlNode node_parent = node.ParentNode.ParentNode;
@@ -295,6 +376,65 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 return;
             }
 
+            private void DumpClassesInner(string filename_base)
+            {
+                int n = this.Classes.Count();
+
+                int length_class = 0;
+                int length_namepsace = 0;
+
+                foreach
+                    (
+                        (
+                            string ClassName,
+                            string ManagedNamespace
+                        ) c
+                        in this.Classes
+                    )
+                {
+                    int lci = c.ClassName.Length;
+                    if (c.ClassName.Length > length_class)
+                    {
+                        length_class = lci;
+                    }
+                    int lnoi = c.ManagedNamespace.Length;
+                    if (c.ManagedNamespace.Length > length_namepsace)
+                    {
+                        length_namepsace = lnoi;
+                    }
+                }
+
+                int padding = 3;
+                string fmt =
+                        "{0,-" + (length_class + padding) + "}"
+                        +
+                        ",{1}"  //,-" + (length_namepsace + padding) + "}"
+                                //+
+                                //",{2}"
+                        ;
+
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+                foreach
+                    (
+                        (
+                            string ClassName,
+                            string ManagedNamespace
+                        ) c
+                        in this.Classes
+                    )
+                {
+                    string cn = c.ClassName;
+                    string nn = c.ManagedNamespace;
+
+                    sb.AppendLine(string.Format(fmt, cn, nn));
+                }
+
+                System.IO.File.WriteAllText($"{filename_base}.ClassesInner.csv", sb.ToString());
+
+                return;
+            }
+
             private void DumpInterfaces(string filename_base)
             {
                 int n = this.Interfaces.Count();
@@ -327,7 +467,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 string fmt =
                         "{0,-" + (length_interface + padding) + "}"
                         +
-                        ",{1,-" + (length_namepsace + padding) + "}"
+                        ",{1}" //,-" + (length_namepsace + padding) + "}"
                         //+
                         //",{2}"
                         ;
@@ -365,7 +505,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                             string InterfaceName,
                             string ManagedNamespace
                         ) i
-                        in this.Classes
+                        in this.InterfacesFromClasses
                     )
                 {
                     int lci = i.InterfaceName.Length;
@@ -384,7 +524,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 string fmt =
                         "{0,-" + (length_interface + padding) + "}"
                         +
-                        ",{1,-" + (length_namepsace + padding) + "}"
+                        ",{1}"  //,-" + (length_namepsace + padding) + "}"
                         //+
                         //",{2}"
                         ;
@@ -397,7 +537,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                             string InterfaceName,
                             string ManagedNamespace
                         ) i
-                        in this.Interfaces
+                        in this.InterfacesFromClasses
                     )
                 {
                     string ifn = i.InterfaceName;

@@ -567,10 +567,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             int length_gm_ax_cn_fq = -1;
             int length_gm_ax_cn_fq_max = -1;
 
-            int length_as_cn_fq = -1;
+            int? length_as_cn_fq = -1;
             int length_as_cn_fq_max = -1;
 
-            int length_ax_cn_fq = -1;
+            int? length_ax_cn_fq = -1;
             int length_ax_cn_fq_max = -1;
 
             int length_as_pn = -1;
@@ -620,16 +620,16 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     length_gm_ax_cn_fq_max = length_gm_ax_cn_fq;
                 }
 
-                length_as_cn_fq = c.AndroidSupportClassFullyQualified.Length;
+                length_as_cn_fq = c.AndroidSupportClassFullyQualified?.Length;
                 if (length_as_cn_fq > length_as_cn_fq_max)
                 {
-                    length_as_cn_fq_max = length_as_cn_fq;
+                    length_as_cn_fq_max = length_as_cn_fq.Value;
                 }
 
-                length_ax_cn_fq = c.AndroidXClassFullyQualified.Length;
+                length_ax_cn_fq = c.AndroidXClassFullyQualified?.Length;
                 if (length_ax_cn_fq > length_ax_cn_fq_max)
                 {
-                    length_ax_cn_fq_max = length_ax_cn_fq;
+                    length_ax_cn_fq_max = length_ax_cn_fq.Value;
                 }
 
                 length_as_pn = c.PackageAndroidSupport.Length;
@@ -694,6 +694,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 string ns_xas = c.ManagedNamespaceXamarinAndroidSupport;
                 string ns_xax = c.ManagedNamespaceXamarinAndroidX;
 
+                Console.WriteLine($"format = {fmt}");
                 sb.AppendLine(string.Format(fmt, cn, as_cn, ax_cn, xas_cn, xax_cn, pn_as, pn_ax, ns_xas, ns_xax));
             }
 
@@ -720,10 +721,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             int length_gm_as_pn_max = -1;
             int length_gm_ax_pn = -1;
             int length_gm_ax_pn_max = -1;
-            int length_as_ns = -1;
-            int length_as_ns_max = -1;
-            int length_ax_ns = -1;
-            int length_ax_ns_max = -1;
+            int? length_as_ns = -1;
+            int? length_as_ns_max = -1;
+            //int length_ax_ns = -1;
+            //int length_ax_ns_max = -1;
 
             foreach
                 (
@@ -746,7 +747,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 {
                     length_gm_ax_pn_max = length_gm_ax_pn;
                 }
-                length_as_ns = c.ManagedNamespaceXamarinAndroidSupport.Length;
+                length_as_ns = c.ManagedNamespaceXamarinAndroidSupport?.Length;
                 if (length_as_ns > length_as_ns_max)
                 {
                     length_as_ns_max = length_as_ns;
@@ -760,11 +761,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             }
 
             string fmt =
-                    "{0-" + (length_gm_as_pn_max + padding) + "}"
+                    "{0,-" + (length_gm_as_pn_max + padding) + "}"
                     +
-                    ",{1-" + (length_gm_ax_pn_max + padding) + "}"
+                    ",{1,-" + (length_gm_ax_pn_max + padding) + "}"
                     +
-                    ",{2-" + (length_as_ns_max + padding) + "}"
+                    ",{2,-" + (length_as_ns_max + padding) + "}"
                     +
                     ",{3}"
                         ;
@@ -889,6 +890,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
             return;
         }
+        //-------------------------------------------------------------------------------------------------------------------
 
 
         public
