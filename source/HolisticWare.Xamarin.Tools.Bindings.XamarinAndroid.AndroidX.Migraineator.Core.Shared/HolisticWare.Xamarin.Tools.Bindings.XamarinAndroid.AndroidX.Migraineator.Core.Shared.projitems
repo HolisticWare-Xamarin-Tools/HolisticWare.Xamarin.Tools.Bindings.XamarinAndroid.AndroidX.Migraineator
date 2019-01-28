@@ -15,7 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)AndroidXMigrator.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)generated\ApiInfo.Classes.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.Dump..cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.Dump.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.MappingAnalysis.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)MappingManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MappingManager.Merge.cs" />
@@ -26,6 +26,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.ComparisonData.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)MappingManager.Analyse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.MonoCecil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.XmlDocument.Merge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.MonoCecil.Merge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.Merge.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.XmlDocument.MergeDump.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.MonoCecil.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.XmlDocument.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CharacterSeparatedValues\" />

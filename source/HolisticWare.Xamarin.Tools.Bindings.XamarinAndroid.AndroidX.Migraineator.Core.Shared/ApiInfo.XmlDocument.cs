@@ -12,7 +12,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 {
     public partial class ApiInfo
     {
-        public class XmlDocumentData
+        public partial class XmlDocumentData
         {
             public XmlDocumentData(string path)
             {
@@ -25,6 +25,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 //  <a xmlns=""></a>
                 ns.AddNamespace(xml_namespace_name, xml_namespace);
 
+                Console.WriteLine("XmlDocument initialized for API scraping");
                 return;
             }
 
@@ -81,7 +82,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 protected set;
             }
 
-            public void AnayseAPI()
+            public void AnalyseAPI()
             {
                 this.Namespaces = this.GetNamespaces();
 
@@ -97,11 +98,41 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
             public void DumpAPI(string filename_base)
             {
-                this.DumpNamespaces(filename_base);
-                this.DumpClasses(filename_base);
-                this.DumpClassesInner(filename_base);
-                this.DumpInterfaces(filename_base);
-                this.DumpInterfacesFromClasses(filename_base);
+                string path = Path.Combine
+                    (
+                        new string[]
+                        {
+                            Environment.CurrentDirectory,
+                            "..",
+                            "output"
+                        }
+                    );
+                if ( !Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                string path_output = Path.Combine(path, "XmlDocument");
+                if (!Directory.Exists(path_output))
+                {
+                    Directory.CreateDirectory(path_output);
+                }
+
+                string filename = null;
+
+                filename = Path.Combine(path_output, $"API.{filename_base}.Namespaces.csv");
+                this.DumpAPINamespaces(filename);
+
+                filename = Path.Combine(path_output, $"API.{filename_base}.Classes.csv");
+                this.DumpAPIClasses(filename);
+
+                filename = Path.Combine(path_output, $"API.{filename_base}.ClassesInner.csv");
+                this.DumpAPIClassesInner(filename);
+
+                filename = Path.Combine(path_output, $"API.{filename_base}.Interfaces.csv");
+                this.DumpAPIInterfaces(filename);
+
+                filename = Path.Combine(path_output, $"API.{filename_base}.InterfacesFromClasses.csv");
+                this.DumpAPIInterfacesFromClasses(filename);
 
                 return;
             }
@@ -125,14 +156,22 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             }
 
             protected
-                IEnumerable <
+                List <
+                        (
+                            string ClassName,
+                            string ManagedNamespace
+                        )
+                    >
+                                GetClasses()
+            {
+                List<
                                 (
                                     string ClassName,
                                     string ManagedNamespace
                                 )
-                            >
-                                GetClasses()
-            {
+                            > result;
+                result = new List<(string ClassName, string ManagedNamespace)>();
+
                 System.Xml.XmlNodeList node_list = null;
                
                  string nodes_to_find =
@@ -161,13 +200,20 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                         string class_name_inner = "";
                     }
 
-                    yield return
-                                (
-                                    ClassName: class_name,
-                                    ManagedNamespace: namespace_name
+                    //yield return
+                    //(
+                    //    ClassName: class_name,
+                    //    ManagedNamespace: namespace_name
+                    //);
+                    result.Add  (
+                                    (
+                                        ClassName: class_name,
+                                        ManagedNamespace: namespace_name
+                                    )
                                 );
                 }
-    
+
+                return result;
             }
 
             protected
@@ -194,6 +240,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 foreach (System.Xml.XmlNode node in node_list)
                 {
                     string class_name = node.Attributes["name"].Value;
+
+                    if(class_name.EndsWith("EventArgs"))
+                    {
+                        continue;
+                    }
 
                     System.Xml.XmlNode node_parent = node.ParentNode.ParentNode;
                     string namespace_name = node_parent.Attributes["name"].Value;
@@ -299,7 +350,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 }
             }
 
-            private void DumpNamespaces(string filename_base)
+            private void DumpAPINamespaces(string filename)
             {
                 System.Text.StringBuilder sb = new System.Text.StringBuilder();
                 foreach
@@ -311,13 +362,13 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     sb.AppendLine(namespace_name);
                 }
 
-                System.IO.File.WriteAllText($"{filename_base}.Namespaces.csv", sb.ToString());
+                System.IO.File.WriteAllText(filename, sb.ToString());
 
                 return;
             }
 
 
-            private void DumpClasses(string filename_base)
+            private void DumpAPIClasses(string filename)
             {
                 int n = this.Classes.Count();
 
@@ -371,12 +422,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     sb.AppendLine(string.Format(fmt, cn, nn));
                 }
 
-                System.IO.File.WriteAllText($"{filename_base}.Classes.csv", sb.ToString());
+                System.IO.File.WriteAllText(filename, sb.ToString());
 
                 return;
             }
 
-            private void DumpClassesInner(string filename_base)
+            private void DumpAPIClassesInner(string filename)
             {
                 int n = this.Classes.Count();
 
@@ -430,12 +481,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     sb.AppendLine(string.Format(fmt, cn, nn));
                 }
 
-                System.IO.File.WriteAllText($"{filename_base}.ClassesInner.csv", sb.ToString());
+                System.IO.File.WriteAllText(filename, sb.ToString());
 
                 return;
             }
 
-            private void DumpInterfaces(string filename_base)
+            private void DumpAPIInterfaces(string filename)
             {
                 int n = this.Interfaces.Count();
 
@@ -489,12 +540,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     sb.AppendLine(string.Format(fmt, ifn, nn));
                 }
 
-                System.IO.File.WriteAllText($"{filename_base}.Interfaces.csv", sb.ToString());
+                System.IO.File.WriteAllText(filename, sb.ToString());
 
                 return;
             }
 
-            private void DumpInterfacesFromClasses(string filename_base)
+            private void DumpAPIInterfacesFromClasses(string filename)
             {
                 int length_interface = 0;
                 int length_namepsace = 0;
@@ -546,7 +597,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     sb.AppendLine(string.Format(fmt, ifn, nn));
                 }
 
-                System.IO.File.WriteAllText($"{filename_base}.InterfacesFromClasses.csv", sb.ToString());
+                System.IO.File.WriteAllText(filename, sb.ToString());
 
                 return;
             }

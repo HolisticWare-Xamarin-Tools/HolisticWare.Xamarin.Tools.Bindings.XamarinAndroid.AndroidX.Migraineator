@@ -12,14 +12,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 {
     public partial class ApiInfo
     {
-        public ApiInfo(string path)
+        public ApiInfo(string path_api_info_xml, string path_assembly)
         {
-            api_info_path = path;
+            api_info_path = path_api_info_xml;
 
-            // 3 
-            this.XmlSerializerAPI = new XmlSerializerData(api_info_path);
-            this.XmlDocumentAPI = new XmlDocumentData(api_info_path);
-            this.LinqXDocumentAPI = new LinqXDocumentData(api_info_path);
+            this.XmlDocumentAPI = new XmlDocumentData(path_api_info_xml);
+            this.MonoCecilAPI = new MonoCecilData(path_assembly);
+            this.XmlSerializerAPI = new XmlSerializerData(path_api_info_xml);
+            this.LinqXDocumentAPI = new LinqXDocumentData(path_api_info_xml);
 
             return;
         }
@@ -57,13 +57,19 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             return api_info_content;
         }
 
-        public XmlSerializerData XmlSerializerAPI
+        public MonoCecilData MonoCecilAPI
         {
             get;
             private set;
         }
 
         public XmlDocumentData XmlDocumentAPI
+        {
+            get;
+            private set;
+        }
+
+        public XmlSerializerData XmlSerializerAPI
         {
             get;
             private set;
