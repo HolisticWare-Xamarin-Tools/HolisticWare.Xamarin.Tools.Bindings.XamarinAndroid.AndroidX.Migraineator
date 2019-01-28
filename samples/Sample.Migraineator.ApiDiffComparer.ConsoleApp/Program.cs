@@ -145,28 +145,55 @@ namespace Sample.Migraineator.ConsoleApp
             await MappingManager.DumpPackageNamesAsync();
 
             // Load OLD Android.Support api-info.xml 
-            ApiInfo api_info_old_android_support = new ApiInfo(file_input_android_support_28_0_0);
+            ApiInfo api_info_old_android_support = new ApiInfo
+                                                        (
+                                                            file_input_android_support_28_0_0,
+                                                            "../../../../X/AndroidSupportComponents-master/output/AndroidSupport.Merged.dll"
+                                                        );
             await api_info_old_android_support.LoadAsync();
             // Load NEW AndroidX api-info.xml 
-            ApiInfo api_info_new_androidx = new ApiInfo(file_input_androidx);
+            ApiInfo api_info_new_androidx = new ApiInfo
+                                                        (
+                                                            file_input_androidx,
+                                                            "../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.Merged.dll"
+                                                        );
             await api_info_new_androidx.LoadAsync();
+
+
+            api_info_old_android_support.MonoCecilAPI.AnalyseAPI();
+            api_info_old_android_support.MonoCecilAPI.DumpAPI("Android.Support");
+
+            api_info_new_androidx.MonoCecilAPI.AnalyseAPI();
+            api_info_new_androidx.MonoCecilAPI.DumpAPI("AndroidX");
+
+
+
+            api_info_old_android_support.XmlDocumentAPI.AnalyseAPI();
+            api_info_old_android_support.XmlDocumentAPI.DumpAPI("AndroidX");
+
+            api_info_new_androidx.XmlDocumentAPI.AnalyseAPI();
+            api_info_new_androidx.XmlDocumentAPI.DumpAPI("AndroidX");
+
+
 
             await api_info_old_android_support.XmlSerializerAPI.Deserialize();
             await api_info_new_androidx.XmlSerializerAPI.Deserialize();
 
-            api_info_old_android_support.XmlDocumentAPI.AnayseAPI();
-            api_info_old_android_support.XmlDocumentAPI.DumpAPI("API.Android.Support.XmlDocumentAPI");
 
-            api_info_new_androidx.XmlDocumentAPI.AnayseAPI();
-            api_info_new_androidx.XmlDocumentAPI.DumpAPI("API.AndroidX.XmlDocumentAPI");
+            api_comparer.MonoCecilAPI.MergeGoogleMappings
+                                                (
+                                                    ApiComparer.GoogleClassMappings,
+                                                    api_info_old_android_support.MonoCecilAPI.Types,
+                                                    api_info_new_androidx.MonoCecilAPI.Types
+                                                );
 
 
-            api_comparer.Merge
-                            (
-                                ApiComparer.GoogleClassMappings,
-                                api_info_old_android_support,
-                                api_info_new_androidx
-                            );
+            //api_comparer.XmlDocumentAPI.MergeGoogleMappings
+                                                //(
+                                                //    ApiComparer.GoogleClassMappings,
+                                                //    api_info_old_android_support.XmlDocumentAPI.Classes,
+                                                //    api_info_new_androidx.XmlDocumentAPI.Classes
+                                                //);
 
             Task.WaitAll();
 
