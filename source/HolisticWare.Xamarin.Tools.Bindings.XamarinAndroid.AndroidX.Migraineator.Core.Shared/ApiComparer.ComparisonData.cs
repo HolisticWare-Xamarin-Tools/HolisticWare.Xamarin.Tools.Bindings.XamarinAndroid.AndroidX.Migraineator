@@ -72,5 +72,22 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             }
         }
 
+
+        public static
+            ReadOnlyCollection<
+                                    (
+                                        string Action,
+                                        string AndroidSupportPackage,
+                                        string AndroidXPackage
+                                    )
+                                >
+                AndroidPackagesBlackList
+        {
+            get
+            {
+                return MappingManager.AndroidPackagesBlackList;
+            }
+        }
+
     }
 }

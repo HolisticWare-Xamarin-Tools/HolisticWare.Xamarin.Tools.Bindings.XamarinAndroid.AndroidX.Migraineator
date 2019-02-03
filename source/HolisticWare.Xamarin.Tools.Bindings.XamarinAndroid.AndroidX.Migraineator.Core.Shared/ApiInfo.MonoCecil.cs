@@ -32,7 +32,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             FileStream fs = null;
             XDocument xml_doc = null;
 
-            static IAssemblyResolver CreateAssemblyResolver()
+            public static IAssemblyResolver CreateAssemblyResolver()
             {
                 var VsInstallRoot = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\";
                 var TargetFrameworkVerison = "v9.0";

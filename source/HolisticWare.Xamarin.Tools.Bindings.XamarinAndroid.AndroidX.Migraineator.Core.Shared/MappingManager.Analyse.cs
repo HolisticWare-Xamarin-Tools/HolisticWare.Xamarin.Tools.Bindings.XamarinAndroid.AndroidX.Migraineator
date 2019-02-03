@@ -152,7 +152,28 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
             IEnumerable<string> lines_normalized = lines.Distinct();
 
-            System.IO.File.WriteAllText($"androidx-packagename-mapping.csv", sb.ToString());
+            //.............................................................................
+            string path = Path.Combine
+                (
+                    new string[]
+                    {
+                            Environment.CurrentDirectory,
+                            "..",
+                            "output"
+                    }
+                );
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            string path_output = Path.Combine(path, "analysis");
+            if (!Directory.Exists(path_output))
+            {
+                Directory.CreateDirectory(path_output);
+            }
+            path_output = Path.Combine(path_output, "androidx-packagename-mapping.csv");
+            System.IO.File.WriteAllText(path_output, sb.ToString());
+            //.............................................................................
 
             return;
         }

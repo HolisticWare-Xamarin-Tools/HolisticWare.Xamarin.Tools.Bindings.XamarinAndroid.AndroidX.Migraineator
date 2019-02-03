@@ -19,12 +19,13 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         static Task task_load_google_artifact_mappings;
         static Task task_load_google_class_mappings;
         static Task task_process_google_package_mappings;
+        static Task task_load_android_packages_blacklisted;
 
         public static async Task InitializeAsync(string path_working_directory)
         {
             task_load_google_class_mappings = LoadGoogleArtifactMappings(path_working_directory);
             task_load_google_artifact_mappings = LoadGoogleClassMappings(path_working_directory);
-
+            task_load_android_packages_blacklisted= LoadAndroidPackagesBlackList(path_working_directory);
             task_process_google_package_mappings = ProcessGooglePackageMappings();
 
             return;
@@ -228,6 +229,81 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                             AndroidSupportClass: row[0],
                             // skip column 1 - emptyt one!!
                             AndroidXClass: row[2]
+                        );
+            }
+        }
+        //-------------------------------------------------------------------------------------------------------------------
+
+
+        //-------------------------------------------------------------------------------------------------------------------
+        public static
+            ReadOnlyCollection<
+                                    (
+                                        string Action,
+                                        string AndroidSupportPackage,
+                                        string AndroidXPackage
+                                    )
+                                >
+                AndroidPackagesBlackList
+        {
+            get;
+            private set;
+        }
+
+        public static async
+            Task
+                LoadAndroidPackagesBlackList(string path_working_directory)
+        {
+            string[] path = new string[]
+            {
+                path_working_directory,
+                path_mappings,
+                "xamarin-business",
+                "packagenames-for-exclusion.csv",
+            };
+            file = Path.Combine(path);
+
+            CharacterSeparatedValues csv = new CharacterSeparatedValues();
+            string content = csv.LoadAsync(file).Result; // cannot await need this ASAP
+
+            IEnumerable<string[]> mapping = csv
+                                            .ParseTemporaryImplementation()
+                                            .ToList()
+                                            ;
+            IEnumerable<
+                            (
+                                string Action,
+                                string AndroidSupportPackage,
+                                string AndroidXPackage
+                            )
+                        > mapping_strongly_typed = Convert_AndroidPackagesBlackList(mapping);
+
+            AndroidPackagesBlackList = mapping_strongly_typed
+                                                .Skip(1)
+                                                .ToList()
+                                                .AsReadOnly()
+                                                ;
+
+            return;
+        }
+
+        private static
+            IEnumerable<
+                            (
+                                string Action,
+                                string AndroidSupportPackage,
+                                string AndroidXPackage
+                            )
+                        >
+                Convert_AndroidPackagesBlackList(IEnumerable<string[]> untyped_data)
+        {
+            foreach (string[] row in untyped_data)
+            {
+                yield return
+                        (
+                            Action: "skip",
+                            AndroidSupportPackage: row[0],
+                            AndroidXPackage: row[2]
                         );
             }
         }

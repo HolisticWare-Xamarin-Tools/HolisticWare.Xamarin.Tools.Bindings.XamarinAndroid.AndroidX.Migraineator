@@ -28,7 +28,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.MonoCecil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.XmlDocument.Merge.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.MonoCecil.Merge.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.Merge.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.XmlDocument.MergeDump.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.MonoCecil.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.XmlDocument.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />

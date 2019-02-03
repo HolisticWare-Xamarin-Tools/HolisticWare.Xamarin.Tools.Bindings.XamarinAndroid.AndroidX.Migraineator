@@ -475,10 +475,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
         public async Task InitializeAsync(string path_working_directory)
         {
+
             await MappingManager.LoadGoogleArtifactMappings(path_working_directory);
             await MappingManager.LoadGoogleClassMappings(path_working_directory);
 
             await MappingManager.LoadGoogleClassMappingsPrettyfied(path_working_directory);
+            await MappingManager.LoadAndroidPackagesBlackList(path_working_directory);
 
             //map_typed_android_support_artifacts_to_androidx_artifacts =
             //        MapAndroidSupportArtifactToAndroidXArtifact(map_android_support_artifacts_to_androidx_artifacts)

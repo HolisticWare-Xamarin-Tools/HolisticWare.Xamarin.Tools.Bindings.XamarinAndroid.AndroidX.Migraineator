@@ -22,12 +22,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     //this.comparison_results = Merge();
                 }
 
-                //this.Dump(comparison_results);
-                //this.Dump(results_found);
-                //this.Dump(packages_namespaces);
-                //this.Dump(results_not_found_at_all, "NotFoundAtAll");
-                //this.Dump(results_not_found_in_xas, "NotFoundInXamarinAndroidSupport");
-                //this.Dump(results_not_found_in_xax, "NotFoundInXamarinAndroidX");
+                this.Dump(comparison_results);
+                this.Dump(results_found);
+                this.Dump(packages_namespaces);
+                this.Dump(results_not_found_at_all, "NotFoundAtAll");
+                this.Dump(results_not_found_in_xas, "NotFoundInXamarinAndroidSupport");
+                this.Dump(results_not_found_in_xax, "NotFoundInXamarinAndroidX");
 
                 return;
             }
@@ -109,14 +109,35 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     sb.AppendLine(string.Format(fmt, cn, as_cn, ax_cn, xas_cn, xax_cn, pn_as, pn_ax, ns_xas, ns_xax));
                 }
 
+                //.............................................................................
+                string path = Path.Combine
+                    (
+                        new string[]
+                        {
+                            Environment.CurrentDirectory,
+                            "..",
+                            "output"
+                        }
+                    );
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                string path_output = Path.Combine(path, "analysis");
+                if (!Directory.Exists(path_output))
+                {
+                    Directory.CreateDirectory(path_output);
+                }
+
+                string path_file = null;
                 if (prettyified == true)
                 {
-                    System.IO.File.WriteAllText($"API.Classes.prettyfied.csv", sb.ToString());
+                    path_file = Path.Combine(path_output, "API.Classes.prettyfied.csv");
+                    System.IO.File.WriteAllText(path_file, sb.ToString());
                 }
-                else
-                {
-                    System.IO.File.WriteAllText($"API.Classes.csv", sb.ToString());
-                }
+                path_file = Path.Combine(path_output, "API.Classes.csv");
+                System.IO.File.WriteAllText(path_file, sb.ToString());
+                //.............................................................................
 
                 return;
             }
@@ -180,14 +201,35 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     sb_final.AppendLine(line);
                 }
 
+                //.............................................................................
+                string path = Path.Combine
+                    (
+                        new string[]
+                        {
+                            Environment.CurrentDirectory,
+                            "..",
+                            "output"
+                        }
+                    );
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                string path_output = Path.Combine(path, "analysis");
+                if (!Directory.Exists(path_output))
+                {
+                    Directory.CreateDirectory(path_output);
+                }
+
+                string path_file = null;
                 if (prettyified == true)
                 {
-                    System.IO.File.WriteAllText($"API.PackagesNamespaces.prettyfied.csv", sb_final.ToString());
+                    path_file = Path.Combine(path_output, "API.PackagesNamespaces.prettyfied.csv");
+                    System.IO.File.WriteAllText(path_file, sb.ToString());
                 }
-                else
-                {
-                    System.IO.File.WriteAllText($"API.Classes.csv", sb.ToString());
-                }
+                path_file = Path.Combine(path_output, "API.PackagesNamespaces.csv");
+                System.IO.File.WriteAllText(path_file, sb.ToString());
+                //.............................................................................
 
                 return;
             }
