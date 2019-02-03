@@ -145,17 +145,20 @@ namespace Sample.Migraineator.ConsoleApp
             await MappingManager.DumpPackageNamesAsync();
 
             // Load OLD Android.Support api-info.xml 
+            string assembly_android_support = "../../../../X/AndroidSupportComponents-master/output/AndroidSupport.Merged.dll";
             ApiInfo api_info_old_android_support = new ApiInfo
                                                         (
                                                             file_input_android_support_28_0_0,
-                                                            "../../../../X/AndroidSupportComponents-master/output/AndroidSupport.Merged.dll"
+                                                            assembly_android_support
                                                         );
             await api_info_old_android_support.LoadAsync();
+
             // Load NEW AndroidX api-info.xml 
+            string assembly_androidx = "../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.Merged.dll";
             ApiInfo api_info_new_androidx = new ApiInfo
                                                         (
                                                             file_input_androidx,
-                                                            "../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.Merged.dll"
+                                                            assembly_androidx
                                                         );
             await api_info_new_androidx.LoadAsync();
 
@@ -183,17 +186,21 @@ namespace Sample.Migraineator.ConsoleApp
             api_comparer.MonoCecilAPI.MergeGoogleMappings
                                                 (
                                                     ApiComparer.GoogleClassMappings,
+                                                    ApiComparer.AndroidPackagesBlackList,
                                                     api_info_old_android_support.MonoCecilAPI.Types,
                                                     api_info_new_androidx.MonoCecilAPI.Types
                                                 );
+            api_comparer.MonoCecilAPI.DumpAPI(prettyfied: true);
 
+            await AnalyseAsync("AndroidSupport", assembly_android_support);
+            await AnalyseAsync("AndroidX", assembly_android_support);
 
             //api_comparer.XmlDocumentAPI.MergeGoogleMappings
-                                                //(
-                                                //    ApiComparer.GoogleClassMappings,
-                                                //    api_info_old_android_support.XmlDocumentAPI.Classes,
-                                                //    api_info_new_androidx.XmlDocumentAPI.Classes
-                                                //);
+            //(
+            //    ApiComparer.GoogleClassMappings,
+            //    api_info_old_android_support.XmlDocumentAPI.Classes,
+            //    api_info_new_androidx.XmlDocumentAPI.Classes
+            //);
 
             Task.WaitAll();
 
@@ -262,7 +269,7 @@ namespace Sample.Migraineator.ConsoleApp
             return;
         }
 
-        static async Task Analyse()
+        static async Task AnalyseAsync()
         {
             /*
             (
@@ -313,19 +320,24 @@ namespace Sample.Migraineator.ConsoleApp
         }
 
 
-        public void Analyse(string file_path)
+        public static async Task AnalyseAsync(string name, string file_path)
         {
-            var asm = AssemblyDefinition.ReadAssembly("C:\\code\\AndroidSupport.Merged.dll"
-             //new ReaderParameters { AssemblyResolver = CreateAssemblyResolver() }
+            AssemblyDefinition asm = AssemblyDefinition.ReadAssembly
+                (
+                    file_path,
+                    new ReaderParameters 
+                    { 
+                        AssemblyResolver = ApiInfo.MonoCecilData.CreateAssemblyResolver() 
+                    }
                 );
 
-            var allTypes = asm.MainModule.GetAllTypes();
+            IEnumerable<TypeDefinition> allTypes = asm.MainModule.GetAllTypes();
 
-            var info = new List<string>();
+            List<string> info = new List<string>();
 
-            foreach (var t in allTypes)
+            foreach (TypeDefinition t in allTypes)
             {
-                foreach (var attr in t.CustomAttributes)
+                foreach (CustomAttribute attr in t.CustomAttributes)
                 {
                     if (attr.AttributeType.FullName.Equals("Android.Runtime.RegisterAttribute"))
                     {
@@ -344,7 +356,30 @@ namespace Sample.Migraineator.ConsoleApp
                 }
             }
 
-            File.WriteAllLines("C:\\code\\support-mappings.csv", info);
+            //.............................................................................
+            string path = Path.Combine
+                (
+                    new string[]
+                    {
+                            Environment.CurrentDirectory,
+                            "..",
+                            "output"
+                    }
+                );
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            string path_output = Path.Combine(path, "analysis");
+            if (!Directory.Exists(path_output))
+            {
+                Directory.CreateDirectory(path_output);
+            }
+
+            string path_file = null;
+            path_file = Path.Combine(path_output, $"{name}.mono-cecil-dump.csv");
+            await System.IO.File.WriteAllLinesAsync(path_file, info);
+            //.............................................................................
 
         }
     }
