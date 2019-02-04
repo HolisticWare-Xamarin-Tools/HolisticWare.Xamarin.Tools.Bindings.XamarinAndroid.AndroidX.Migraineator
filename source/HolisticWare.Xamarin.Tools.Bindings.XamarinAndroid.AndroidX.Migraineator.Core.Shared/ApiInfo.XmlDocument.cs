@@ -59,6 +59,19 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             public
                 IEnumerable<
                                 (
+                                    string ClassName,
+                                    string ManagedNamespace
+                                )
+                            >
+                    ClassesInner
+            {
+                get;
+                protected set;
+            }
+
+            public
+                IEnumerable<
+                                (
                                     string InterfaceName,
                                     string ManagedNamespace
                                 )
@@ -82,60 +95,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 protected set;
             }
 
-            public void AnalyseAPI()
-            {
-                this.Namespaces = this.GetNamespaces();
-
-                this.Classes = this.GetClasses();
-                this.Classes = this.GetClassesInner();
-
-                this.Interfaces = this.GetInterfaces();
-
-                this.InterfacesFromClasses = this.GetInterfacesFromClasses();
-
-                return;
-            }
-
-            public void DumpAPI(string filename_base)
-            {
-                string path = Path.Combine
-                    (
-                        new string[]
-                        {
-                            Environment.CurrentDirectory,
-                            "..",
-                            "output"
-                        }
-                    );
-                if ( !Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-                string path_output = Path.Combine(path, "XmlDocument");
-                if (!Directory.Exists(path_output))
-                {
-                    Directory.CreateDirectory(path_output);
-                }
-
-                string filename = null;
-
-                filename = Path.Combine(path_output, $"API.{filename_base}.Namespaces.csv");
-                this.DumpAPINamespaces(filename);
-
-                filename = Path.Combine(path_output, $"API.{filename_base}.Classes.csv");
-                this.DumpAPIClasses(filename);
-
-                filename = Path.Combine(path_output, $"API.{filename_base}.ClassesInner.csv");
-                this.DumpAPIClassesInner(filename);
-
-                filename = Path.Combine(path_output, $"API.{filename_base}.Interfaces.csv");
-                this.DumpAPIInterfaces(filename);
-
-                filename = Path.Combine(path_output, $"API.{filename_base}.InterfacesFromClasses.csv");
-                this.DumpAPIInterfacesFromClasses(filename);
-
-                return;
-            }
 
             protected
                 IEnumerable<string>

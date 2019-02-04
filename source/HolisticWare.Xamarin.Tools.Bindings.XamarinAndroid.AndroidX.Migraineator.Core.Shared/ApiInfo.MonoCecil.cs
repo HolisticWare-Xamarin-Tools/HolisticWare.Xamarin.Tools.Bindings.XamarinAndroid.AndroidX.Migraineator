@@ -62,119 +62,26 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                     string JNIPackage,
                                     string JNIType
                                 )
-                            >   Types
+                            >   TypesAndroidRegistered
             {
                 get;
                 protected set;
             }
 
-            public void AnalyseAPI()
+
+            public new List<
+                                (
+                                    string ManagedClass,
+                                    string ManagedNamespace,
+                                    string JNIPackage,
+                                    string JNIType
+                                )
+                            > TypesManaged
             {
-                AssemblyDefinition asm = AssemblyDefinition.ReadAssembly
-                                                                      (
-                                                                          file_name,
-                                                                          new ReaderParameters
-                                                                          {
-                                                                              AssemblyResolver = CreateAssemblyResolver()
-                                                                          }
-                                                                      );
-
-                IEnumerable<TypeDefinition> allTypes;
-                allTypes = asm.MainModule.GetAllTypes();
-
-                var info = new List <
-                                        (
-                                            string ManagedClass,
-                                            string ManagedNamespace,
-                                            string JNIPackage,
-                                            string JNIType
-                                        )
-                                    >();
-
-                foreach (var t in allTypes)
-                {
-                    foreach (var attr in t.CustomAttributes)
-                    {
-                        if (attr.AttributeType.FullName.Equals("Android.Runtime.RegisterAttribute"))
-                        {
-                            var jniType = attr.ConstructorArguments[0].Value.ToString();
-
-                            var lastSlash = jniType.LastIndexOf('/');
-
-                            var jniClass = jniType.Substring(lastSlash + 1).Replace('$', '.');
-                            var jniPkg = jniType.Substring(0, lastSlash).Replace('/', '.');
-
-                            var mngdClass = GetTypeName(t);
-                            var mngdNs = GetNamespace(t);
-
-                           info.Add(
-                                        (
-                                            ManagedClass: mngdClass,
-                                            ManagedNamespace: mngdNs,
-                                            JNIPackage: jniPkg,
-                                            JNIType: jniType
-                                        )
-                                    );
-                        }
-                    }
-                }
-
-                this.Types = info;
-
-                return;
+                get;
+                protected set;
             }
 
-            public void DumpAPI(string filename_base)
-            {
-                string path = Path.Combine
-                    (
-                        new string[]
-                        {
-                            Environment.CurrentDirectory,
-                            "..",
-                            "output"
-                        }
-                    );
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-                string path_output = Path.Combine(path, "MonoCecil");
-                if (!Directory.Exists(path_output))
-                {
-                    Directory.CreateDirectory(path_output);
-                }
-
-                string filename = null;
-
-                filename = Path.Combine(path_output, $"API.{filename_base}.Types.csv");
-                this.DumpAPITypes(filename);
-
-                return;
-            }
-
-            private void DumpAPITypes(string filename)
-            {
-                List<string> dump = new List<string>();
-                StringBuilder sb = new StringBuilder();
-
-                foreach
-                (
-                    (
-                        string ManagedClass,
-                        string ManagedNamespace,
-                        string JNIPackage,
-                        string JNIType
-                    ) typ in this.Types
-                )
-                {
-                    sb.AppendLine($"{typ.ManagedClass},{typ.ManagedNamespace},{typ.JNIPackage},{typ.JNIType}");
-                }
-
-                File.WriteAllText($@"{filename}", sb.ToString());
-
-                return;
-            }
 
             static string GetNamespace(TypeDefinition typeDef)
             {

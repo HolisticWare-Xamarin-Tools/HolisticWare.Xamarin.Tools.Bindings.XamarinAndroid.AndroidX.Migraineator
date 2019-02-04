@@ -15,23 +15,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     {
         public partial class XmlDocumentData
         {
-            public void Dump()
-            {
-                if (null == comparison_results)
-                {
-                    //this.comparison_results = Merge();
-                }
-
-                this.Dump(comparison_results);
-                this.Dump(results_found);
-                this.Dump(packages_namespaces);
-                this.Dump(results_not_found_at_all, "NotFoundAtAll");
-                this.Dump(results_not_found_in_xas, "NotFoundInXamarinAndroidSupport");
-                this.Dump(results_not_found_in_xax, "NotFoundInXamarinAndroidX");
-
-                return;
-            }
-
             List
                 <
                     (
@@ -49,6 +32,64 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 > comparison_results = null;
 
 
+            public void Dump(string filename_base)
+            {
+                string path = Path.Combine
+                    (
+                        new string[]
+                        {
+                            Environment.CurrentDirectory,
+                            "..",
+                            "output"
+                        }
+                    );
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                string path_output = Path.Combine(path, "XmlDocument");
+                if (!Directory.Exists(path_output))
+                {
+                    Directory.CreateDirectory(path_output);
+                }
+
+                string filename = null;
+                Parallel.Invoke
+                (
+                    () =>           // Param #1 - lambda expression
+                    {
+                        filename = Path.Combine(path_output, $"API.{filename_base}.Namespaces.csv");
+                        this.DumpAPINamespaces(filename);
+                    },
+                    delegate ()      // Param #2 - in-line delegate
+                    {
+                        filename = Path.Combine(path_output, $"API.{filename_base}.Classes.csv");
+                        this.DumpAPIClasses(filename);
+                    },
+                    () =>
+                    {
+                        filename = Path.Combine(path_output, $"API.{filename_base}.Classes.csv");
+                        this.DumpAPIClasses(filename);
+                    },
+                    () =>
+                    {
+                        filename = Path.Combine(path_output, $"API.{filename_base}.ClassesInner.csv");
+                        this.DumpAPIClassesInner(filename);
+                    },
+                    () =>
+                    {
+                        filename = Path.Combine(path_output, $"API.{filename_base}.Interfaces.csv");
+                        this.DumpAPIInterfaces(filename);
+                    },
+                    () =>
+                    {
+                        filename = Path.Combine(path_output, $"API.{filename_base}.InterfacesFromClasses.csv");
+                        this.DumpAPIInterfacesFromClasses(filename);
+                    }
+                );
+
+                return;
+            }
 
             private void Dump
                 (
