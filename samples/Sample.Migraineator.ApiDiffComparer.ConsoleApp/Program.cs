@@ -163,19 +163,19 @@ namespace Sample.Migraineator.ConsoleApp
             await api_info_new_androidx.LoadAsync();
 
 
-            api_info_old_android_support.MonoCecilAPI.AnalyseAPI();
-            api_info_old_android_support.MonoCecilAPI.DumpAPI("Android.Support");
+            api_info_old_android_support.MonoCecilAPI.Analyse();
+            api_info_old_android_support.MonoCecilAPI.Dump("Android.Support");
 
-            api_info_new_androidx.MonoCecilAPI.AnalyseAPI();
-            api_info_new_androidx.MonoCecilAPI.DumpAPI("AndroidX");
+            api_info_new_androidx.MonoCecilAPI.Analyse();
+            api_info_new_androidx.MonoCecilAPI.Dump("AndroidX");
 
 
 
-            api_info_old_android_support.XmlDocumentAPI.AnalyseAPI();
-            api_info_old_android_support.XmlDocumentAPI.DumpAPI("AndroidX");
+            api_info_old_android_support.XmlDocumentAPI.Analyse();
+            api_info_old_android_support.XmlDocumentAPI.Dump("Android.Support");
 
-            api_info_new_androidx.XmlDocumentAPI.AnalyseAPI();
-            api_info_new_androidx.XmlDocumentAPI.DumpAPI("AndroidX");
+            api_info_new_androidx.XmlDocumentAPI.Analyse();
+            api_info_new_androidx.XmlDocumentAPI.Dump("AndroidX");
 
 
 
@@ -183,14 +183,31 @@ namespace Sample.Migraineator.ConsoleApp
             await api_info_new_androidx.XmlSerializerAPI.Deserialize();
 
 
+            api_comparer.MonoCecilAPI.MergeGoogleMappingsMaterial
+                                                (
+                                                    ApiComparer.GoogleClassMappings,
+                                                    ApiComparer.AndroidPackagesBlackList,
+                                                    api_info_old_android_support.MonoCecilAPI.TypesManaged,
+                                                    api_info_new_androidx.MonoCecilAPI.TypesManaged
+                                                );
+
             api_comparer.MonoCecilAPI.MergeGoogleMappings
                                                 (
                                                     ApiComparer.GoogleClassMappings,
                                                     ApiComparer.AndroidPackagesBlackList,
-                                                    api_info_old_android_support.MonoCecilAPI.Types,
-                                                    api_info_new_androidx.MonoCecilAPI.Types
+                                                    api_info_old_android_support.MonoCecilAPI.TypesManaged,
+                                                    api_info_new_androidx.MonoCecilAPI.TypesManaged
                                                 );
-            api_comparer.MonoCecilAPI.DumpAPI(prettyfied: true);
+            api_comparer.XmlDocumentAPI.MergeGoogleMappings
+                                                (
+                                                    ApiComparer.GoogleClassMappings,
+                                                    ApiComparer.AndroidPackagesBlackList,
+                                                    api_info_old_android_support.MonoCecilAPI.TypesManaged,
+                                                    api_info_new_androidx.MonoCecilAPI.TypesManaged
+                                                );
+
+            api_comparer.MonoCecilAPI.Dump(prettyfied: true);
+            api_comparer.XmlDocumentAPI.Dump(prettyfied: true);
 
             await AnalyseAsync("AndroidSupport", assembly_android_support);
             await AnalyseAsync("AndroidX", assembly_android_support);
