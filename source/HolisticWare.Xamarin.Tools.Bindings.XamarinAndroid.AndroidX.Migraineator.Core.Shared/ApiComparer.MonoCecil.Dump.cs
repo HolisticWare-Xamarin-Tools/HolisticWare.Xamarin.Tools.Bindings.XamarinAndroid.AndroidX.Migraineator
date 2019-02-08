@@ -85,7 +85,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                         },
                         () =>
                         {
-                            filename = Path.Combine(path_output, $"API.Mappings.Merged.Material");
+                            filename = Path.Combine(path_output, $"API.Mappings.Merged.Google.Material.with.Xamarin.Classes");
                             this.Dump
                                     (
                                         filename,
@@ -206,32 +206,32 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     int padding = 3
                 )
             {
-                int length_cn = -1;
-                int length_cn_max = -1;
+                int length_cn = 0;
+                int length_cn_max = 0;
 
-                int length_gm_as_cn_fq = -1;
-                int length_gm_as_cn_fq_max = -1;
+                int length_gm_as_cn_fq = 0;
+                int length_gm_as_cn_fq_max = 0;
 
-                int length_gm_ax_cn_fq = -1;
-                int length_gm_ax_cn_fq_max = -1;
+                int length_gm_ax_cn_fq = 0;
+                int length_gm_ax_cn_fq_max = 0;
 
-                int? length_as_cn_fq = -1;
-                int length_as_cn_fq_max = -1;
+                int? length_as_cn_fq = 0;
+                int length_as_cn_fq_max = 0;
 
-                int? length_ax_cn_fq = -1;
-                int length_ax_cn_fq_max = -1;
+                int? length_ax_cn_fq = 0;
+                int length_ax_cn_fq_max = 0;
 
-                int length_as_pn = -1;
-                int length_as_pn_max = -1;
+                int length_as_pn = 0;
+                int length_as_pn_max = 0;
 
-                int length_ax_pn = -1;
-                int length_ax_pn_max = -1;
+                int length_ax_pn = 0;
+                int length_ax_pn_max = 0;
 
-                int length_as_ns = -1;
-                int length_as_ns_max = -1;
+                int length_as_ns = 0;
+                int length_as_ns_max = 0;
 
-                int length_ax_ns = -1;
-                int length_ax_ns_max = -1;
+                int length_ax_ns = 0;
+                int length_ax_ns_max = 0;
 
                 foreach
                     (

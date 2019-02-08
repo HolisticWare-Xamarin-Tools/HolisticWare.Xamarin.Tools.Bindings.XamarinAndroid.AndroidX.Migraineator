@@ -137,22 +137,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                 )
                             >();
 
-                results_complete =
-                    new
-                        List<
-                                (
-                                    string ClassName,
-                                    string AndroidSupportClass,
-                                    string AndroidXClass,
-                                    string AndroidSupportClassFullyQualified,
-                                    string AndroidXClassFullyQualified,
-                                    // formatting space
-                                    string PackageAndroidSupport,
-                                    string PackageAndroidX,
-                                    string ManagedNamespaceXamarinAndroidSupport,
-                                    string ManagedNamespaceXamarinAndroidX
-                                )
-                            >();
 
                 packages_namespaces =
                     new
@@ -368,8 +352,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
                     //---------------------------------------------------------------------------------------
                     // skip blacklisted
-                    bool is_blacklisted_as = blacklisted_as.Contains(gm_as_pn);
-                    bool is_blacklisted_ax = blacklisted_ax.Contains(gm_ax_pn);
+                    bool is_blacklisted_as = blacklisted_as.Any(pn => gm_as_pn.StartsWith(pn));
+                    bool is_blacklisted_ax = blacklisted_ax.Any(pn => gm_ax_pn.StartsWith(pn));
 
                     if (is_blacklisted_as && is_blacklisted_ax)
                     {
@@ -386,7 +370,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     var as_c = from as_class in android_support
                                where
                                     (
-                                        gm_as_cn_fq == $"{as_class.ManagedNamespace.ToLower()}.{as_class.ManagedClass}"
+                                        gm_as_cn_fq == $"{as_class.JNIPackage}.{as_class.ManagedClass}"
                                     )
                                select
                                         as_class
@@ -395,138 +379,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     var ax_c = from ax_class in androidx
                                where
                                     (
-                                        gm_ax_cn_fq == $"{ax_class.ManagedNamespace.ToLower()}.{ax_class.ManagedClass}"
+                                        gm_ax_cn_fq == $"{ax_class.JNIPackage}.{ax_class.ManagedClass}"
                                     )
                                select
                                         ax_class
                                ;
 
-
-
-                    // material fixes
-                    if
-                        (
-                            //gm_ax_cn_fq.Contains("com.google.android.material")
-                            gm_ax_pn == "com.google.android.material"
-
-                        )
-                    {
-                        ax_c = from ax_class in androidx
-                               where
-                                    (
-                                        gm_ax_cn_fq == $"{ax_class.JNIPackage}.{ax_class.ManagedClass}"
-                                    )
-                               select
-                                    ax_class
-                                        ;
-                        as_c = from as_class in android_support
-                               where
-                                    (
-                                        gm_as_cn_fq == $"{as_class.JNIPackage}.{as_class.ManagedClass}"
-                                    )
-                               select
-                                   as_class
-                                        ;
-
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        try
-                        {
-                            var as_found = as_c.FirstOrDefault();
-                            var ax_found = ax_c.FirstOrDefault();
-
-                            if (as_found != (null, null, null, null))
-                            {
-                                class_name_fq_xamarin_android_support = $"{as_found.ManagedNamespace}.{as_found.ManagedClass}";
-                                ns_xamarin_android_support = $"{as_found.ManagedNamespace}";
-                            }
-                            if (ax_found != (null, null, null, null))
-                            {
-                                class_name_fq_xamarin_androidx = $"{ax_found.ManagedNamespace}.{ax_found.ManagedClass}";
-                                ns_xamarin_androidx = $"{ax_found.ManagedNamespace}";
-                            }
-                        }
-                        catch (Exception exc)
-                        {
-                            string msg = exc.Message;
-                        }
-                        finally
-                        {
-
-                        }
-                        results_found_material.Add
-                            (
-                                (
-                                    ClassName: cn,
-                                    AndroidSupportClass: gm_as_cn_fq,
-                                    AndroidXClass: gm_ax_cn_fq,
-                                    AndroidSupportClassFullyQualified: class_name_fq_xamarin_android_support,
-                                    AndroidXClassFullyQualified: class_name_fq_xamarin_androidx,
-                                    // formatting space
-                                    PackageAndroidSupport: gm_as_pn,
-                                    PackageAndroidX: gm_ax_pn,
-                                    ManagedNamespaceXamarinAndroidSupport: ns_xamarin_android_support,
-                                    ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
-                                )
-                            );
-                        Console.WriteLine($"MATERIAL found: {class_name_fq_xamarin_android_support}");
-                        Console.WriteLine($"MATERIAL found: {class_name_fq_xamarin_androidx}");
-                    }
-
-
-                    if
-                    (
-                        gm_as_cn_fq.Contains("android.support.transition.")
-                        &&
-                        gm_ax_cn_fq.Contains("androidx.transition.")
-                    )
-                    {
-                        ax_c = from ax_class in androidx
-                               where
-                                    (
-                                            gm_ax_cn_fq == $"{ax_class.JNIPackage}.{ax_class.ManagedClass}"
-                                    )
-                               select
-                                    ax_class
-                                        ;
-                        as_c = from as_class in android_support
-                               where
-                                    (
-                                             gm_as_cn_fq == $"{as_class.JNIPackage}.{as_class.ManagedClass}"
-                                    )
-                               select
-                                   as_class
-                                        ;
-
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        try
-                        {
-                            var as_found = as_c.FirstOrDefault();
-                            var ax_found = ax_c.FirstOrDefault();
-
-                            if (as_found != (null, null, null, null))
-                            {
-                                class_name_fq_xamarin_android_support = $"{as_found.ManagedNamespace}.{as_found.ManagedClass}";
-                                ns_xamarin_android_support = $"{as_found.ManagedNamespace}";
-                            }
-                            if (ax_found != (null, null, null, null))
-                            {
-                                class_name_fq_xamarin_androidx = $"{ax_found.ManagedNamespace}.{ax_found.ManagedClass}";
-                                ns_xamarin_androidx = $"{ax_found.ManagedNamespace}";
-                            }
-                        }
-                        catch (Exception exc)
-                        {
-                            string msg = exc.Message;
-                            Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.WriteLine($"Transitons exception: {msg}");
-                        }
-                        finally
-                        {
-
-                        }
-                        Console.WriteLine($"Transitons found: {class_name_fq_xamarin_android_support}");
-                        Console.WriteLine($"Transitons found: {class_name_fq_xamarin_androidx}");
-                    }
 
                     int n_results_as_c = as_c.Count();
                     int n_results_ax_c = ax_c.Count();
@@ -544,12 +402,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
                     var as_c_found = as_c.FirstOrDefault();
                     var ax_c_found = ax_c.FirstOrDefault();
+
+
                     if (n_results_as_c == 1 && n_results_ax_c == 1)
                     {
                         // found exact match
                         if (as_c_found.ManagedClass == ax_c_found.ManagedClass)
                         {
-                            cn = as_c_found.ManagedClass;
+                            cn = ax_c_found.ManagedClass; // cn = gm_as_cn; cn = gm_ax_cn;
                             ns_xamarin_android_support = $"{as_c_found.ManagedNamespace}";
                             ns_xamarin_androidx = $"{ax_c_found.ManagedNamespace}";
                             class_name_fq_xamarin_android_support = $"{ns_xamarin_android_support}.{cn}";
@@ -557,77 +417,146 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                             Console.WriteLine($"merge class/type found: {cn} in BOTH Xamarin Android.Support and AndroidX ");
+                            Console.WriteLine($"            Android.Support: {ns_xamarin_android_support}.{cn}");
+                            Console.WriteLine($"            Android.Support: {gm_as_pn}.{cn}");
+                            Console.WriteLine($"            AndroidX       : {ns_xamarin_androidx}.{cn}");
+                            Console.WriteLine($"            AndroidX       : {gm_ax_pn}.{cn}");
+                            if (gm_ax_pn.Contains("material"))
+                            {
+                                Console.WriteLine($"            MATERIAL");
+                            }
+
+                            result_found =
+                                        (
+                                            ClassName: cn,
+                                            AndroidSupportClass: gm_as_cn_fq,
+                                            AndroidXClass: gm_ax_cn_fq,
+                                            AndroidSupportClassFullyQualified: class_name_fq_xamarin_android_support,
+                                            AndroidXClassFullyQualified: class_name_fq_xamarin_androidx,
+                                            // formatting space
+                                            PackageAndroidSupport: gm_as_pn,
+                                            PackageAndroidX: gm_ax_pn,
+                                            ManagedNamespaceXamarinAndroidSupport: ns_xamarin_android_support,
+                                            ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
+                                        );
+                            results_found.Add(result_found);
                         }
                     }
-                    else if (n_results_as_c == 0 || n_results_ax_c == 0)
+                    else if (n_results_as_c == 0 && n_results_ax_c == 1)
                     {
-                        // not found
-                        if (n_results_as_c == 0 && n_results_ax_c >= 1)
-                        {
-                            result_not_found_in_xas =
-                                (
-                                    ClassName: cn,
-                                    AndroidSupportClass: gm_as_cn_fq,
-                                    AndroidXClass: gm_ax_cn_fq,
-                                    AndroidSupportClassFullyQualified: class_name_fq_xamarin_android_support,
-                                    AndroidXClassFullyQualified: class_name_fq_xamarin_androidx,
-                                    // formatting space
-                                    PackageAndroidSupport: gm_as_pn,
-                                    PackageAndroidX: gm_ax_pn,
-                                    ManagedNamespaceXamarinAndroidSupport: ns_xamarin_android_support,
-                                    ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
-                                );
-                            results_not_found_in_xas.Add(result_not_found_in_xas);
-                            results_missing_in_xamarin_android_support_cn.Add(cn);
+                        cn = ax_c_found.ManagedClass; // cn = gm_as_cn; cn = gm_ax_cn;
+                        ns_xamarin_android_support = null;
+                        ns_xamarin_androidx = $"{ax_c_found.ManagedNamespace}";
+                        class_name_fq_xamarin_android_support = null;
+                        class_name_fq_xamarin_androidx = $"{ns_xamarin_androidx}.{cn}";
 
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            Console.WriteLine($"merge class/type NOT found: {cn} in Xamarin Android.Support ");
-                        }
-                        if (n_results_ax_c == 0 && n_results_as_c >= 1)
-                        {
-                            result_not_found_in_xax =
-                                (
-                                    ClassName: cn,
-                                    AndroidSupportClass: gm_as_cn_fq,
-                                    AndroidXClass: gm_ax_cn_fq,
-                                    AndroidSupportClassFullyQualified: class_name_fq_xamarin_android_support,
-                                    AndroidXClassFullyQualified: class_name_fq_xamarin_androidx,
-                                    // formatting space
-                                    PackageAndroidSupport: gm_as_pn,
-                                    PackageAndroidX: gm_ax_pn,
-                                    ManagedNamespaceXamarinAndroidSupport: ns_xamarin_android_support,
-                                    ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
-                                );
-                            results_not_found_in_xax.Add(result_not_found_in_xax);
-                            results_missing_in_xamarin_androidx_cn.Add(cn);
+                        result_found =
+                                    (
+                                        ClassName: cn,
+                                        AndroidSupportClass: gm_as_cn_fq,
+                                        AndroidXClass: gm_ax_cn_fq,
+                                        AndroidSupportClassFullyQualified: class_name_fq_xamarin_android_support,
+                                        AndroidXClassFullyQualified: class_name_fq_xamarin_androidx,
+                                        // formatting space
+                                        PackageAndroidSupport: gm_as_pn,
+                                        PackageAndroidX: gm_ax_pn,
+                                        ManagedNamespaceXamarinAndroidSupport: ns_xamarin_android_support,
+                                        ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
+                                    );
+                        result_not_found_in_xas = result_found;
 
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            Console.WriteLine($"merge class/type NOT found: {cn} in Xamarin AndroidX ");
-                        }
-                        if (n_results_as_c == 0 && n_results_ax_c == 0)
-                        {
-                            result_not_found_at_all =
-                                (
-                                    ClassName: cn,
-                                    AndroidSupportClass: gm_as_cn_fq,
-                                    AndroidXClass: gm_ax_cn_fq,
-                                    AndroidSupportClassFullyQualified: class_name_fq_xamarin_android_support,
-                                    AndroidXClassFullyQualified: class_name_fq_xamarin_androidx,
-                                    // formatting space
-                                    PackageAndroidSupport: gm_as_pn,
-                                    PackageAndroidX: gm_ax_pn,
-                                    ManagedNamespaceXamarinAndroidSupport: ns_xamarin_android_support,
-                                    ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
-                                );
-                            results_not_found_at_all.Add(result_not_found_at_all);
-                            results_missing_in_xamarin_androidx_cn.Add(cn);
-                            results_missing_in_xamarin_android_support_cn.Add(cn);
+                        results_not_found_in_xas.Add(result_not_found_in_xas);
+                        results_missing_in_xamarin_android_support_cn.Add(cn);
 
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine($"merge class/type NOT found: {cn} in either Xamarin Android.Support or AndroidX");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine($"merge class/type NOT found: {cn} in Xamarin Android.Support ");
+                        Console.WriteLine($"            Android.Support: {ns_xamarin_android_support}.{cn}");
+                        Console.WriteLine($"            Android.Support: {gm_as_pn}.{cn}");
+                        Console.WriteLine($"            AndroidX       : {ns_xamarin_androidx}.{cn}");
+                        Console.WriteLine($"            AndroidX       : {gm_ax_pn}.{cn}");
+                        if (gm_ax_pn.Contains("material"))
+                        {
+                            Console.WriteLine($"            MATERIAL");
                         }
+
+                        results_found.Add(result_found);
                     }
-                    else if (n_results_as_c > 1 || n_results_ax_c > 1)
+                    else if (n_results_as_c == 1 && n_results_ax_c == 0)
+                    {
+                        cn = as_c_found.ManagedClass; // cn = gm_as_cn; cn = gm_ax_cn;
+                        ns_xamarin_android_support = $"{as_c_found.ManagedNamespace}";
+                        ns_xamarin_androidx = null;
+                        class_name_fq_xamarin_android_support = $"{ns_xamarin_android_support}.{cn}";
+                        class_name_fq_xamarin_androidx = null;
+
+                        result_found =
+                                    (
+                                        ClassName: cn,
+                                        AndroidSupportClass: gm_as_cn_fq,
+                                        AndroidXClass: gm_ax_cn_fq,
+                                        AndroidSupportClassFullyQualified: class_name_fq_xamarin_android_support,
+                                        AndroidXClassFullyQualified: class_name_fq_xamarin_androidx,
+                                        // formatting space
+                                        PackageAndroidSupport: gm_as_pn,
+                                        PackageAndroidX: gm_ax_pn,
+                                        ManagedNamespaceXamarinAndroidSupport: ns_xamarin_android_support,
+                                        ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
+                                    );
+                        result_not_found_in_xax = result_found;
+
+                        results_not_found_in_xax.Add(result_not_found_in_xax);
+                        results_missing_in_xamarin_androidx_cn.Add(cn);
+
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine($"merge class/type NOT found: {cn} in Xamarin AndroidX ");
+                        Console.WriteLine($"            Android.Support: {ns_xamarin_android_support}.{cn}");
+                        Console.WriteLine($"            Android.Support: {gm_as_pn}.{cn}");
+                        Console.WriteLine($"            AndroidX       : {ns_xamarin_androidx}.{cn}");
+                        Console.WriteLine($"            AndroidX       : {gm_ax_pn}.{cn}");
+                        if (gm_ax_pn.Contains("material"))
+                        {
+                            Console.WriteLine($"            MATERIAL");
+                        }
+
+                        results_found.Add(result_found);
+                    }
+                    else if (n_results_as_c == 0 && n_results_ax_c == 0)
+                    {
+                        cn = as_c_found.ManagedClass;
+                        ns_xamarin_android_support = null;
+                        ns_xamarin_androidx = null;
+                        class_name_fq_xamarin_android_support = null;
+                        class_name_fq_xamarin_androidx = null;
+
+                        result_found =
+                                    (
+                                        ClassName: cn,
+                                        AndroidSupportClass: gm_as_cn_fq,
+                                        AndroidXClass: gm_ax_cn_fq,
+                                        AndroidSupportClassFullyQualified: class_name_fq_xamarin_android_support,
+                                        AndroidXClassFullyQualified: class_name_fq_xamarin_androidx,
+                                        // formatting space
+                                        PackageAndroidSupport: gm_as_pn,
+                                        PackageAndroidX: gm_ax_pn,
+                                        ManagedNamespaceXamarinAndroidSupport: ns_xamarin_android_support,
+                                        ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
+                                    );
+                        result_not_found_at_all = result_found;
+
+                        results_not_found_at_all.Add(result_not_found_at_all);
+                        results_missing_in_xamarin_androidx_cn.Add(cn);
+                        results_missing_in_xamarin_android_support_cn.Add(cn);
+
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"merge class/type NOT found: {cn} in either Xamarin Android.Support or AndroidX");
+                        Console.WriteLine($"            Android.Support: {ns_xamarin_android_support}.{cn}");
+                        Console.WriteLine($"            Android.Support: {gm_as_pn}.{cn}");
+                        Console.WriteLine($"            AndroidX       : {ns_xamarin_androidx}.{cn}");
+                        Console.WriteLine($"            AndroidX       : {gm_ax_pn}.{cn}");
+
+                        results_found.Add(result_found);
+                    }
+                    else 
                     {
                         // found ambiguous (more results)
 
@@ -640,26 +569,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
                         Console.ForegroundColor = ConsoleColor.Magenta;
                         Console.WriteLine($"merge class/type AMBIGUITY found: {cn}");
-                    }
-                    else
-                    {
+
                         throw new InvalidProgramException("mc++ nothing covered");
                     }
+
                     Console.ResetColor();
 
-                    result_found =
-                                (
-                                    ClassName: cn,
-                                    AndroidSupportClass: gm_as_cn_fq,
-                                    AndroidXClass: gm_ax_cn_fq,
-                                    AndroidSupportClassFullyQualified: class_name_fq_xamarin_android_support,
-                                    AndroidXClassFullyQualified: class_name_fq_xamarin_androidx,
-                                    // formatting space
-                                    PackageAndroidSupport: gm_as_pn,
-                                    PackageAndroidX: gm_ax_pn,
-                                    ManagedNamespaceXamarinAndroidSupport: ns_xamarin_android_support,
-                                    ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
-                                );
                     package_namespace =
                                 (
                                     PackageAndroidSupport: gm_as_pn,
@@ -668,24 +583,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                     ManagedNamespaceXamarinAndroidX: ns_xamarin_androidx
                                 );
 
-                    results_found.Add(result_found);
 
-                    if (class_name_fq_xamarin_android_support != null && class_name_fq_xamarin_androidx == null)
-                    {
-                        results_missing_in_xamarin_androidx.Add(result_found);
-                    }
-                    else if (class_name_fq_xamarin_android_support == null && class_name_fq_xamarin_androidx != null)
-                    {
-                        results_missing_in_xamarin_android_support.Add(result_found);
-                    }
-                    else if (class_name_fq_xamarin_android_support == null && class_name_fq_xamarin_androidx == null)
-                    {
-                        results_missing_completely.Add(result_found);
-                    }
-                    else
-                    {
-                        results_complete.Add(result_found);
-                    }
                     //yield return result_found;
 
                     packages_namespaces.Add(package_namespace);
@@ -779,23 +677,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     )
                 >
                     results_missing_completely;
-
-            List<
-                    (
-                        string ClassName,
-                        string AndroidSupportClass,
-                        string AndroidXClass,
-                        string AndroidSupportClassFullyQualified,
-                        string AndroidXClassFullyQualified,
-                        // formatting space
-                        string PackageAndroidSupport,
-                        string PackageAndroidX,
-                        string ManagedNamespaceXamarinAndroidSupport,
-                        string ManagedNamespaceXamarinAndroidX
-                    )
-                >
-                    results_complete;
-
+                
             List<
                     (
                         string ClassName,

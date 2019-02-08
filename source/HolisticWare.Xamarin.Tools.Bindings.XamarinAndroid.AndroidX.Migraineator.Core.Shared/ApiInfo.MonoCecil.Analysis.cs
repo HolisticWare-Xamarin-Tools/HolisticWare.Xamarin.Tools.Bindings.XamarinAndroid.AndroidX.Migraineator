@@ -17,129 +17,134 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     {
         public partial class MonoCecilData
         {
+            AssemblyDefinition asm = null;
             public void Analyse()
             {
-                AssemblyDefinition asm = AssemblyDefinition.ReadAssembly
-                                                                      (
-                                                                          file_name,
-                                                                          new ReaderParameters
-                                                                          {
-                                                                              AssemblyResolver = CreateAssemblyResolver()
-                                                                          }
-                                                                      );
+                asm = AssemblyDefinition.ReadAssembly
+                                              (
+                                                  file_name,
+                                                  new ReaderParameters
+                                                  {
+                                                      AssemblyResolver = CreateAssemblyResolver()
+                                                  }
+                                              );
 
-                IEnumerable<TypeDefinition> allTypes;
-                allTypes = asm.MainModule.GetAllTypes();
+                Initialize();
 
-                Parallel.Invoke
-                (
-                    () =>
-                    {
-                        GetTypesAndroidRegistered(allTypes);
-                    },
-                    () =>
-                    {
-                        GetTypes(allTypes);
-                    }
-                );
+                GetTypes();
 
                 return;
             }
 
-            private void GetTypesAndroidRegistered(IEnumerable<TypeDefinition> allTypes)
+            static string GetNamespace(TypeDefinition typeDef)
             {
-                List<
-                        (
-                            string ManagedClass, 
-                            string ManagedNamespace, 
-                            string JNIPackage, 
-                            string JNIType
-                        )
-                    > info = null;
+                var td = typeDef;
+                var ns = typeDef.Namespace;
 
-                info = new List<
-                                    (
-                                        string ManagedClass,
-                                        string ManagedNamespace,
-                                        string JNIPackage,
-                                        string JNIType
-                                    )
-                                >();
-
-                foreach (TypeDefinition t in allTypes)
+                while (string.IsNullOrEmpty(ns))
                 {
-                    foreach (CustomAttribute attr in t.CustomAttributes)
-                    {
-                        if (attr.AttributeType.FullName.Equals("Android.Runtime.RegisterAttribute"))
-                        {
-                            string jniType = attr.ConstructorArguments[0].Value.ToString();
-
-                            int lastSlash = jniType.LastIndexOf('/');
-
-                            string jniClass = jniType.Substring(lastSlash + 1).Replace('$', '.');
-                            string jniPkg = jniType.Substring(0, lastSlash).Replace('/', '.');
-
-                            string mngdClass = GetTypeName(t);
-                            string mngdNs = GetNamespace(t);
-
-                            info.Add(
-                                         (
-                                             ManagedClass: mngdClass,
-                                             ManagedNamespace: mngdNs,
-                                             JNIPackage: jniPkg,
-                                             JNIType: jniType
-                                         )
-                                     );
-                        }
-                    }
+                    if (td.DeclaringType == null)
+                        break;
+                    ns = td.DeclaringType.Namespace;
+                    td = td.DeclaringType;
                 }
 
-                this.TypesAndroidRegistered = info;
+                return ns;
             }
 
-            private void GetTypes(IEnumerable<TypeDefinition> allTypes)
+            static string GetTypeName(TypeDefinition typeDef)
             {
-                List<
-                        (
-                            string ManagedClass,
-                            string ManagedNamespace,
-                            string JNIPackage,
-                            string JNIType
-                        )
-                    > info = null;
+                var td = typeDef;
+                var tn = typeDef.Name;
 
-                info = new List<
-                                    (
-                                        string ManagedClass,
-                                        string ManagedNamespace,
-                                        string JNIPackage,
-                                        string JNIType
-                                    )
-                                >();
-
-                foreach (TypeDefinition t in allTypes)
+                while (td.DeclaringType != null)
                 {
-                    foreach (CustomAttribute attr in t.CustomAttributes)
-                    {
-                        if (attr.AttributeType.FullName.Equals("Android.Runtime.RegisterAttribute"))
-                        {
-                            continue;
-                        }
-                    }
-                    string mngdClass = GetTypeName(t);
-                    string mngdNs = GetNamespace(t);
-
-                    info.Add(
-                                 (
-                                     ManagedClass: mngdClass,
-                                     ManagedNamespace: mngdNs,
-                                     JNIPackage: "managed type",
-                                     JNIType: "managed type"
-                                 )
-                             );
+                    tn = td.DeclaringType.Name + "." + tn;
+                    td = td.DeclaringType;
                 }
 
-                this.TypesManaged = info;
+                return tn;
+            }
+
+            private void GetTypes()
+            {
+                Console.WriteLine("Scraping ....");
+
+                foreach (TypeDefinition t in asm.MainModule.Types)
+                {
+
+                    string managed_class = GetTypeName(t);
+                    string managed_namespace = GetNamespace(t);
+
+                    Console.WriteLine($"        Class                : {managed_class}");
+                    Console.WriteLine($"            FullName         : {t.FullName}");
+                    Console.WriteLine($"            Managed Namespace: {managed_namespace}");
+
+                    if (t.HasCustomAttributes)
+                    {
+                        // 
+                        foreach (CustomAttribute attr in t.CustomAttributes)
+                        {
+                            if (attr.AttributeType.FullName.Equals("Android.Runtime.RegisterAttribute"))
+                            {
+                                string jni_type = attr.ConstructorArguments[0].Value.ToString();
+
+                                int lastSlash = jni_type.LastIndexOf('/');
+
+                                string jni_class = jni_type.Substring(lastSlash + 1).Replace('$', '.');
+                                string jni_package = jni_type.Substring(0, lastSlash).Replace('/', '.');
+
+                                this.TypesAndroidRegistered.Add
+                                                                (
+                                                                    (
+                                                                        ManagedClass: managed_class,
+                                                                        ManagedNamespace: managed_namespace,
+                                                                        JNIPackage: jni_package,
+                                                                        JNIType: jni_type
+                                                                    )
+                                                                );
+
+                            }
+                        }
+                    }
+
+                    this.TypesNotAndroidRegistered.Add
+                            (
+                                (
+                                    ManagedClass: managed_class,
+                                    ManagedNamespace: managed_namespace,
+                                    JNIPackage: "managed - not Android registered",
+                                    JNIType: "managed - not Android registered"
+                                )
+                            );
+                }
+
+                return;
+            }
+
+            private void Initialize()
+            {
+                this.TypesAndroidRegistered =
+                                                new List<
+                                                            (
+                                                                string ManagedClass,
+                                                                string ManagedNamespace,
+                                                                string JNIPackage,
+                                                                string JNIType
+                                                            )
+                                                        >();
+
+                this.TypesNotAndroidRegistered =
+                                                new List<
+                                                            (
+                                                                string ManagedClass,
+                                                                string ManagedNamespace,
+                                                                string JNIPackage,
+                                                                string JNIType
+                                                            )
+                                                        >();
+
+                return;
             }
         }
     }

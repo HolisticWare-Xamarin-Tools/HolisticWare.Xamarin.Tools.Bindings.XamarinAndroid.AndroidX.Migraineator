@@ -36,6 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.MonoCecil.Merge.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)ApiComparer.MonoCecil.Dump.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="$(MSBuildThisFileDirectory)ApiInfo.MonoCecil.Dump.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BuildProject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)CharacterSeparatedValues\" />

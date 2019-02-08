@@ -45,22 +45,21 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     (
                         () =>
                         {
-                            filename = Path.Combine(path_output, $"API.{filename_base}.TypesManaged.csv");
-                            this.DumpTypesManaged(filename);
+                            filename = Path.Combine(path_output, $"API.{filename_base}.TypesAndroidRegistered.csv");
+                            this.DumpTypesAndroidRegistered(filename);
                         },
                         () =>
                         {
-                            filename = Path.Combine(path_output, $"API.{filename_base}.TypesAndroidRegistered.csv");
-                            this.DumpTypesAndroidRegistered(filename);
+                            filename = Path.Combine(path_output, $"API.{filename_base}.TypesNotAndroidRegistered.csv");
+                            this.DumpTypesNotAndroidRegistered(filename);
                         }
                     );
 
                 return;
             }
 
-            private void DumpTypesManaged(string filename)
+            private void DumpTypesNotAndroidRegistered(string filename)
             {
-                List<string> dump = new List<string>();
                 StringBuilder sb = new StringBuilder();
 
                 foreach
@@ -70,7 +69,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                         string ManagedNamespace,
                         string JNIPackage,
                         string JNIType
-                    ) typ in this.TypesManaged
+                    ) typ in this.TypesNotAndroidRegistered
                 )
                 {
                     sb.AppendLine($"{typ.ManagedClass},{typ.ManagedNamespace},{typ.JNIPackage},{typ.JNIType}");
@@ -83,7 +82,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
             private void DumpTypesAndroidRegistered(string filename)
             {
-                List<string> dump = new List<string>();
                 StringBuilder sb = new StringBuilder();
 
                 foreach
@@ -103,6 +101,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
                 return;
             }
+
         }
     }
 }
