@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -102,6 +102,8 @@ namespace Sample.Migraineator.ConsoleApp
                     @"../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.api-info.previous.xml"
                     ;
             }
+            BuildProject bp1 = new BuildProject(@"../../../../X/AndroidSupportComponents-AndroidX-binderate/");
+            var a = bp1.ProjectFiles(bp1.FolderWithGenerated);
 
             Task t = ProcessApiInfoFilesAsync
                             (
@@ -183,28 +185,21 @@ namespace Sample.Migraineator.ConsoleApp
             await api_info_new_androidx.XmlSerializerAPI.Deserialize();
 
 
-            api_comparer.MonoCecilAPI.MergeGoogleMappingsMaterial
-                                                (
-                                                    ApiComparer.GoogleClassMappings,
-                                                    ApiComparer.AndroidPackagesBlackList,
-                                                    api_info_old_android_support.MonoCecilAPI.TypesManaged,
-                                                    api_info_new_androidx.MonoCecilAPI.TypesManaged
-                                                );
-
             api_comparer.MonoCecilAPI.MergeGoogleMappings
                                                 (
                                                     ApiComparer.GoogleClassMappings,
                                                     ApiComparer.AndroidPackagesBlackList,
-                                                    api_info_old_android_support.MonoCecilAPI.TypesManaged,
-                                                    api_info_new_androidx.MonoCecilAPI.TypesManaged
+                                                    api_info_old_android_support.MonoCecilAPI.TypesAndroidRegistered,
+                                                    api_info_new_androidx.MonoCecilAPI.TypesAndroidRegistered
                                                 );
-            api_comparer.XmlDocumentAPI.MergeGoogleMappings
-                                                (
-                                                    ApiComparer.GoogleClassMappings,
-                                                    ApiComparer.AndroidPackagesBlackList,
-                                                    api_info_old_android_support.MonoCecilAPI.TypesManaged,
-                                                    api_info_new_androidx.MonoCecilAPI.TypesManaged
-                                                );
+                                                    
+            //api_comparer.XmlDocumentAPI.MergeGoogleMappings
+                                                //(
+                                                //    ApiComparer.GoogleClassMappings,
+                                                //    ApiComparer.AndroidPackagesBlackList,
+                                                //    api_info_old_android_support.XmlDocumentAPI.TypesAndroidRegistered,
+                                                //    api_info_new_androidx.XmlDocumentAPI.TypesAndroidRegistered
+                                                //);
 
             api_comparer.MonoCecilAPI.Dump(prettyfied: true);
             api_comparer.XmlDocumentAPI.Dump(prettyfied: true);
