@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -607,19 +607,34 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         }
 
 
-        public List<(string OldAndroidSupport, string NewAndroidX)> MappingsArtifacts
+        public List <
+                        (
+                            string ArtifactAndroidSupport, 
+                            string ArtifactAndroidX
+                        )
+                    > MappingsArtifacts
         {
             get;
             protected set;
         }
 
-        public List<(string OldAndroidSupport, string NewAndroidX)> MappingsNamespaces
+        public List <
+                        (
+                            string NamespaceAndroidSupport, 
+                            string NamespaceAndroidX
+                        )
+                    > MappingsNamespaces
         {
             get;
             protected set;
         }
 
-        public List<(string OldAndroidSupport, string NewAndroidX)> MappingsClasses
+        public List <
+                        (
+                            string ClassAndroidSupport, 
+                            string ClassAndroidX
+                        )
+                    > MappingsClasses
         {
             get;
             protected set;
@@ -633,7 +648,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                             StringSplitOptions.RemoveEmptyEntries
                                         );
 
-            this.MappingsNamespaces = new List<(string OldAndroidSupport, string NewAndroidX)>();
+            this.MappingsNamespaces = new List<(string ArtifactAndroidSupport, string ArtifactAndroidX)>();
 
             for (int i = 0; i < lines.Length; i++)
             {
@@ -642,17 +657,17 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                             new char[] { ',' },
                                             StringSplitOptions.RemoveEmptyEntries
                                         );
-                (string OldAndroidSupport, string NewAndroidX) t = (columns[0], columns[2]);
+                (string ArtifactAndroidSupport, string ArtifactAndroidX) t = (columns[0], columns[2]);
                 MappingsNamespaces.Add(t);
             }
 
             // replacing long strngs 1st - less chances to replace partial (substrings)
-            List<(string OldAndroidSupport, string NewAndroidX)> ns =
+            List<(string ArtifactAndroidSupport, string ArtifactAndroidX)> ns =
                 (
-                    from (string OldAndroidSupport, string NewAndroidX) mapping in MappingsNamespaces
-                    orderby mapping.OldAndroidSupport.Length descending
+                    from (string ArtifactAndroidSupport, string ArtifactAndroidX) mapping in MappingsNamespaces
+                    orderby mapping.ArtifactAndroidSupport.Length descending
                     select mapping
-                ).ToList<(string OldAndroidSupport, string NewAndroidX)>();
+                ).ToList<(string ArtifactAndroidSupport, string ArtifactAndroidX)>();
 
             this.MappingsNamespaces = ns;
 
@@ -685,8 +700,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                             {
                                 for (int i = 0; i < this.MappingsNamespaces.Count; i++)
                                 {
-                                    string namepsace_old = this.MappingsNamespaces[i].OldAndroidSupport;
-                                    string namepsace_new = this.MappingsNamespaces[i].NewAndroidX;
+                                    string namepsace_old = this.MappingsNamespaces[i].NamespaceAndroidSupport;
+                                    string namepsace_new = this.MappingsNamespaces[i].NamespaceAndroidX;
 
 
                                     string search = $"package[@name='{namepsace_old}']";
@@ -734,14 +749,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 content = await reader.ReadToEndAsync();
             }
 
-            await Task.Run
+            Parallel.Invoke
                         (
                             () =>
                             {
                                 for (int i = 0; i < this.MappingsNamespaces.Count; i++)
                                 {
-                                    string namepsace_old = this.MappingsNamespaces[i].OldAndroidSupport;
-                                    string namepsace_new = this.MappingsNamespaces[i].NewAndroidX;
+                                    string namepsace_old = this.MappingsNamespaces[i].NamespaceAndroidSupport;
+                                    string namepsace_new = this.MappingsNamespaces[i].NamespaceAndroidX;
 
 
                                     string search = $"package[@name='{namepsace_old}']";
@@ -763,6 +778,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                                 ref replace
                                             );
                                 }
+                            },
+                            () =>
+                            {
+
                             }
                         );
 
@@ -916,6 +935,21 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             get;
             set;
         }
+
+
+        public List<
+                        (
+                            string AtifactAndroidSupport,
+                            string AtifactAndroidX,
+                            string ManagedAssemblyAndroidSupport,
+                            string ManagedAssemblyAndroidX
+                        )
+                    > MappingAndroidArtifacts_X_ManagedAssemblies
+        {
+            get;
+            protected set;
+        }
+
 
         public async Task<ApiInfo> ApiInfo(string file_input)
         {

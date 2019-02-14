@@ -10,19 +10,34 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 {
     public partial class AndroidXMigrator
     {
-        public List<(string OldAndroidSupport, string NewAndroidX)> MappingsArtifacts
+        public List <
+                        (
+                            string ArtifactAndroidSupport, 
+                            string ArtifactAndroidX
+                        )
+                    > MappingsArtifacts
         {
             get;
             protected set;
         }
 
-        public List<(string OldAndroidSupport, string NewAndroidX)> MappingsNamespaces
+        public List<
+                        (
+                            string NamespaceAndroidSupport,
+                            string NamespaceAndroidX
+                        )
+                    > MappingsNamespaces
         {
             get;
             protected set;
         }
 
-        public List<(string OldAndroidSupport, string NewAndroidX)> MappingsClasses
+        public List <
+                        (
+                            string ClassAndroidSupport,
+                            string ClassArtifactAndroidX
+                        )
+                    > MappingsClasses
         {
             get;
             protected set;
@@ -162,8 +177,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                             {
                                 for (int i = 0; i < this.MappingsNamespaces.Count; i++)
                                 {
-                                    string namepsace_old = this.MappingsNamespaces[i].OldAndroidSupport;
-                                    string namepsace_new = this.MappingsNamespaces[i].NewAndroidX;
+                                    string namepsace_old = this.MappingsNamespaces[i].NamespaceAndroidSupport;
+                                    string namepsace_new = this.MappingsNamespaces[i].NamespaceAndroidX;
 
 
                                     string search = $"package[@name='{namepsace_old}']";
@@ -217,8 +232,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                             {
                                 for (int i = 0; i < this.MappingsNamespaces.Count; i++)
                                 {
-                                    string namepsace_old = this.MappingsNamespaces[i].OldAndroidSupport;
-                                    string namepsace_new = this.MappingsNamespaces[i].NewAndroidX;
+                                    string namepsace_old = this.MappingsNamespaces[i].NamespaceAndroidSupport;
+                                    string namepsace_new = this.MappingsNamespaces[i].NamespaceAndroidX;
 
 
                                     string search = $"package[@name='{namepsace_old}']";

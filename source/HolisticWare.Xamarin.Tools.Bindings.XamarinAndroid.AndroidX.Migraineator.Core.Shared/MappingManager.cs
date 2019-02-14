@@ -39,8 +39,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         public static
             ReadOnlyCollection<
                                     (
-                                        string AndroidSupportArtifact,
-                                        string AndroidXArtifact
+                                        string ArtifactAndroidSupport,
+                                        string ArtifactAndroidX
                                     )
                                 >
                 GoogleArtifactMappings

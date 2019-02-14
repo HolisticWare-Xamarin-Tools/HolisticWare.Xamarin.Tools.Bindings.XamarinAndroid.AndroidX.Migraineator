@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -12,8 +12,13 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 {
     public partial class ApiInfo
     {
-        public ApiInfo(string path_api_info_xml, string path_assembly)
+        public ApiInfo(BuildProject build_project)
         {
+            this.BuildProject = build_project;
+
+            string path_api_info_xml = $"{build_project.ApiInfoFile}";
+            string path_assembly = $"{build_project.FolderOutput}/AndroidSupport.Merged.dll";
+
             api_info_path = path_api_info_xml;
 
             this.XmlDocumentAPI = new XmlDocumentData(path_api_info_xml);
@@ -22,6 +27,20 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             this.LinqXDocumentAPI = new LinqXDocumentData(path_api_info_xml);
 
             return;
+        }
+
+        BuildProject build_project;
+
+        public BuildProject BuildProject
+        {
+            get
+            {
+                return build_project;
+            }
+            protected set
+            {
+                build_project = value;
+            }
         }
 
         string api_info_path;

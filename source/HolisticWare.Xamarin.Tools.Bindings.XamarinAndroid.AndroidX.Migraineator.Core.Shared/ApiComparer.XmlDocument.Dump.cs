@@ -119,6 +119,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     bool prettyified = false
                 )
             {
+                if(null == results_found)
+                {
+                    return;
+                }
+
                 string fmt = "{0},{1},{2},{3},{4},{5},{6},{7},{8}";
                 string fmtp = "";
                 if (prettyified == true)
@@ -204,6 +209,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     int padding = 3
                 )
             {
+                if(null == results_found)
+                {
+                    return null;
+                }
+
                 int length_cn = -1;
                 int length_cn_max = -1;
 

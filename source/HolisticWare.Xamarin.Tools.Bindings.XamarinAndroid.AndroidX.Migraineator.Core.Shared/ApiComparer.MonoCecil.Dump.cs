@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -80,16 +80,6 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                     (
                                         filename,
                                         results_not_found_in_xax,
-                                        prettyfied
-                                    );
-                        },
-                        () =>
-                        {
-                            filename = Path.Combine(path_output, $"API.Mappings.Merged.Google.Material.with.Xamarin.Classes");
-                            this.Dump
-                                    (
-                                        filename,
-                                        results_found_material,
                                         prettyfied
                                     );
                         }
@@ -250,7 +240,14 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                         in results_found
                     )
                 {
-                    length_cn = c.ClassName.Length;
+                    if (c.ClassName != null)
+                    {
+                        length_cn = c.ClassName.Length;
+                    }
+                    else
+                    {
+                        length_cn = 0;
+                    }
                     if (length_cn > length_cn_max)
                     {
                         length_cn_max = length_cn;

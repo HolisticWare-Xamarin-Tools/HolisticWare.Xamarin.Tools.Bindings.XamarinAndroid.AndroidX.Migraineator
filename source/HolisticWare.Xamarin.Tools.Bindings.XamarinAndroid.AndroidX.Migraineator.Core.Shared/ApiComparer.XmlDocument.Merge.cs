@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -116,24 +116,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                     string ManagedNamespaceXamarinAndroidX
                                 )
                             >();
-
-                results_missing_completely =
-                    new
-                        List<
-                                (
-                                    string ClassName,
-                                    string AndroidSupportClass,
-                                    string AndroidXClass,
-                                    string AndroidSupportClassFullyQualified,
-                                    string AndroidXClassFullyQualified,
-                                    // formatting space
-                                    string PackageAndroidSupport,
-                                    string PackageAndroidX,
-                                    string ManagedNamespaceXamarinAndroidSupport,
-                                    string ManagedNamespaceXamarinAndroidX
-                                )
-                            >();
-
+                                
                 results_complete =
                     new
                         List<
@@ -162,6 +145,22 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                 )
                             >();
 
+                results_not_found_at_all =
+                    new
+                        List<
+                                (
+                                    string ClassName,
+                                    string AndroidSupportClass,
+                                    string AndroidXClass,
+                                    string AndroidSupportClassFullyQualified,
+                                    string AndroidXClassFullyQualified,
+                                    // formatting space
+                                    string PackageAndroidSupport,
+                                    string PackageAndroidX,
+                                    string ManagedNamespaceXamarinAndroidSupport,
+                                    string ManagedNamespaceXamarinAndroidX
+                                )
+                            >();
                 results_not_found_at_all =
                     new
                         List<
@@ -276,23 +275,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     )
                 >
                     results_missing_in_xamarin_android_support;
-
-            List<
-                    (
-                        string ClassName,
-                        string AndroidSupportClass,
-                        string AndroidXClass,
-                        string AndroidSupportClassFullyQualified,
-                        string AndroidXClassFullyQualified,
-                        // formatting space
-                        string PackageAndroidSupport,
-                        string PackageAndroidX,
-                        string ManagedNamespaceXamarinAndroidSupport,
-                        string ManagedNamespaceXamarinAndroidX
-                    )
-                >
-                    results_missing_completely;
-
+                
             List<
                     (
                         string ClassName,
