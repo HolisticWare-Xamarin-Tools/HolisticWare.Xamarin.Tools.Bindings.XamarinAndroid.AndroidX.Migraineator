@@ -1,8 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core;
 using Mono.Cecil;
 using Mono.Cecil.Rocks;
@@ -88,29 +87,32 @@ namespace Sample.Migraineator.ConsoleApp
                     @"../../../../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidX.api-info.xml"
                     ;
             }
-            if ( file_input_androidx == null || string.IsNullOrWhiteSpace(file_input_androidx) )
+
+            BuildProject bp_androidx = null;
+            BuildProject bp_android_support = null;
+
+            bp_androidx = new BuildProject()
             {
-                file_input_androidx =
-                    @"../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.api-info.xml"
-                    //@"../../../../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.api-diff.xml"
-                    ;
-            }
-            if (file_input_android_support_28_0_0 == null || string.IsNullOrWhiteSpace(file_input_android_support_28_0_0))
+                FolderRoot = @"../../../../X/AndroidSupportComponents-AndroidX-binderate/",
+                ApiInfoFile = @"../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.api-info.xml"
+            };
+
+            bp_android_support = new BuildProject()
             {
-                file_input_android_support_28_0_0 =
-                    //@"../../../../X/AndroidSupportComponents-28.0.0-binderate/output/AndroidSupport.api-info.xml"
-                    @"../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.api-info.previous.xml"
-                    ;
-            }
-            BuildProject bp1 = new BuildProject(@"../../../../X/AndroidSupportComponents-AndroidX-binderate/");
-            var a = bp1.ProjectFiles(bp1.FolderWithGenerated);
+                FolderRoot = @"../../../../X/AndroidSupportComponents-master/",
+                ApiInfoFile = @"../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.api-info.previous.xml"
+            };
+
+
+
 
             Task t = ProcessApiInfoFilesAsync
                             (
-                                file_input_androidx, 
-                                file_input_android_support_28_0_0,
+                                bp_androidx, 
+                                bp_android_support,
                                 file_output
                             );
+
 
             Task.WaitAll(t);
 
@@ -120,8 +122,8 @@ namespace Sample.Migraineator.ConsoleApp
 
         private static async Task ProcessApiInfoFilesAsync
                                                 (
-                                                    string file_input_androidx,
-                                                    string file_input_android_support_28_0_0,
+                                                    BuildProject build_project_androidx,
+                                                    BuildProject build_project_android_support_28_0_0,
                                                     string file_output
                                                 )
         {
@@ -138,31 +140,40 @@ namespace Sample.Migraineator.ConsoleApp
             working_dir = "./mappings/";
             #endif
 
-
-
             // Load Mappings (Google Android.Support <-> AndroidX
             await MappingManager.InitializeAsync(working_dir);
             // Dump packagename mappings (not provided by Google) 
             // this is data for our checks
             await MappingManager.DumpPackageNamesAsync();
 
-            // Load OLD Android.Support api-info.xml 
-            string assembly_android_support = "../../../../X/AndroidSupportComponents-master/output/AndroidSupport.Merged.dll";
+
             ApiInfo api_info_old_android_support = new ApiInfo
                                                         (
-                                                            file_input_android_support_28_0_0,
-                                                            assembly_android_support
+                                                            build_project_android_support_28_0_0
                                                         );
             await api_info_old_android_support.LoadAsync();
 
-            // Load NEW AndroidX api-info.xml 
-            string assembly_androidx = "../../../../X/AndroidSupportComponents-AndroidX-binderate/output/AndroidSupport.Merged.dll";
             ApiInfo api_info_new_androidx = new ApiInfo
                                                         (
-                                                            file_input_androidx,
-                                                            assembly_androidx
+                                                            build_project_androidx
                                                         );
             await api_info_new_androidx.LoadAsync();
+
+
+            api_info_new_androidx.BuildProject.ProjectFiles
+                                                        (
+                                                            api_info_new_androidx.BuildProject.FolderWithGenerated,
+                                                            "AndroidX"
+                                                        );
+            api_info_new_androidx.BuildProject.Dump("AndroidX", prettyified: true);
+
+            api_info_old_android_support.BuildProject.ProjectFiles
+                                                        (
+                                                            api_info_old_android_support.BuildProject.FolderWithGenerated,
+                                                            "Android.Support"
+                                                        );
+            api_info_old_android_support.BuildProject.Dump("Android.Support", prettyified: true);
+
 
 
             api_info_old_android_support.MonoCecilAPI.Analyse();
@@ -184,7 +195,10 @@ namespace Sample.Migraineator.ConsoleApp
             await api_info_old_android_support.XmlSerializerAPI.Deserialize();
             await api_info_new_androidx.XmlSerializerAPI.Deserialize();
 
+            api_comparer.ApiInfoDataOld = api_info_old_android_support;
+            api_comparer.ApiInfoDataNew = api_info_new_androidx;
 
+            api_comparer.Analyse();
             api_comparer.MonoCecilAPI.MergeGoogleMappings
                                                 (
                                                     ApiComparer.GoogleClassMappings,
@@ -204,9 +218,6 @@ namespace Sample.Migraineator.ConsoleApp
             api_comparer.MonoCecilAPI.Dump(prettyfied: true);
             api_comparer.XmlDocumentAPI.Dump(prettyfied: true);
 
-            await AnalyseAsync("AndroidSupport", assembly_android_support);
-            await AnalyseAsync("AndroidX", assembly_android_support);
-
             //api_comparer.XmlDocumentAPI.MergeGoogleMappings
             //(
             //    ApiComparer.GoogleClassMappings,
@@ -217,19 +228,8 @@ namespace Sample.Migraineator.ConsoleApp
             Task.WaitAll();
 
 
-
-
-
-
-
-
-
-
-
-
-
-            api_comparer.ApiInfoFileNew = file_input_androidx;
-            api_comparer.ApiInfoFileOld = file_input_android_support_28_0_0;
+            api_comparer.ApiInfoFileNew = build_project_androidx.ApiInfoFile;
+            api_comparer.ApiInfoFileOld = build_project_android_support_28_0_0.ApiInfoFile;
 
             (
                 List<string> namespaces,
@@ -280,45 +280,6 @@ namespace Sample.Migraineator.ConsoleApp
 
             return;
         }
-
-        static async Task AnalyseAsync()
-        {
-            /*
-            (
-                List<string> namespaces_28,
-                List<string> namespaces_28_new_suspicious,
-                List<string> namespaces_28_old_suspicious,
-                List<string> classes_28
-            ) = androidx_diff_comparer.Analyse(api_info_previous_androidsupport_28_0_0.api_info_previous);
-
-            androidx_diff_comparer.DumpToFiles
-            (
-                api_info_previous_androidsupport_28_0_0.api_info_previous, 
-                "AndroidSupport_28_0_0"
-            );
-
-            (
-                string content_new,
-                ApiInfo api_info_new
-            )
-                api_info_androidx = await androidx_diff_comparer.ApiInfo(file_input_androidx);
-
-            (
-                List<string> namespaces_x,
-                List<string> namespaces_x_new_suspicious,
-                List<string> namespaces_x_old_suspicious,
-                List<string> classes_x
-            ) = androidx_diff_comparer.Analyse(api_info_androidx.api_info_new);
-
-            androidx_diff_comparer.DumpToFiles
-            (
-                api_info_androidx.api_info_new, 
-                "AndroidX"
-            );
-            */
-
-        }
-
 
         static void Debug(string format, params object[] args)
         {
