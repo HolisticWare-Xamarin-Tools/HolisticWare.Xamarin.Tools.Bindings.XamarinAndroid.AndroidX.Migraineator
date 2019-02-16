@@ -199,6 +199,7 @@ namespace Sample.Migraineator.ConsoleApp
             api_comparer.ApiInfoDataNew = api_info_new_androidx;
 
             api_comparer.Analyse();
+            api_comparer.DumpMappingAndroidArtifacts_X_ManagedAssemblies(prettyfied: true);
             api_comparer.MonoCecilAPI.MergeGoogleMappings
                                                 (
                                                     ApiComparer.GoogleClassMappings,
