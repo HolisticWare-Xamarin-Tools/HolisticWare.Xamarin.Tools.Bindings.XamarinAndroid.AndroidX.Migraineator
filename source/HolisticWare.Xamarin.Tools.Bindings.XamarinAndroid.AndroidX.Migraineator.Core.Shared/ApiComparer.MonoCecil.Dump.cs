@@ -108,12 +108,12 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                             )
                         >
                         results_collection,
-                    bool prettyified = false
+                    bool prettyfied = false
                 )
             {
                 string fmt = "{0},{1},{2},{3},{4},{5},{6},{7},{8}";
                 string fmtp = "";
-                if (prettyified == true)
+                if (prettyfied == true)
                 {
                     fmtp = GetDumpFormat(results_collection);
                 }
@@ -166,7 +166,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                         );
                 }
 
-                if (prettyified == true)
+                if (prettyfied == true)
                 {
                     System.IO.File.WriteAllText($"{filename}.prettyfied.csv", sbp.ToString());
                 }

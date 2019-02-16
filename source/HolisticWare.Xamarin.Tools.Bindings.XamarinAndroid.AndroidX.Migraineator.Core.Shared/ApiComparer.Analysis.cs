@@ -84,6 +84,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             {
                 string artifact_as = mapping.ArtifactAndroidSupport;
                 string artifact_ax = mapping.ArtifactAndroidX;
+                int pos = artifact_ax.LastIndexOf(':');
+                if (pos >= 0)
+                {
+                    artifact_ax = artifact_ax.Substring(0, pos);
+                }
 
                 var artifacts_as = from a_as in artifacts_assemblies_old
                                    where
