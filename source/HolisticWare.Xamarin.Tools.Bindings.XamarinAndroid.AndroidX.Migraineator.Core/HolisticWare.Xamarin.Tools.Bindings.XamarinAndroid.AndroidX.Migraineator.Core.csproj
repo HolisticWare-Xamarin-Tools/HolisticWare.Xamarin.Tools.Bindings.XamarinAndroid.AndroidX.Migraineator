@@ -27,5 +27,7 @@
     <ProjectReference Include="..\..\externals\Core.Text\source\HolisticWare.Core.Text.NetStandard13\HolisticWare.Core.Text.NetStandard13.csproj" />
     <ProjectReference Include="..\..\externals\AndroidX.Data\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data.csproj" />
   </ItemGroup>
-  <Import Project="..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.projitems" Label="Shared" Condition="Exists('..\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Shared.projitems')" />
+  <ItemGroup>
+    <Folder Include="generated\" />
+  </ItemGroup>
 </Project>
