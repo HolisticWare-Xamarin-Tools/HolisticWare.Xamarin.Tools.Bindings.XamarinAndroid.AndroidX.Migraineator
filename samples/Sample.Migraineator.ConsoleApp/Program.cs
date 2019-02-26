@@ -8,24 +8,7 @@ namespace Sample.Migraineator.ConsoleApp
 {
     class Program
     {
-        //------------------------------------------------------------------------------------------------------------------
-        /*
-        _ _  ____ _______ ______                                              
-         | \ | |/ __ \__ __|  ____|_                                            
-         |  \| | |  | | | |  | |__(_)
-         | . ` | |  | | | |  |  __|                                               
-         | |\  | |__| | | |  | |____ _                                            
-         |_|_\_|\____/  |_|  |______(_)                       _ _   _             
-         |  ____(_) |                                        (_) | (_)            
-         | |__ _| | ___ _____   _____ _ ____ ___ __ _| |_ _ _ __   __ _ 
-         |  __| | | |/ _ \  / _ \ \ / / _ \ '__\ \ /\ / / '__| | __| | '_ \ / _` |
-         | |    | | |  __/ | (_) \ V /  __/ |   \ V V /| |  | | |_| | | | | (_| |
-         |_|    |_|_|\___|  \___/ \_/ \___|_|    \_/\_/ |_|  |_|\__|_|_| |_|\__, |
-                                                                             __/ |
-                                                                            |___/ 
-        */
         static bool overwrite_files = true;
-        //------------------------------------------------------------------------------------------------------------------
         static int verbosity;
         static AndroidXMigrator androidx_migrator = null;
 
@@ -131,7 +114,7 @@ namespace Sample.Migraineator.ConsoleApp
         private static async Task ProcessMetadataFilesAsync(string folder_input, string folder_output)
         {
             #if DEBUG && NETCOREAPP
-             await androidx_migrator.InitializeAsync("./bin/Debug/netcoreapp2.1/mappings/");
+             await androidx_migrator.InitializeAsync("./bin/Debug/netcoreapp3.0/mappings/");
             #elif RELEASE && NETCOREAPP
             await androidx_migrator.InitializeAsync("./bin/Debug/netcoreapp2.1/mappings/");
             #else
