@@ -1,0 +1,162 @@
+Any raw assets you want to be deployed with your application can be placed in
+this directory (and child directories) and given a Build Action of "AndroidAsset".
+
+These files will be deployed with your package and will be accessible using Android's
+AssetManager, like this:
+
+public class ReadAsset : Activity
+{
+	protected override void OnCreate (Bundle bundle)
+	{
+		base.OnCreate (bundle);
+
+		InputStream input = Assets.Open ("my_asset.txt");
+	}
+}
+
+Additionally, some Android functions will automatically load asset files:
+
+Typeface tf = Typeface.CreateFromAsset (Context.Assets, "fonts/samplefont.ttf");
+
+----------------------   -----------------------------
+
+Using android percent support library example in xamarin android
+
+Brief: Apply Percentage(%) dimension in Relative layout and Frame Layout
+
+[Pic]
+
+Decription: Eventhough it is 8+ years to android inital release,android developers didn't had the direct
+options to specify the view dimension in percentage. Now along with Android M version android team has released many
+support library to help developers with fragmentation. And also supported this feature for the
+android devices with lower OS version (<Marshmallow(6)) using this support library. 
+
+As of now for any android layouts we can't set child view's dimension in percentage. Only two alternate ways to do
+it is by using either layout_weight or overriding OnMeasure from code behind.
+Usually using layout_weight option slow downs the UI rendering process and also one can't effectively utilize the
+available space in side the screen.
+Now Android percent support library can be used along with android.support.percent.PercentRelativeLayout and 
+android.support.percent.PercentFrameLayout which has the simpler and shorter code which helps in faster rendering.
+
+It has the below 9 layout params:
+
+layout_widthPercent
+layout_heightPercent
+
+layout_marginPercent
+
+layout_marginLeftPercent
+layout_marginTopPercent
+layout_marginRightPercent
+layout_marginBottomPercent
+
+layout_marginStartPercent
+layout_marginEndPercent
+
+layout_aspectRatio
+
+Step 1: Add xamarin android support percent package from Nuget Packages.
+Packages->Add Packages
+
+[pic]
+
+Step 2: Prepare color, dimension, string and style for the application in separate xml as follows and add to the 
+Resources->Values folder.
+
+<pre style="brush:xml">
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources> 
+<item name="font_color" type="color">#000000</item> 
+<item name="font_color_subtitle" type="color">#8E8C6D</item>
+<item name="screen_bg" type="color" >#F7F9F9</item>
+<item name="separatot_color" type="color">#A7AE22</item>
+</resources>
+</pre>
+
+<pre style="brush:xml">
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+   <dimen name="font_size_one">24dp</dimen>
+   <dimen name="font_size_two">18dp</dimen>
+</resources>
+</pre>
+
+<pre style="brush:xml">
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+<string name="app_name">PercentLib</string>
+<string name="textview_one">CodeLog</string>
+<string name="textview_two">Log for Applied Concepts</string>
+</resources>
+</pre>
+
+<pre style="brush:xml">
+<?xml version="1.0" encoding="utf-8" ?>         
+<resources>        
+  <style name="Theme.Launcher" parent="@android:style/Theme.Material.Light.NoActionBar">     
+  </style>   
+</resources>   
+</pre>
+
+
+Step 2: Open Main.axml and edit the layout as follows,
+
+<pre style="brush:xml">
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_bg">
+    <TextView
+        android:id="@+id/textview_one"
+        android:text="@string/textview_one"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/font_size_one"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        app:layout_widthPercent="100%"
+        app:layout_marginTopPercent="25%" />
+    <TextView
+        android:id="@+id/textview_two"
+        android:layout_below="@+id/textview_one"
+        android:text="@string/textview_two"
+        android:textSize="@dimen/font_size_two"
+        android:textColor="@color/font_color_subtitle"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        app:layout_widthPercent="100%"
+        app:layout_marginTopPercent="5%" />
+     <View
+        android:id="@+id/separatorView"
+        android:layout_below="@+id/textview_two"
+        android:layout_width="match_parent"
+        android:background="@color/separatot_color"
+        app:layout_heightPercent="1%"
+        app:layout_marginPercent="5%" /> 
+</android.support.percent.PercentRelativeLayout>
+</pre>
+
+Step 3: Connect the layout file in MainActivity.cs 
+
+<pre style="brush:csharp">
+using Android.App;
+using Android.OS;
+
+namespace PercentLib
+{
+	[Activity(Label = "Android Percent Library", MainLauncher = true, Icon = "@mipmap/icon")]
+	public class MainActivity : Activity
+	{ 
+		protected override void OnCreate(Bundle savedInstanceState)
+		{
+			RequestWindowFeature(Android.Views.WindowFeatures.NoTitle);
+			base.OnCreate(savedInstanceState); 
+			SetContentView(Resource.Layout.Main); 
+		}
+	}
+}
+</pre>
+

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources> 
+<item name="font_color" type="color">#000000</item> 
+<item name="font_color_subtitle" type="color">#8E8C6D</item>
+<item name="screen_bg" type="color" >#F7F9F9</item>
+<item name="separatot_color" type="color">#A7AE22</item>
+</resources>
