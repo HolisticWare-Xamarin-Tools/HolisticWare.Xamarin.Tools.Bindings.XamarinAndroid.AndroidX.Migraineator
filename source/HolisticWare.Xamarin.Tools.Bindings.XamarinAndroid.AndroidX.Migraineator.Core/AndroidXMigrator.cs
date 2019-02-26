@@ -61,7 +61,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             string file = null;
 
             file = path_mappings + "android-support-to-androidx-mappings-artifacts.csv";
-            //content_mappings_artifacts = File.ReadAllText(file);
+            content_mappings_artifacts = File.ReadAllText(file);
             using (StreamReader sr = new StreamReader(file, Encoding.UTF8))
             {
                 content_mappings_artifacts = await sr.ReadToEndAsync();
@@ -69,7 +69,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             InitializeMappingsArtifacts(content_mappings_artifacts);
 
             file = path_mappings + "android-support-to-androidx-mappings-namespaces.csv";
-            //content_mappings_namespaces = File.ReadAllText(file);
+            content_mappings_namespaces = File.ReadAllText(file);
             using (StreamReader sr = new StreamReader(file, Encoding.UTF8))
             {
                 content_mappings_namespaces = await sr.ReadToEndAsync();
@@ -77,7 +77,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             InitializeMappingsNamespaces(content_mappings_namespaces);
 
             file = path_mappings + "android-support-to-androidx-mappings-classes.csv";
-            //content_mappings_namespaces = File.ReadAllText(file);
+            content_mappings_namespaces = File.ReadAllText(file);
             using (StreamReader sr = new StreamReader(file, Encoding.UTF8))
             {
                 content_mappings_classes = await sr.ReadToEndAsync();
