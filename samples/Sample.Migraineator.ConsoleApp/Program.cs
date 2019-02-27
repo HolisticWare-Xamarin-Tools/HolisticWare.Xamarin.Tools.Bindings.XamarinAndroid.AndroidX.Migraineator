@@ -10,56 +10,22 @@ namespace Sample.Migraineator.ConsoleApp
     {
         static bool overwrite_files = true;
         static int verbosity;
-        static AndroidXMigrator androidx_migrator = null;
+        //static AndroidXMigrator androidx_migrator = null;
 
         public static void Main(string[] args)
         {
-            androidx_migrator = new AndroidXMigrator();
+            //androidx_migrator = new AndroidXMigrator();
 
             bool show_help = false;
             List<string> names = new List<string>();
             string folder_input = null;
             string folder_output = null;
 
-            Mono.Options.OptionSet option_set = new Mono.Options.OptionSet() 
-            {
-                { 
-                    "i|input=", 
-                    "input folder with Android Support Xamarin.Android Metadata files (Metadata.xml, Metadata*.xml)",
-                    (string v) =>
-                    {
-                        folder_input = v;
-                        return;
-                    }
-                },
-                { 
-                    "o|output=",
-                    "output folder with AndroidX Xamarin.Android Metadata files (Metadata.xml, Metadata*.xml)",
-                    (string v) => 
-                    {
-                        folder_output = v;
-                        return;
-                    }
-                },
-                { 
-                    "v|verbosity", 
-                    "increase debug message verbosity",
-                    v => 
-                    { 
-                        if (v != null) ++verbosity; 
-                    } 
-                },
-                { 
-                    "h|help",  
-                    "show this message and exit",
-                    v => show_help = v != null 
-                },
-            };
 
             List<string> extra;
             try
             {
-                extra = option_set.Parse(args);
+                extra = Options.OptionSet.Parse(args);
             }
             catch (Mono.Options.OptionException e)
             {
@@ -71,7 +37,7 @@ namespace Sample.Migraineator.ConsoleApp
 
             if (show_help)
             {
-                ShowHelp(option_set);
+                //ShowHelp(option_set);
                 return;
             }
 
@@ -113,13 +79,13 @@ namespace Sample.Migraineator.ConsoleApp
 
         private static async Task ProcessMetadataFilesAsync(string folder_input, string folder_output)
         {
-            #if DEBUG && NETCOREAPP
-             await androidx_migrator.InitializeAsync("./bin/Debug/netcoreapp3.0/mappings/");
-            #elif RELEASE && NETCOREAPP
-            await androidx_migrator.InitializeAsync("./bin/Debug/netcoreapp2.1/mappings/");
-            #else
-            androidx_migrator.Initialize("./mappings/");
-            #endif
+            //#if DEBUG && NETCOREAPP
+            //await androidx_migrator.InitializeAsync("./bin/Debug/netcoreapp3.0/mappings/");
+            //#elif RELEASE && NETCOREAPP
+            //await androidx_migrator.InitializeAsync("./bin/Debug/netcoreapp2.1/mappings/");
+            //#else
+            //androidx_migrator.Initialize("./mappings/");
+            //#endif
 
             Console.WriteLine($"Migrating files: ");
 
@@ -156,7 +122,10 @@ namespace Sample.Migraineator.ConsoleApp
 
                 try
                 {
-                    string content_migrated = await androidx_migrator.MigrateMetadataXmlFileNamespacesAsync(file);
+                    string content_migrated =
+                        //await androidx_migrator.MigrateMetadataXmlFileNamespacesAsync(file)
+                        null
+                        ;
 
                     if(overwrite_files)
                     {
@@ -183,7 +152,10 @@ namespace Sample.Migraineator.ConsoleApp
 
                 try
                 {
-                    string content_migrated = await androidx_migrator.MigrateEnumMethodsXmlFileNamespacesAsync(file);
+                    string content_migrated =
+                        //await androidx_migrator.MigrateEnumMethodsXmlFileNamespacesAsync(file)
+                        null
+                        ;
 
                     if (overwrite_files)
                     {
@@ -232,7 +204,10 @@ namespace Sample.Migraineator.ConsoleApp
                                     content = await reader.ReadToEndAsync();
                                 }
                                 //string content = System.IO.File.ReadAllText(file);
-                                string content_migrated = await androidx_migrator.MigrateMetadataXmlFileNamespacesAsync(content);
+                                string content_migrated =
+                                    //await androidx_migrator.MigrateMetadataXmlFileNamespacesAsync(content)
+                                    null
+                                    ;
                                 //System.IO.File.WriteAllText(file, content_migrated);
                             }
                             catch (AggregateException exc)

@@ -108,7 +108,7 @@ namespace Sample.Migraineator.ConsoleApp
 
             Task t = ProcessApiInfoFilesAsync
                             (
-                                bp_androidx, 
+                                bp_androidx,
                                 bp_android_support,
                                 file_output
                             );
@@ -116,8 +116,29 @@ namespace Sample.Migraineator.ConsoleApp
 
             Task.WaitAll(t);
 
-           
             return;
+        }
+
+        public static string WorkingDirectory
+        {
+            get
+            {
+                #if NETCOREAPP && NETCOREAPP2_1
+                #if DEBUG
+                return "./bin/Debug/netcoreapp2.1/";
+                #elif RELEASE
+                return  "./bin/Release/netcoreapp2.1/";
+                #endif
+                #elif NETCOREAPP && NETCOREAPP3_0
+                #if DEBUG
+                return "./bin/Debug/netcoreapp3.0/";
+                #elif RELEASE
+                return "./bin/Release/netcoreapp3.0/";
+                #endif
+                #else
+                return "./mappings/";
+                #endif
+            }
         }
 
         private static async Task ProcessApiInfoFilesAsync
@@ -128,20 +149,9 @@ namespace Sample.Migraineator.ConsoleApp
                                                 )
         {
 
-            string working_dir = null;
-
-            #if NETCOREAPP && NETCOREAPP2_1
-            #if DEBUG
-            working_dir = "./bin/Debug/netcoreapp2.1/";
-            #elif RELEASE
-            working_dir = "./bin/Release/netcoreapp2.1/";
-            #endif
-            #else
-            working_dir = "./mappings/";
-            #endif
 
             // Load Mappings (Google Android.Support <-> AndroidX
-            await MappingManager.InitializeAsync(working_dir);
+            await MappingManager.InitializeAsync(WorkingDirectory);
             // Dump packagename mappings (not provided by Google) 
             // this is data for our checks
             await MappingManager.DumpPackageNamesAsync();
