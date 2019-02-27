@@ -66,7 +66,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         public void DumpMappingAndroidArtifacts_X_ManagedAssemblies(bool prettyfied = false)
         {
             string fmt = "{0},{1},{2},{3}";
-            string fmtp = "";
+            string fmtp = string.Intern("");
             if (prettyfied == true)
             {
                 fmtp = GetDumpFormat(MappingAndroidArtifacts_X_ManagedAssemblies);

@@ -112,7 +112,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 )
             {
                 string fmt = "{0},{1},{2},{3},{4},{5},{6},{7},{8}";
-                string fmtp = "";
+                string fmtp = string.Intern("");
                 if (prettyfied == true)
                 {
                     fmtp = GetDumpFormat(results_collection);

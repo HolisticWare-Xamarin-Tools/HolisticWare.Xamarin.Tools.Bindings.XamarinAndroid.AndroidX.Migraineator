@@ -112,7 +112,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     bool prettyified = false
                 )
             {
-                string fmt = "";
+                string fmt = string.Intern("");
                 if (prettyified == true)
                 {
                     fmt = GetDumpFormat(results_found);
@@ -199,7 +199,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 )
             {
 
-                string fmt = "";
+                string fmt = string.Intern("");
                 if (prettyified == true)
                 {
                     fmt = GetDumpFormat(results_found);

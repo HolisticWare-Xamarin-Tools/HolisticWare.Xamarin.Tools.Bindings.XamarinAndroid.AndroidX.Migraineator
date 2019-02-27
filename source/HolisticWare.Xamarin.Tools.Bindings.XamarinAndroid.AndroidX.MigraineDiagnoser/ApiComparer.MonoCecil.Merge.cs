@@ -328,8 +328,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     gm_ax_pn = gm.AndroidXClass.Substring(0, gm_ax_cn_packagename_end);
 
                     // classnames
-                    gm_as_cn = gm.AndroidSupportClass.Replace($"{gm_as_pn}.", "");
-                    gm_ax_cn = gm.AndroidXClass.Replace($"{gm_ax_pn}.", "");
+                    gm_as_cn = gm.AndroidSupportClass.Replace($"{gm_as_pn}.", string.Intern(""));
+                    gm_ax_cn = gm.AndroidXClass.Replace($"{gm_ax_pn}.", string.Intern(""));
 
 
                     //---------------------------------------------------------------------------------------

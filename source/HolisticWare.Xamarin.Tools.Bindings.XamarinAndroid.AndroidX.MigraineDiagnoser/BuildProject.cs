@@ -148,11 +148,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
                     if (txt.Contains("classes.jar"))
                     {
-                        artifact_name = artifact_name.Replace(@"classes.jar", "");
+                        artifact_name = artifact_name.Replace(@"classes.jar", string.Intern(""));
                     }
                     else
                     {
-                        artifact_name = artifact_name.Replace(@"classes.jar", "");
+                        artifact_name = artifact_name.Replace(@"classes.jar", string.Intern(""));
                     }
 
                     break;
@@ -178,11 +178,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
                     if (txt.Contains("classes.jar"))
                     {
-                        artifact_name = artifact_name.Replace(@"classes.jar", "");
+                        artifact_name = artifact_name.Replace(@"classes.jar", string.Intern(""));
                     }
                     else
                     {
-                        artifact_name = artifact_name.Replace(@".jar", "");
+                        artifact_name = artifact_name.Replace(@".jar", string.Intern(""));
                     }
 
                     break;
@@ -217,11 +217,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
                     if (txt.Contains("classes.jar"))
                     {
-                        artifact_name = artifact_name.Replace(@"classes.jar", "");
+                        artifact_name = artifact_name.Replace(@"classes.jar", string.Intern(""));
                     }
                     else
                     {
-                        artifact_name = artifact_name.Replace(@"classes.jar", "");
+                        artifact_name = artifact_name.Replace(@"classes.jar", string.Intern(""));
                     }
 
                     break;
@@ -247,11 +247,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
                     if (txt.Contains("classes.jar"))
                     {
-                        artifact_name = artifact_name.Replace(@"classes.jar", "");
+                        artifact_name = artifact_name.Replace(@"classes.jar", string.Intern(""));
                     }
                     else
                     {
-                        artifact_name = artifact_name.Replace(@".jar", "");
+                        artifact_name = artifact_name.Replace(@".jar", string.Intern(""));
                     }
 
                     break;
@@ -303,7 +303,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             filename = Path.Combine(path_output, filename);
 
             string fmt = "{0},{1}";
-            string fmtp = "";
+            string fmtp = string.Intern("");
             if (prettyified == true)
             {
                 fmtp = GetDumpFormat(this.AndroidArtifacts_X_ManagedAssemblies);

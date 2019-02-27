@@ -33,7 +33,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             System.Xml.XmlDocument xmldoc = null;
             System.Xml.XmlNamespaceManager ns = null;
             string xml_namespace_name = "apixml";
-            string xml_namespace = "";
+            string xml_namespace = string.Intern("");
 
             public 
                 IEnumerable<string> 
@@ -156,7 +156,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                                     );
                     if (node_list_inner.Count > 0)
                     {
-                        string class_name_inner = "";
+                        string class_name_inner = string.Intern("");
                     }
 
                     //yield return
@@ -216,7 +216,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                                     );
                     if (node_list_inner.Count > 0)
                     {
-                        string class_name_inner = "";
+                        string class_name_inner = string.Intern("");
                     }
 
                     yield return
@@ -300,7 +300,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                     }
                     int postion_interface_name = interface_name.LastIndexOf('.');
                     string namespace_name = interface_name.Substring(0, postion_interface_name);
-                    interface_name = interface_name.Replace($"{namespace_name}.", "");
+                    interface_name = interface_name.Replace($"{namespace_name}.", string.Intern(""));
                     yield return
                                 (
                                     InterfaceName: interface_name,

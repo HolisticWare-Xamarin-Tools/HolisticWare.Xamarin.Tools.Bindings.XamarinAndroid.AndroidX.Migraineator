@@ -5,8 +5,31 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
     {
         public string Folder
         {
-            get;
-            set;
+            get
+            {
+                return folder;
+            }
+            set
+            {
+                folder = value;
+
+                Assemblies = System.IO.Directory.GetFiles
+                                                    (
+                                                        folder,
+                                                        "*.dll",
+                                                        System.IO.SearchOption.AllDirectories
+                                                    );
+            }
+
         }
+        string folder = null;
+
+
+        public string[] Assemblies
+        {
+            get;
+            private set;
+        }
+
     }
 }
