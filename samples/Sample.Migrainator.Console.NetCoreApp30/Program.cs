@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO;
-
+using System.Linq;
 using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator;
+using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.AST;
 
 namespace Sample.Migrainator
 {
@@ -37,17 +38,62 @@ namespace Sample.Migrainator
                                                 (
                                                     new System.Diagnostics.ConsoleTraceListener()
                                                 );
+
+            AndroidXMigrator migrator = null;
+            List<string> dlls = new List<string>(
+                                                    Directory.EnumerateFiles
+                                                                (
+                                                                    "../../samples.test.targets",
+                                                                    "*.dll",
+                                                                    SearchOption.AllDirectories
+                                                                )
+                                                )
+                                                .Where(x => ! x.Contains("linksrc"))
+                                                .Where(x => ! x.Contains("android/assets"))
+                                                .Where(x => ! x.Contains(".app/"))
+                                                .Where(x => ! x.Contains(".resources.dll"))
+                                                .ToList();
+                                                ;
+                       
+            foreach (string dll in dlls)
+            {
+                if(dll.Contains("linksrc"))
+                {
+                    continue;
+                }
+                migrator = new AndroidXMigrator(dll, dll.Replace(".dll", ".migrated.dll"));
+                migrator.Migrate();
+            }
+
+            File.WriteAllText
+                (
+                    $"AndroidSupportNotFoundInGoogle.json",
+                    Newtonsoft.Json.JsonConvert.SerializeObject
+                                                    (
+                                                        AndroidXMigrator.AndroidSupportNotFoundInGoogle,
+                                                        Newtonsoft.Json.Formatting.Indented
+                                                    )
+
+                );
+
+            List<string> files = new List<string>(Directory.EnumerateFiles(".", "AbstractSyntaxTree.*.json"));
+           
+            foreach (string f in files)
+            {
+                File.Delete(f);
+            }
+
             string input = null;
             string output = null;
 
             input = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Android.dll";
             output = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Android.migrated.dll";
-            AndroidXMigrator migrator = null;
             migrator = new AndroidXMigrator
                                         (
                                             Path.Combine(Path.Combine(path_parts), input),
                                             Path.Combine(Path.Combine(path_parts), output)
                                         );
+            migrator.Migrate();
 
             input = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Messenger.Android.dll";
             output = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Messenger.Android.migrated.dll";
@@ -58,8 +104,78 @@ namespace Sample.Migrainator
                                         );
             migrator.Migrate();
 
+            input = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.AppLinks.Android.dll";
+            output = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.AppLinks.Android.migrated.dll";
+            migrator = new AndroidXMigrator
+                                        (
+                                            Path.Combine(Path.Combine(path_parts), input),
+                                            Path.Combine(Path.Combine(path_parts), output)
+                                        );
+            migrator.Migrate();
 
 
+            input = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Common.Android.dll";
+            output = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Common.Android.migrated.dll";
+            migrator = new AndroidXMigrator
+                                        (
+                                            Path.Combine(Path.Combine(path_parts), input),
+                                            Path.Combine(Path.Combine(path_parts), output)
+                                        );
+            migrator.Migrate();
+
+
+            input = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.AppLinks.Android.dll";
+            output = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.AppLinks.Android.migrated.dll";
+            migrator = new AndroidXMigrator
+                                        (
+                                            Path.Combine(Path.Combine(path_parts), input),
+                                            Path.Combine(Path.Combine(path_parts), output)
+                                        );
+            migrator.Migrate();
+
+
+            input = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Core.Android.dll";
+            output = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Core.Android.migrated.dll";
+            migrator = new AndroidXMigrator
+                                        (
+                                            Path.Combine(Path.Combine(path_parts), input),
+                                            Path.Combine(Path.Combine(path_parts), output)
+                                        );
+            migrator.Migrate();
+
+
+            input = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Login.Android.dll";
+            output = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Login.Android.migrated.dll";
+            migrator = new AndroidXMigrator
+                                        (
+                                            Path.Combine(Path.Combine(path_parts), input),
+                                            Path.Combine(Path.Combine(path_parts), output)
+                                        );
+            migrator.Migrate();
+
+            input = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Places.Android.dll";
+            output = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Places.Android.migrated.dll";
+            migrator = new AndroidXMigrator
+                                        (
+                                            Path.Combine(Path.Combine(path_parts), input),
+                                            Path.Combine(Path.Combine(path_parts), output)
+                                        );
+            migrator.Migrate();
+
+
+            input = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Share.Android.dll";
+            output = "Traditional.Standard/HelloFacebookSample/bin/Debug/Xamarin.Facebook.Places.Android.migrated.dll";
+            migrator = new AndroidXMigrator
+                                        (
+                                            Path.Combine(Path.Combine(path_parts), input),
+                                            Path.Combine(Path.Combine(path_parts), output)
+                                        );
+            migrator.Migrate();
+
+
+
+
+            
 
             //BatchMigrate();
 
