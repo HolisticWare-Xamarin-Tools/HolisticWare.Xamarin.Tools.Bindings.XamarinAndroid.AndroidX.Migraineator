@@ -4,9 +4,6 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
-using HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.Generated;
-using Core.Text;
-using System.Collections.ObjectModel;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator
 {

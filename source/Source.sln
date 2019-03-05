@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core", "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.csproj", "{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask", "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.MSBuildTask.csproj", "{595A2FA7-70BF-46C5-A3BC-5252675E85F8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.MigraineDiagnoser", "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.MigraineDiagnoser\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.MigraineDiagnoser.csproj", "{3E85D20A-7029-406C-8FB3-85CBEF77CB77}"
@@ -23,8 +21,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data.Extended", "..\externals\AndroidX.Data\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data.Extended\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data.Extended.csproj", "{393C8DF4-F76A-4C89-A692-2954A91F1248}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator", "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.csproj", "{55502215-0900-4DF7-98AF-2571AD03587A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xamarin.AndroidX.Cecilfier", "Xamarin.AndroidX.Cecilfier\Xamarin.AndroidX.Cecilfier.csproj", "{3154DA27-D8F1-42E8-BF0C-C214D25DCE4C}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HolisticWare.Core.Linq", "..\externals\Core.Linq\source\HolisticWare.Core.Linq\HolisticWare.Core.Linq.shproj", "{57B0EB28-7B4E-410D-B021-0DC9D719C11F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Core.Linq.NetStandard11", "..\externals\Core.Linq\source\HolisticWare.Core.Linq.NetStandard11\HolisticWare.Core.Linq.NetStandard11.csproj", "{C7AC153E-49ED-4B1D-95B4-A02916A1470D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Core.Linq.NetStandard10", "..\externals\Core.Linq\source\HolisticWare.Core.Linq.NetStandard10\HolisticWare.Core.Linq.NetStandard10.csproj", "{D01F9C50-609D-48C7-A5A5-F1ABB797E249}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\externals\Core.Linq\source\HolisticWare.Core.Linq\HolisticWare.Core.Linq.projitems*{57b0eb28-7b4e-410d-b021-0dc9d719c11f}*SharedItemsImports = 13
 		..\externals\Core.Text\source\HolisticWare.Core.Text\HolisticWare.Core.Text.projitems*{921cfea5-564c-4975-a20f-8cad32ea88e3}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,10 +41,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2CEC468C-7DF3-4CB2-B6C5-D47DF92C496C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{595A2FA7-70BF-46C5-A3BC-5252675E85F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{595A2FA7-70BF-46C5-A3BC-5252675E85F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{595A2FA7-70BF-46C5-A3BC-5252675E85F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -64,6 +69,22 @@ Global
 		{393C8DF4-F76A-4C89-A692-2954A91F1248}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{393C8DF4-F76A-4C89-A692-2954A91F1248}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{393C8DF4-F76A-4C89-A692-2954A91F1248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55502215-0900-4DF7-98AF-2571AD03587A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55502215-0900-4DF7-98AF-2571AD03587A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55502215-0900-4DF7-98AF-2571AD03587A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55502215-0900-4DF7-98AF-2571AD03587A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3154DA27-D8F1-42E8-BF0C-C214D25DCE4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3154DA27-D8F1-42E8-BF0C-C214D25DCE4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3154DA27-D8F1-42E8-BF0C-C214D25DCE4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3154DA27-D8F1-42E8-BF0C-C214D25DCE4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7AC153E-49ED-4B1D-95B4-A02916A1470D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7AC153E-49ED-4B1D-95B4-A02916A1470D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7AC153E-49ED-4B1D-95B4-A02916A1470D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7AC153E-49ED-4B1D-95B4-A02916A1470D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D01F9C50-609D-48C7-A5A5-F1ABB797E249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D01F9C50-609D-48C7-A5A5-F1ABB797E249}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D01F9C50-609D-48C7-A5A5-F1ABB797E249}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D01F9C50-609D-48C7-A5A5-F1ABB797E249}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,8 +96,11 @@ Global
 		{8A0CAEFF-7E76-4133-86D8-0FEB0C08E851} = {05E98A15-E857-4336-B56C-4A791CC90368}
 		{230C521A-122A-48AD-ABD4-114F5963DD61} = {05E98A15-E857-4336-B56C-4A791CC90368}
 		{393C8DF4-F76A-4C89-A692-2954A91F1248} = {05E98A15-E857-4336-B56C-4A791CC90368}
+		{57B0EB28-7B4E-410D-B021-0DC9D719C11F} = {05E98A15-E857-4336-B56C-4A791CC90368}
+		{C7AC153E-49ED-4B1D-95B4-A02916A1470D} = {05E98A15-E857-4336-B56C-4A791CC90368}
+		{D01F9C50-609D-48C7-A5A5-F1ABB797E249} = {05E98A15-E857-4336-B56C-4A791CC90368}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {215510F5-7238-4944-87B4-B78A2BAF4FEB}
+		SolutionGuid = {D407CCD4-3E13-4090-84BA-9DE5B3A8F357}
 	EndGlobalSection
 EndGlobal
