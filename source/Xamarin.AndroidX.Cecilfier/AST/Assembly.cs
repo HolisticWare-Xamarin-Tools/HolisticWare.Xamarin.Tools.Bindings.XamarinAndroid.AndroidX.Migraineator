@@ -3,22 +3,20 @@ using System.Collections.Generic;
 
 namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.AST
 {
-    public class Item
+    public class Assembly : Item
     {
-        public Item()
+        public Assembly()
         {
+            Modules = new List<Module>();
+
+            return;
         }
 
-        public string Name
+        public List<Module> Modules
         {
             get;
             set;
         }
 
-        public string NameFullyQualified
-        {
-            get;
-            set;
-        }
     }
 }
