@@ -1,0 +1,34 @@
+{
+  "Namespaces": [
+    {
+      "Types": [
+        {
+          "Methods": [
+            {
+              "ReturnType": null,
+              "Parameters": [
+                {
+                  "Type": {
+                    "Methods": [],
+                    "Name": "Fragment",
+                    "NameFullyQualified": "AndroidX.Fragment.App.Fragment.Fragment"
+                  },
+                  "Name": "fragment",
+                  "NameFullyQualified": null
+                }
+              ],
+              "Name": "Show",
+              "NameFullyQualified": "System.Void"
+            }
+          ],
+          "Name": "AppInviteDialog",
+          "NameFullyQualified": "Xamarin.Facebook.Share.Widget.AppInviteDialog"
+        }
+      ],
+      "Name": "Xamarin.Facebook.Share.Widget",
+      "NameFullyQualified": null
+    }
+  ],
+  "Name": "Xamarin.Facebook.Places.Android.migrated.dll",
+  "NameFullyQualified": null
+}
