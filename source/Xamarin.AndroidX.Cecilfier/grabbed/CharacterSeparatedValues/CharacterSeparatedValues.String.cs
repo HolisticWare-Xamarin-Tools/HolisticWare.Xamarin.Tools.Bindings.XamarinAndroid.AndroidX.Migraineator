@@ -44,7 +44,7 @@ namespace Core.Text
             }
         }
 
-        public delegate IEnumerable<T> TransformationMethod<T>(IEnumerable<string[]> untyped_data);
+        public delegate IEnumerable<RowType> TransformationMethod<RowType>(IEnumerable<string[]> untyped_data);
 
         protected TransformationMethod<string[]> TransformationDefault;
 
