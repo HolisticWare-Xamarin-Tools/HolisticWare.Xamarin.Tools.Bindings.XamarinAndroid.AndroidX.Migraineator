@@ -18,8 +18,6 @@
   <ItemGroup>
     <Folder Include="AST\" />
     <Folder Include="grabbed\" />
-    <Folder Include="grabbed\CharacterSeparatedValues\" />
-    <Folder Include="grabbed\Linq\" />
     <Folder Include="mappings\" />
   </ItemGroup>
   <ItemGroup>
@@ -29,5 +27,8 @@
     <Content Include="mappings\API.Mappings.Merged.Google.with.Xamarin.Classes.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Xamarin.AndroidX.Data\Xamarin.AndroidX.Data.csproj" />
   </ItemGroup>
 </Project>
