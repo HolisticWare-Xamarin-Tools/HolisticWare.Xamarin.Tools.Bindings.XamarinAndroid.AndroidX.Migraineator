@@ -2,9 +2,9 @@
 
 namespace Xamarin.AndroidX.Data
 {
-    public abstract class Data
+    public abstract class GoogleMappingData
     {
-        public Data()
+        public GoogleMappingData()
         {
             return;
         }
@@ -15,8 +15,25 @@ namespace Xamarin.AndroidX.Data
             set;
         }
 
+        public
+            IEnumerable
+                <
+                    (
+                        string TypenameFullyQualifiedAndroidSupport,
+                        string TypenameFullyQualifiedAndroidX
+                    )
+                >
+                        Mapping
+        {
+            get;
+            protected set;
+        }
+
         public abstract void Initialize();
 
+        public void OptimizeMappingsForClasses(string class_fully_qualified)
+        {
+        }
 
         public
                 (

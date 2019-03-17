@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace Xamarin.AndroidX.Data
 {
-    public class DataOptimizedSortedSharded : Data
+    public class GoogleMappingDataOptimizedSortedSharded : GoogleMappingData
     {
-        public DataOptimizedSortedSharded()
+        public GoogleMappingDataOptimizedSortedSharded()
         {
             MappingTypenamesWithPackage = new List
                                                     <
@@ -152,6 +152,11 @@ namespace Xamarin.AndroidX.Data
         {
             foreach(string[] row in DataTable)
             {
+                if (row.Length != 2)
+                {
+                    continue;
+                }
+
                 string as_class = row[0];
                 string ax_class = row[1];
 
