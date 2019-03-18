@@ -231,68 +231,68 @@ namespace Xamarin.AndroidX.Mapper
             return result;
         }
 
-        private List
+        public List
                     <
                         (
                             string JavaTypeFullyQualified,
                             string ManagedTypeFullyQualified
                         )
                     >
-                        tar;
+                        TAR;
 
-        private List
+        public List
                     <
                         (
                             string JavaTypeFullyQualified,
                             string ManagedTypeFullyQualified
                         )
                     >
-                        tarig;
+                        TARIG;
 
-        private List
+        public List
                     <
                         (
                             string JavaTypeFullyQualified,
                             string ManagedTypeFullyQualified
                         )
                     >
-                        tarnig;
+                        TARNIG;
 
-        private List
+        public List
                     <
                         (
                             string JavaTypeFullyQualified,
                             string ManagedTypeFullyQualified
                         )
                     >
-                        trar;
-        private List
+                        TRAR;
+        public List
                     <
                         (
                             string JavaTypeFullyQualified,
                             string ManagedTypeFullyQualified
                         )
                     >
-                        taur;
-        private List
+                        TAUR;
+        public List
                     <
                         (
                             string JavaTypeFullyQualified,
                             string ManagedTypeFullyQualified
                         )
                     >
-                        tnar;
+                        TNAR;
 
-        private List
+        public List
                     <
                         (
                             string JavaTypeFullyQualified,
                             string ManagedTypeFullyQualified
                         )
                     >
-                        tr;
+                        TR;
 
-         private List
+         public List
                     <
                         (
                             string TypenameFullyQualifiedAndroidSupport,
@@ -304,36 +304,28 @@ namespace Xamarin.AndroidX.Mapper
 
         public void Cecilize()
         {
-            tar = new List
+            TAR = new List
                             <
                                 (
                                     string JavaTypeFullyQualified,
                                     string ManagedTypeFullyQualified
                                 )
                             >();
-            tarig = new List
+            TARIG = new List
                             <
                                 (
                                     string JavaTypeFullyQualified,
                                     string ManagedTypeFullyQualified
                                 )
                             >();
-            tarnig = new List
+            TARNIG = new List
                             <
                                 (
                                     string JavaTypeFullyQualified,
                                     string ManagedTypeFullyQualified
                                 )
                             >();
-            taur = new List
-                            <
-                                (
-                                    string JavaTypeFullyQualified,
-                                    string ManagedTypeFullyQualified
-                                )
-                            >();
-
-            tnar = new List
+            TAUR = new List
                             <
                                 (
                                     string JavaTypeFullyQualified,
@@ -341,7 +333,7 @@ namespace Xamarin.AndroidX.Mapper
                                 )
                             >();
 
-            tr = new List
+            TNAR = new List
                             <
                                 (
                                     string JavaTypeFullyQualified,
@@ -349,7 +341,15 @@ namespace Xamarin.AndroidX.Mapper
                                 )
                             >();
 
-            trar = new List
+            TR = new List
+                            <
+                                (
+                                    string JavaTypeFullyQualified,
+                                    string ManagedTypeFullyQualified
+                                )
+                            >();
+
+            TRAR = new List
                             <
                                 (
                                     string JavaTypeFullyQualified,
@@ -405,7 +405,7 @@ namespace Xamarin.AndroidX.Mapper
                                     if ( index >= 0 && index < mapping_sorted_androidx_index.Count())
                                     {
                                         // found
-                                        tarig.Add
+                                        TARIG.Add
                                                 (
                                                     (
                                                         JavaTypeFullyQualified: java_type,
@@ -416,7 +416,7 @@ namespace Xamarin.AndroidX.Mapper
                                     else
                                     {
                                         // not found
-                                        tarnig.Add
+                                        TARNIG.Add
                                                 (
                                                     (
                                                         JavaTypeFullyQualified: java_type,
@@ -434,10 +434,10 @@ namespace Xamarin.AndroidX.Mapper
                                                                     java_type
                                                                 );
 
-                                    if ( index >=0 || index < mapping_sorted_android_support_index.Count() -1)
+                                    if ( index >=0 && index < mapping_sorted_android_support_index.Count() -1 )
                                     {
                                         // found
-                                        tarig.Add
+                                        TARIG.Add
                                                 (
                                                     (
                                                         JavaTypeFullyQualified: java_type,
@@ -448,7 +448,7 @@ namespace Xamarin.AndroidX.Mapper
                                     else
                                     {
                                         // not found
-                                        tarnig.Add
+                                        TARNIG.Add
                                                 (
                                                     (
                                                         JavaTypeFullyQualified: java_type,
@@ -459,7 +459,7 @@ namespace Xamarin.AndroidX.Mapper
                                     }
                                 }
 
-                                tar.Add
+                                TAR.Add
                                         (
                                             (
                                                 JavaTypeFullyQualified: java_type,
@@ -504,7 +504,7 @@ namespace Xamarin.AndroidX.Mapper
                                         string jni_class = jni_type.Substring(lastSlash + 1).Replace('$', '.');
                                         string jni_package = jni_type.Substring(0, lastSlash).Replace('/', '.');
 
-                                        tnar.Add
+                                        TNAR.Add
                                                 (
                                                     (
                                                         JavaTypeFullyQualified: java_type,
@@ -527,7 +527,7 @@ namespace Xamarin.AndroidX.Mapper
                     string managed_type = type.FullName;
                     string java_type = "jt";
 
-                    tr.Add
+                    TR.Add
                                         (
                                             (
                                                 JavaTypeFullyQualified: java_type,
@@ -540,12 +540,12 @@ namespace Xamarin.AndroidX.Mapper
             AnalysisData = new Dictionary<string, int>()
             {
                 { "$GoogleMappings$", this.GoogleMappingsData.Mapping.Count() },
-                { "TAR", tar.Count },
-                { "TARIG", tarig.Count },
-                { "TARNIG", tarnig.Count },
-                { "TNAR", tnar.Count },
+                { "TAR", TAR.Count },
+                { "TARIG", TARIG.Count },
+                { "TARNIG", TARNIG.Count },
+                { "TNAR", TNAR.Count },
                 { "TNAUR", -1 },
-                { "TR", trar.Count },
+                { "TR", TRAR.Count },
              };
 
             return;
@@ -596,52 +596,78 @@ namespace Xamarin.AndroidX.Mapper
                     () =>
                     {
                         Assembly assembly = Assembly.GetExecutingAssembly();
-                        string fn = assembly
-                                        .GetManifestResourceNames()
-                                        .Single(file => file.EndsWith("analysis-report.md", StringComparison.InvariantCulture));
+                        string[] resource_names = assembly.GetManifestResourceNames();
+                        string file = resource_names
+                                        .Single(f => f.EndsWith("assembly-analysis-report.md", StringComparison.InvariantCulture));
 
                         string report = null;
-                        using (Stream stream = assembly.GetManifestResourceStream(fn))
+                        using (Stream stream = assembly.GetManifestResourceStream(file))
                         using (StreamReader reader = new StreamReader(stream))
                         {
                             report = reader.ReadToEnd();
                         }
 
+                        string replacement = null;
+
+                        replacement = this.GoogleMappingsData.Mapping.Count().ToString();
+                        report = report.Replace($@"$GoogleMappings$", replacement);
+
+                        replacement = string.Join
+                                                (
+                                                    Environment.NewLine,
+                                                    this.GoogleMappingsData.ReducedWithFiltering
+                                                );
+                        report = report.Replace($@"$SizeReductionReport$", replacement);
+
                         int n_google_mappings = GoogleMappingsData.Mapping.Count();
-
-                        int n_tar = this.AnalysisData["TAR"];
-                        int n_tarig = this.AnalysisData["TARIG"];
-                        int n_tarnig = this.AnalysisData["TARNIG"];
- 
+                        
+                        report = report.Replace("$FILENAME$", filename);
                         report = report.Replace("$GoogleMappings$", n_google_mappings.ToString());
+                        report = report.Replace("$NTAR$", this.TAR.Count().ToString());
+                        report = report.Replace("$NTARIG$", this.TARIG.Count().ToString());
+                        report = report.Replace("$NTARNIG$", this.TARNIG.Count().ToString());
+                        int sum = this.TARIG.Count() + this.TARNIG.Count();
+                        report = report.Replace("$SUM$", sum.ToString());
+                        report = report.Replace("$NTAR$", this.TNAR.Count().ToString());
+                        report = report.Replace("$NTAUR$", this.TAUR.Count().ToString());
+                        report = report.Replace("$NTR$", this.TR.Count().ToString());
 
-                        if (filename.ToLowerInvariant().Contains("androidx"))
-                        {
-                            report = report.Replace("$TARAX", n_tar.ToString());
-                            report = report.Replace("TARIGAX", n_tarig.ToString());
-                            report = report.Replace("TARNIGAX", n_tarnig.ToString());
-                        }
-                        else
-                        {
-                            report = report.Replace("$TARAS", n_tar.ToString());
-                            report = report.Replace("TARIGAS", n_tarig.ToString());
-                            report = report.Replace("TARNIGAS", n_tarnig.ToString());
-                        }
+                        File.WriteAllText(Path.ChangeExtension(filename, "assembly-analysis-report.md"), report);
                     },
                     () =>
                     {
-                        string text = string.Join(Environment.NewLine, tar);
-                        File.WriteAllText(Path.ChangeExtension(filename, "TAR.csv"), text);
+                        string text = string.Join(Environment.NewLine, this.TAR);
+                        File.WriteAllText(Path.ChangeExtension(filename, "dll.TAR.csv"), text);
                     },
                     () =>
                     {
-                        string text = string.Join(Environment.NewLine, tarig);
-                        File.WriteAllText(Path.ChangeExtension(filename, "TARIG.csv"), text);
+                        string text = string.Join(Environment.NewLine, this.TARIG);
+                        File.WriteAllText(Path.ChangeExtension(filename, "dll.TARIG.csv"), text);
                     },
                     () =>
                     {
-                        string text = string.Join(Environment.NewLine, tarnig);
-                        File.WriteAllText(Path.ChangeExtension(filename, "TARNIG.csv"), text);
+                        string text = string.Join(Environment.NewLine, this.TARNIG);
+                        File.WriteAllText(Path.ChangeExtension(filename, "dll.TARNIG.csv"), text);
+                    },
+                    () =>
+                    {
+                        string text = string.Join(Environment.NewLine, this.TAUR);
+                        File.WriteAllText(Path.ChangeExtension(filename, "TAUR.csv"), text);
+                    },
+                    () =>
+                    {
+                        string text = string.Join(Environment.NewLine, this.TNAR);
+                        File.WriteAllText(Path.ChangeExtension(filename, "dll.TNAR.csv"), text);
+                    },
+                    () =>
+                    {
+                        string text = string.Join(Environment.NewLine, this.TR);
+                        File.WriteAllText(Path.ChangeExtension(filename, "dll.TR.csv"), text);
+                    },
+                    () =>
+                    {
+                        string text = string.Join(Environment.NewLine, this.TRAR);
+                        File.WriteAllText(Path.ChangeExtension(filename, "dll.TRAR.csv"), text);
                     }
                 );
 
