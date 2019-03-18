@@ -21,7 +21,7 @@ namespace Xamarin.AndroidX.Mapper
 
         public void MergeJoin()
         {
-            foreach((string JavaType, string ManagedClass, string ManagedNamespace, string JNIPackage, string JNIType) row in MappingsAndroidSupport.MappingsXamarinManaged)
+            //foreach((string JavaType, string ManagedClass, string ManagedNamespace, string JNIPackage, string JNIType) row in MappingsAndroidSupport.MappingsXamarinManaged)
             {
 
             }
