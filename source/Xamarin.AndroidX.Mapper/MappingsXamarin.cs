@@ -164,22 +164,22 @@ namespace Xamarin.AndroidX.Mapper
                             mapping_google_row in this.GoogleMappingsData.Mapping
                     )
             {
-                if (filename.ToLowerInvariant().Contains("androidx"))
-                {
-                    int idx = System.Array.BinarySearch
-                                                    (
-                                                        mapping_sorted_androidx.ToArray(),
-                                                        mapping_google_row.TypenameFullyQualifiedAndroidX
-                                                    );
-                }
-                else
-                {
-                    int idx = System.Array.BinarySearch
-                                                    (
-                                                        mapping_sorted_android_support.ToArray(),
-                                                        mapping_google_row.TypenameFullyQualifiedAndroidSupport
-                                                    );
-                }
+                //if (filename.ToLowerInvariant().Contains("androidx"))
+                //{
+                //    int idx = System.Array.BinarySearch
+                //                                    (
+                //                                        mapping_sorted_androidx.ToArray(),
+                //                                        mapping_google_row.TypenameFullyQualifiedAndroidX
+                //                                    );
+                //}
+                //else
+                //{
+                //    int idx = System.Array.BinarySearch
+                //                                    (
+                //                                        mapping_sorted_android_support.ToArray(),
+                //                                        mapping_google_row.TypenameFullyQualifiedAndroidSupport
+                //                                    );
+                //}
 
 
             }
