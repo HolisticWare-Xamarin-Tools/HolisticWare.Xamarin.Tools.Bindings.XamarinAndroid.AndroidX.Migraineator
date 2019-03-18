@@ -65,8 +65,6 @@ namespace Xamarin.AndroidX.Data
             return;
         }
 
-        List<(string Filteredpackage, int Number)> ReducedWithFiltering;
-
         public void FilterForSizeRedcution()
         {
             IEnumerable
@@ -80,17 +78,7 @@ namespace Xamarin.AndroidX.Data
 
             ReducedWithFiltering = new List<(string Filteredpackage, int Number)>();
 
-            string[] filter = new string[]
-            {
-                "android.arch.paging",
-                "android.arch.persistence.db",
-                "android.arch.persistence.db.framework",
-                "android.arch.persistence.room",
-                "android.databinding",
-                "android.support.test",
-            };
-
-            foreach (string packagename_as in filter)
+            foreach (string packagename_as in this.FilterForSizeReduction)
             {
                 filtered = filtered.Where
                                         (

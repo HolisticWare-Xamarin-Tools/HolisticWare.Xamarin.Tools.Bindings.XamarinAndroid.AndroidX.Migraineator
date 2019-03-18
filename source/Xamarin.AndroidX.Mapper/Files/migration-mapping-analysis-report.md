@@ -2,11 +2,14 @@
 
 *   TAR - types Android registered
 
+    *   
+
 *   TNAR - types nested Android registered
 
 *   TAUR - types Android unregistered 
         
 *   TR - type references
+
 
 GoogleMapping = $GoogleMappings$;
 

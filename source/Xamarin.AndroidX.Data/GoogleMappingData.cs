@@ -6,6 +6,16 @@ namespace Xamarin.AndroidX.Data
     {
         public GoogleMappingData()
         {
+            this.FilterForSizeReduction = new string[]
+            {
+                "android.arch.paging",
+                "android.arch.persistence.db",
+                "android.arch.persistence.db.framework",
+                "android.arch.persistence.room",
+                "android.databinding",
+                "android.support.test",
+            };
+
             return;
         }
 
@@ -33,6 +43,18 @@ namespace Xamarin.AndroidX.Data
 
         public void OptimizeMappingsForClasses(string class_fully_qualified)
         {
+        }
+
+        public string[] FilterForSizeReduction
+        {
+            get;
+            set;
+        }
+
+        public List<(string Filteredpackage, int Number)> ReducedWithFiltering
+        {
+            get;
+            protected set;
         }
 
         public
