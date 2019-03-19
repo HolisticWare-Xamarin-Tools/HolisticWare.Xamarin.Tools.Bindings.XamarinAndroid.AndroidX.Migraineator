@@ -1,5 +1,9 @@
 ﻿# Analysis Report
 
+## Bindings Analysis
+
+### Unmanaged 
+
 *   TAR - types Android registered
 
     *   N = $NTAR$
@@ -37,7 +41,16 @@
     *   N = $NTR$
 
     *   [./$FILENAME$.TR.csv](./$FILENAME$.TR.csv)
+    
+## Managed 
 
+*   MappingsForMigrationMergeJoin
+
+    *   N = $N_MappingsForMigrationMergeJoin$
+
+    *   [./$FILENAME$.MappingsForMigrationMergeJoin.csv](./$FILENAME$.MappingsForMigrationMergeJoin.csv)
+        
+    
 ## Google Mappings
 
 GoogleMapping = $GoogleMappings$;

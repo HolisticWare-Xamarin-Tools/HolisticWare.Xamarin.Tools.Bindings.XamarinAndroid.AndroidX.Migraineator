@@ -50,7 +50,7 @@ namespace Xamarin.AndroidX.Mapper
                 throw new InvalidOperationException($"Argument needed {nameof(url)} or {nameof(AssemblyUrl)}");
             }
 
-            if(string.IsNullOrEmpty(url))
+            if (string.IsNullOrEmpty(url))
             {
                 url = AssemblyUrl;
             }
@@ -83,7 +83,7 @@ namespace Xamarin.AndroidX.Mapper
                                 );
             }
 
-            return ;
+            return;
         }
 
         public string AssemblyUrl
@@ -93,28 +93,24 @@ namespace Xamarin.AndroidX.Mapper
         }
 
         protected
-            IEnumerable
-                <
-                    (
-                        string TypenameFullyQualifiedAndroidSupport,
-                        string TypenameFullyQualifiedAndroidX
-                    )
-                >
+                (
+                    string TypenameFullyQualifiedAndroidSupport,
+                    string TypenameFullyQualifiedAndroidX
+                )
+                    []
                     mapping_sorted_androidx = null;
 
-        protected IEnumerable<string> mapping_sorted_androidx_index = null;
+        protected string[] mapping_sorted_androidx_index = null;
 
         protected
-            IEnumerable
-                <
-                    (
-                        string TypenameFullyQualifiedAndroidSupport,
-                        string TypenameFullyQualifiedAndroidX
-                    )
-                >
+                (
+                    string TypenameFullyQualifiedAndroidSupport,
+                    string TypenameFullyQualifiedAndroidX
+                )
+                    []
                     mapping_sorted_android_support = null;
 
-        protected IEnumerable<string> mapping_sorted_android_support_index = null;
+        protected string[] mapping_sorted_android_support_index = null;
 
         public void Initialize()
         {
@@ -122,17 +118,23 @@ namespace Xamarin.AndroidX.Mapper
             {
                 mapping_sorted_androidx = this.GoogleMappingsData
                                                     .Mapping
-                                                    .OrderBy(tuple => tuple.TypenameFullyQualifiedAndroidX);
+                                                    .OrderBy(tuple => tuple.TypenameFullyQualifiedAndroidX)
+                                                    .ToArray();
 
-                mapping_sorted_androidx_index = mapping_sorted_androidx.Select(tuple => tuple.TypenameFullyQualifiedAndroidX);
+                mapping_sorted_androidx_index = mapping_sorted_androidx
+                                                    .Select(tuple => tuple.TypenameFullyQualifiedAndroidX)
+                                                    .ToArray();
             }
             else
             {
                 mapping_sorted_android_support = this.GoogleMappingsData
                                                             .Mapping
-                                                            .OrderBy(tuple => tuple.TypenameFullyQualifiedAndroidSupport);
+                                                            .OrderBy(tuple => tuple.TypenameFullyQualifiedAndroidSupport)
+                                                            .ToArray();
 
-                mapping_sorted_android_support_index = mapping_sorted_android_support.Select(tuple => tuple.TypenameFullyQualifiedAndroidSupport);
+                mapping_sorted_android_support_index = mapping_sorted_android_support
+                                                            .Select(tuple => tuple.TypenameFullyQualifiedAndroidSupport)
+                                                            .ToArray();
             }
 
             // Cecilize(); // let user call Cecilize
@@ -145,7 +147,7 @@ namespace Xamarin.AndroidX.Mapper
 
         public void FinalizeMappings()
         {
-            google_mapping_with_xamarin =
+            MappingsForMigrationMergeJoin =
                     new List
                             <
                                 (
@@ -155,33 +157,65 @@ namespace Xamarin.AndroidX.Mapper
                                 )
                             >();
 
+            if (filename.ToLowerInvariant().Contains("androidx"))
+            {
+                FinalizeMappingsAX();
+            }
+            else
+            {
+                FinalizeMappingsAS();
+            }
+
+            return;
+        }
+
+        public void FinalizeMappingsAX()
+        {
             foreach
                     (
                         (
-                            string TypenameFullyQualifiedAndroidSupport,
-                            string TypenameFullyQualifiedAndroidX
+                            string JavaType,
+                            string ManagedClass,
+                            string ManagedNamespace,
+                            string JNIPackage,
+                            string JNIType
                         )
-                            mapping_google_row in this.GoogleMappingsData.Mapping
+                            row_mxm in this.MappingsXamarinManaged
                     )
             {
-                //if (filename.ToLowerInvariant().Contains("androidx"))
-                //{
-                //    int idx = System.Array.BinarySearch
-                //                                    (
-                //                                        mapping_sorted_androidx.ToArray(),
-                //                                        mapping_google_row.TypenameFullyQualifiedAndroidX
-                //                                    );
-                //}
-                //else
-                //{
-                //    int idx = System.Array.BinarySearch
-                //                                    (
-                //                                        mapping_sorted_android_support.ToArray(),
-                //                                        mapping_google_row.TypenameFullyQualifiedAndroidSupport
-                //                                    );
-                //}
+                int index = System.Array.BinarySearch
+                                                (
+                                                    mapping_sorted_androidx_index,
+                                                    row_mxm.JavaType
+                                                );
+                string found = mapping_sorted_androidx_index[index];
 
+            }
 
+            return;
+        }
+
+        public void FinalizeMappingsAS()
+        {
+            foreach
+                    (
+                        (
+                            string JavaType,
+                            string ManagedClass,
+                            string ManagedNamespace,
+                            string JNIPackage,
+                            string JNIType
+                        )
+                            row_mxm in this.MappingsXamarinManaged
+                    )
+            {
+                int index = System.Array.BinarySearch
+                                                (
+                                                    mapping_sorted_android_support_index,
+                                                    row_mxm.JavaType
+                                                );
+
+                string found = mapping_sorted_android_support_index[index];
             }
 
             return;
@@ -290,6 +324,24 @@ namespace Xamarin.AndroidX.Mapper
                             string ManagedTypeFullyQualified
                         )
                     >
+                        TNARIG;
+
+        public List
+                    <
+                        (
+                            string JavaTypeFullyQualified,
+                            string ManagedTypeFullyQualified
+                        )
+                    >
+                        TNARNIG;
+
+        public List
+                    <
+                        (
+                            string JavaTypeFullyQualified,
+                            string ManagedTypeFullyQualified
+                        )
+                    >
                         TR;
 
          public List
@@ -300,7 +352,8 @@ namespace Xamarin.AndroidX.Mapper
                             string TypenameFullyQualifiedXamarin
                         )
                     >
-                        google_mapping_with_xamarin;
+                        MappingsForMigrationMergeJoin;
+
 
         public void Cecilize()
         {
@@ -341,6 +394,22 @@ namespace Xamarin.AndroidX.Mapper
                                 )
                             >();
 
+            TNARIG = new List
+                            <
+                                (
+                                    string JavaTypeFullyQualified,
+                                    string ManagedTypeFullyQualified
+                                )
+                            >();
+
+            TNARNIG = new List
+                            <
+                                (
+                                    string JavaTypeFullyQualified,
+                                    string ManagedTypeFullyQualified
+                                )
+                            >();
+
             TR = new List
                             <
                                 (
@@ -357,7 +426,29 @@ namespace Xamarin.AndroidX.Mapper
                                 )
                             >();
 
+            MappingsForMigrationMergeJoin = new List
+                                                    <
+                                                        (
+                                                            string TypenameFullyQualifiedAndroidSupport,
+                                                            string TypenameFullyQualifiedAndroidX,
+                                                            string TypenameFullyQualifiedXamarin
+                                                        )
+                                                    >();
 
+            if (filename.ToLowerInvariant().Contains("androidx"))
+            {
+                CecilizeAX();
+            }
+            else
+            {
+                CecilizeAS();
+            }
+
+            return;
+        }
+
+        protected void CecilizeAS()
+        {
             bool has_symbols_file = false;
 
             ReaderParameters reader_parameters = new ReaderParameters
@@ -395,69 +486,52 @@ namespace Xamarin.AndroidX.Mapper
                                 string jni_class = jni_type.Substring(lastSlash + 1).Replace('$', '.');
                                 string jni_package = jni_type.Substring(0, lastSlash).Replace('/', '.');
 
-                                 if (filename.ToLowerInvariant().Contains("androidx"))
-                                {
-                                    int index = System.Array.BinarySearch
+                                //......................................................................
+                                int index;
+                                string tas = null;
+                                string tax = null;
+
+                                    index = System.Array.BinarySearch
                                                                 (
-                                                                    mapping_sorted_androidx_index.ToArray(),
+                                                                    mapping_sorted_android_support_index,
                                                                     java_type
                                                                 );
-                                    if ( index >= 0 && index < mapping_sorted_androidx_index.Count())
-                                    {
-                                        // found
-                                        TARIG.Add
-                                                (
-                                                    (
-                                                        JavaTypeFullyQualified: java_type,
-                                                        ManagedTypeFullyQualified: managed_type_fq
-                                                    )
-                                                );
-                                    }
-                                    else
-                                    {
-                                        // not found
-                                        TARNIG.Add
-                                                (
-                                                    (
-                                                        JavaTypeFullyQualified: java_type,
-                                                        ManagedTypeFullyQualified: managed_type_fq
-                                                    )
-                                                );
 
-                                    }
+                                if ( index >=0 && index < mapping_sorted_android_support_index.Count() -1 )
+                                {
+                                    // found
+                                    TARIG.Add
+                                            (
+                                                (
+                                                    JavaTypeFullyQualified: java_type,
+                                                    ManagedTypeFullyQualified: managed_type_fq
+                                                )
+                                            );
+
+                                    tas = mapping_sorted_android_support[index].TypenameFullyQualifiedAndroidSupport;
+                                    tax = mapping_sorted_android_support[index].TypenameFullyQualifiedAndroidX;
+
+                                    MappingsForMigrationMergeJoin.Add
+                                                                    (
+                                                                        (
+                                                                            TypenameFullyQualifiedAndroidSupport: tas,
+                                                                            TypenameFullyQualifiedAndroidX: tax,
+                                                                            TypenameFullyQualifiedXamarin: managed_type_fq
+                                                                        )
+                                                                    );
                                 }
                                 else
                                 {
-                                    int index = System.Array.BinarySearch
-                                                                (
-                                                                    mapping_sorted_android_support_index.ToArray(),
-                                                                    java_type
-                                                                );
-
-                                    if ( index >=0 && index < mapping_sorted_android_support_index.Count() -1 )
-                                    {
-                                        // found
-                                        TARIG.Add
+                                    // not found
+                                    TARNIG.Add
+                                            (
                                                 (
-                                                    (
-                                                        JavaTypeFullyQualified: java_type,
-                                                        ManagedTypeFullyQualified: managed_type_fq
-                                                    )
-                                                );
-                                    }
-                                    else
-                                    {
-                                        // not found
-                                        TARNIG.Add
-                                                (
-                                                    (
-                                                        JavaTypeFullyQualified: java_type,
-                                                        ManagedTypeFullyQualified: managed_type_fq
-                                                    )
-                                                );
-
-                                    }
+                                                    JavaTypeFullyQualified: java_type,
+                                                    ManagedTypeFullyQualified: managed_type_fq
+                                                )
+                                            );
                                 }
+                                //......................................................................
 
                                 TAR.Add
                                         (
@@ -504,6 +578,54 @@ namespace Xamarin.AndroidX.Mapper
                                         string jni_class = jni_type.Substring(lastSlash + 1).Replace('$', '.');
                                         string jni_package = jni_type.Substring(0, lastSlash).Replace('/', '.');
 
+
+                                        //......................................................................
+                                        int index;
+                                        string tas = null;
+                                        string tax = null;
+
+                                        index = System.Array.BinarySearch
+                                                                    (
+                                                                        mapping_sorted_android_support_index,
+                                                                        java_type
+                                                                    );
+
+                                        if ( index >= 0 && index < mapping_sorted_android_support_index.Count())
+                                        {
+                                            // found
+                                            TNARIG.Add
+                                                    (
+                                                        (
+                                                            JavaTypeFullyQualified: java_type,
+                                                            ManagedTypeFullyQualified: managed_type_fq
+                                                        )
+                                                    );
+                                            tas = mapping_sorted_android_support[index].TypenameFullyQualifiedAndroidSupport;
+                                            tax = mapping_sorted_android_support[index].TypenameFullyQualifiedAndroidX;
+
+                                            MappingsForMigrationMergeJoin.Add
+                                                                            (
+                                                                                (
+                                                                                    TypenameFullyQualifiedAndroidSupport: tas,
+                                                                                    TypenameFullyQualifiedAndroidX: tax,
+                                                                                    TypenameFullyQualifiedXamarin: managed_type_fq
+                                                                                )
+                                                                            );
+                                        }
+                                        else
+                                        {
+                                            // not found
+                                            TNARNIG.Add
+                                                    (
+                                                        (
+                                                            JavaTypeFullyQualified: java_type,
+                                                            ManagedTypeFullyQualified: managed_type_fq
+                                                        )
+                                                    );
+
+                                        }
+                                        //......................................................................
+
                                         TNAR.Add
                                                 (
                                                     (
@@ -547,6 +669,233 @@ namespace Xamarin.AndroidX.Mapper
                 { "TNAUR", -1 },
                 { "TR", TRAR.Count },
              };
+
+
+            return;
+        }
+
+        protected void CecilizeAX()
+        {
+            bool has_symbols_file = false;
+
+            ReaderParameters reader_parameters = new ReaderParameters
+            {
+                ReadSymbols = has_symbols_file
+            };
+
+            AssemblyDefinition assembly_definition = AssemblyDefinition.ReadAssembly(filename, reader_parameters);
+
+            foreach (ModuleDefinition module in assembly_definition.Modules)
+            {
+                foreach (TypeDefinition type in module.GetTypes())
+                {
+                    if(type.HasCustomAttributes)
+                    {
+                        string managed_type = GetTypeName(type);
+                        string managed_namespace = GetNamespace(type);
+                        string managed_type_fq = $"{managed_namespace}.{managed_type}";
+
+                        foreach (CustomAttribute attr in type.CustomAttributes)
+                        {
+                            string attribute = attr.AttributeType.FullName;
+
+                            if (attribute.Equals("Android.Runtime.RegisterAttribute"))
+                            {
+                                string jni_type = attr.ConstructorArguments[0].Value.ToString();
+                                string java_type = jni_type.Replace("/", ".");
+
+                                int lastSlash = jni_type.LastIndexOf('/');
+
+                                if (lastSlash < 0 )
+                                {
+                                    string type_with_nested_type = jni_type;
+                                }
+                                string jni_class = jni_type.Substring(lastSlash + 1).Replace('$', '.');
+                                string jni_package = jni_type.Substring(0, lastSlash).Replace('/', '.');
+
+                                //......................................................................
+                                int index;
+                                string tas = null;
+                                string tax = null;
+
+                                index = System.Array.BinarySearch
+                                                            (
+                                                                mapping_sorted_androidx_index,
+                                                                java_type
+                                                            );
+
+                                if ( index >= 0 && index < mapping_sorted_androidx_index.Count())
+                                {
+                                    // found
+                                    TARIG.Add
+                                            (
+                                                (
+                                                    JavaTypeFullyQualified: java_type,
+                                                    ManagedTypeFullyQualified: managed_type_fq
+                                                )
+                                            );
+                                    tas = mapping_sorted_androidx[index].TypenameFullyQualifiedAndroidSupport;
+                                    tax = mapping_sorted_androidx[index].TypenameFullyQualifiedAndroidX;
+
+                                    MappingsForMigrationMergeJoin.Add
+                                                                    (
+                                                                        (
+                                                                            TypenameFullyQualifiedAndroidSupport: tas,
+                                                                            TypenameFullyQualifiedAndroidX: tax,
+                                                                            TypenameFullyQualifiedXamarin: managed_type_fq
+                                                                        )
+                                                                    );
+                                }
+                                else
+                                {
+                                    // not found
+                                    TARNIG.Add
+                                            (
+                                                (
+                                                    JavaTypeFullyQualified: java_type,
+                                                    ManagedTypeFullyQualified: managed_type_fq
+                                                )
+                                            );
+
+                                }
+                                //......................................................................
+
+                                TAR.Add
+                                        (
+                                            (
+                                                JavaTypeFullyQualified: java_type,
+                                                ManagedTypeFullyQualified: managed_type_fq
+                                                //ManagedNamespace: managed_namespace,
+                                                //JNIPackage: jni_package,
+                                                //JNIType: jni_type
+                                            )
+                                        );
+
+
+
+                            }
+                        }
+                    }
+
+                    if (type.HasNestedTypes)
+                    {
+                        foreach(TypeDefinition type_nested in type.NestedTypes)
+                        {
+                            if (type_nested.HasCustomAttributes)
+                            {
+                                string managed_type = GetTypeName(type);
+                                string managed_namespace = GetNamespace(type);
+                                string managed_type_fq = $"{managed_namespace}.{managed_type}";
+
+                                foreach (CustomAttribute attr in type.CustomAttributes)
+                                {
+                                    string attribute = attr.AttributeType.FullName;
+
+                                    if (attribute.Equals("Android.Runtime.RegisterAttribute"))
+                                    {
+                                        string jni_type = attr.ConstructorArguments[0].Value.ToString();
+                                        string java_type = jni_type.Replace("/", ".");
+
+                                        int lastSlash = jni_type.LastIndexOf('/');
+
+                                        if (lastSlash < 0 )
+                                        {
+                                            string type_with_nested_type = jni_type;
+                                        }
+                                        string jni_class = jni_type.Substring(lastSlash + 1).Replace('$', '.');
+                                        string jni_package = jni_type.Substring(0, lastSlash).Replace('/', '.');
+
+                                        //......................................................................
+                                        int index;
+                                        string tas = null;
+                                        string tax = null;
+
+                                        index = System.Array.BinarySearch
+                                                                    (
+                                                                        mapping_sorted_androidx_index,
+                                                                        java_type
+                                                                    );
+
+                                        if ( index >= 0 && index < mapping_sorted_androidx_index.Count())
+                                        {
+                                            // found
+                                            TNARIG.Add
+                                                    (
+                                                        (
+                                                            JavaTypeFullyQualified: java_type,
+                                                            ManagedTypeFullyQualified: managed_type_fq
+                                                        )
+                                                    );
+                                            tas = mapping_sorted_androidx[index].TypenameFullyQualifiedAndroidSupport;
+                                            tax = mapping_sorted_androidx[index].TypenameFullyQualifiedAndroidX;
+
+                                            MappingsForMigrationMergeJoin.Add
+                                                                            (
+                                                                                (
+                                                                                    TypenameFullyQualifiedAndroidSupport: tas,
+                                                                                    TypenameFullyQualifiedAndroidX: tax,
+                                                                                    TypenameFullyQualifiedXamarin: managed_type_fq
+                                                                                )
+                                                                            );
+                                        }
+                                        else
+                                        {
+                                            // not found
+                                            TNARNIG.Add
+                                                    (
+                                                        (
+                                                            JavaTypeFullyQualified: java_type,
+                                                            ManagedTypeFullyQualified: managed_type_fq
+                                                        )
+                                                    );
+
+                                        }
+                                        //......................................................................
+
+                                        TNAR.Add
+                                                (
+                                                    (
+                                                        JavaTypeFullyQualified: java_type,
+                                                        ManagedTypeFullyQualified: managed_type_fq
+                                                        //ManagedNamespace: managed_namespace,
+                                                        //JNIPackage: jni_package,
+                                                        //JNIType: jni_type
+                                                    )
+                                                );
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                foreach (TypeReference type in module.GetTypeReferences())
+                {
+                    string managed_type = type.FullName;
+                    string java_type = "jt";
+
+                    TR.Add
+                                        (
+                                            (
+                                                JavaTypeFullyQualified: java_type,
+                                                ManagedTypeFullyQualified: managed_type
+                                            )
+                                        );
+                }
+            }
+
+            AnalysisData = new Dictionary<string, int>()
+            {
+                { "$GoogleMappings$", this.GoogleMappingsData.Mapping.Count() },
+                { "TAR", TAR.Count },
+                { "TARIG", TARIG.Count },
+                { "TARNIG", TARNIG.Count },
+                { "TNAR", TNAR.Count },
+                { "TNAUR", -1 },
+                { "TR", TRAR.Count },
+             };
+
 
             return;
         }
@@ -628,46 +977,97 @@ namespace Xamarin.AndroidX.Mapper
                         report = report.Replace("$NTARNIG$", this.TARNIG.Count().ToString());
                         int sum = this.TARIG.Count() + this.TARNIG.Count();
                         report = report.Replace("$SUM$", sum.ToString());
-                        report = report.Replace("$NTAR$", this.TNAR.Count().ToString());
+                        report = report.Replace("$NTNAR$", this.TNAR.Count().ToString());
                         report = report.Replace("$NTAUR$", this.TAUR.Count().ToString());
                         report = report.Replace("$NTR$", this.TR.Count().ToString());
+
+                        report = report.Replace
+                                            (
+                                                "$N_MappingsForMigrationMergeJoin$",
+                                                this.MappingsForMigrationMergeJoin.Count().ToString()
+                                            );
 
                         File.WriteAllText(Path.ChangeExtension(filename, "assembly-analysis-report.md"), report);
                     },
                     () =>
                     {
                         string text = string.Join(Environment.NewLine, this.TAR);
+                        text = text.Replace("(", "");
+                        text = text.Replace(")", "");
+                        text = text.Replace(" ", "");
                         File.WriteAllText(Path.ChangeExtension(filename, "dll.TAR.csv"), text);
                     },
                     () =>
                     {
                         string text = string.Join(Environment.NewLine, this.TARIG);
+                        text = text.Replace("(", "");
+                        text = text.Replace(")", "");
+                        text = text.Replace(" ", "");
                         File.WriteAllText(Path.ChangeExtension(filename, "dll.TARIG.csv"), text);
                     },
                     () =>
                     {
                         string text = string.Join(Environment.NewLine, this.TARNIG);
+                        text = text.Replace("(", "");
+                        text = text.Replace(")", "");
+                        text = text.Replace(" ", "");
                         File.WriteAllText(Path.ChangeExtension(filename, "dll.TARNIG.csv"), text);
                     },
                     () =>
                     {
                         string text = string.Join(Environment.NewLine, this.TAUR);
+                        text = text.Replace("(", "");
+                        text = text.Replace(")", "");
+                        text = text.Replace(" ", "");
                         File.WriteAllText(Path.ChangeExtension(filename, "TAUR.csv"), text);
                     },
                     () =>
                     {
                         string text = string.Join(Environment.NewLine, this.TNAR);
+                        text = text.Replace("(", "");
+                        text = text.Replace(")", "");
+                        text = text.Replace(" ", "");
                         File.WriteAllText(Path.ChangeExtension(filename, "dll.TNAR.csv"), text);
                     },
                     () =>
                     {
+                        string text = string.Join(Environment.NewLine, this.TNARIG);
+                        text = text.Replace("(", "");
+                        text = text.Replace(")", "");
+                        text = text.Replace(" ", "");
+                        File.WriteAllText(Path.ChangeExtension(filename, "dll.TNARIG.csv"), text);
+                    },
+                    () =>
+                    {
+                        string text = string.Join(Environment.NewLine, this.TNARNIG);
+                        text = text.Replace("(", "");
+                        text = text.Replace(")", "");
+                        text = text.Replace(" ", "");
+                        File.WriteAllText(Path.ChangeExtension(filename, "dll.TNARNIG.csv"), text);
+                    },
+                    () =>
+                    {
                         string text = string.Join(Environment.NewLine, this.TR);
+                        text = text.Replace("(", "");
+                        text = text.Replace(")", "");
+                        text = text.Replace(" ", "");
                         File.WriteAllText(Path.ChangeExtension(filename, "dll.TR.csv"), text);
                     },
                     () =>
                     {
                         string text = string.Join(Environment.NewLine, this.TRAR);
+                        text = text.Replace("(", "");
+                        text = text.Replace(")", "");
+                        text = text.Replace(" ", "");
                         File.WriteAllText(Path.ChangeExtension(filename, "dll.TRAR.csv"), text);
+                    },
+                    () =>
+                    {
+                        string text = string.Join(Environment.NewLine, this.MappingsForMigrationMergeJoin);
+                        text = text.Replace("(", "");
+                        text = text.Replace(")", "");
+                        text = text.Replace(" ", "");
+                        File.WriteAllText(Path.ChangeExtension(filename, "dll.MappingsForMigrationMergeJoin.csv"), text);
                     }
                 );
 

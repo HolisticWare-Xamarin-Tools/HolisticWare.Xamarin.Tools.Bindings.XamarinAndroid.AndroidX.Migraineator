@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <DefaultItemExcludes>$(DefaultItemExcludes);**\*.cs;**\*.md</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,14 +18,13 @@
     <Folder Include="Files\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Files\report.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Files\analysis-report.md" />
-    <None Remove="Files\assembly-analysis-report %28copy%29.md" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Files\assembly-analysis-report.md" />
     <EmbeddedResource Include="Files\migration-mapping-analysis-report.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MappingsXamarin.cs" />
+    <Compile Include="MappingsMergedJoined.cs" />
+    <Compile Include="ReportGenerator.cs" />
+    <Compile Include="MappingsGoogle.cs" />
   </ItemGroup>
 </Project>

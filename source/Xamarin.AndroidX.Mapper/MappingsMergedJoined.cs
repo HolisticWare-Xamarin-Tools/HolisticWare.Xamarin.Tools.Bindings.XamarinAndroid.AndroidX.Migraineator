@@ -21,9 +21,23 @@ namespace Xamarin.AndroidX.Mapper
 
         public void MergeJoin()
         {
-            foreach((string JavaType, string ManagedClass, string ManagedNamespace, string JNIPackage, string JNIType) row in MappingsAndroidSupport.MappingsXamarinManaged)
-            {
+            (
+                string TypenameFullyQualifiedAndroidSupport,
+                string TypenameFullyQualifiedAndroidX,
+                string C
+            )
+                mapping_migration_tuple;
 
+            foreach
+                (
+                    (
+                        string TypenameFullyQualifiedAndroidSupport,
+                        string TypenameFullyQualifiedAndroidX
+                    )
+                        row in MappingsAndroidSupport.GoogleMappingsData.Mapping
+                )
+            {
+                
             }
 
             return;
