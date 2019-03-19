@@ -13,7 +13,7 @@ namespace App.Xamarin.AndroidX.Mapper
     class Program
     {
 
-        static string url_base = "https://github.com/moljac/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data/raw/master/data";
+        static string url_base = "https://github.com/moljac/HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data/raw/master/data/";
 
         static void Main(string[] args)
         {
@@ -22,14 +22,14 @@ namespace App.Xamarin.AndroidX.Mapper
             xamarin_android_support.Download
                                     (
                                         "Android.Support.merged",
-                                        $"{url_base}/Android.Support/AndroidSupport.Merged.dll"
+                                        $"{url_base}Android.Support/AndroidSupport.Merged.dll"
                                     );
 
             MappingsXamarin xamarin_androidx = new MappingsXamarin();
             xamarin_androidx.Download
                                     (
                                         "AndroidX.merged",
-                                        $"{url_base}/AndroidX/AndroidSupport.Merged.dll"
+                                        $"{url_base}AndroidX/AndroidSupport.Merged.dll"
                                     );
 
             // various Data objects will prepare Collections for faster search
@@ -74,6 +74,7 @@ namespace App.Xamarin.AndroidX.Mapper
                 MappingsAndroidX = xamarin_androidx
             };
             mappings_merged.MergeJoin();
+            mappings_merged.Dump();
 
 
             ReportGenerator report_generator = new ReportGenerator();
