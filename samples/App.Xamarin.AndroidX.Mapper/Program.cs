@@ -58,13 +58,13 @@ namespace App.Xamarin.AndroidX.Mapper
             xamarin_android_support.GoogleMappingsData = google_data_optimized_sorted;
             xamarin_android_support.Initialize();
             xamarin_android_support.Cecilize();
-            xamarin_android_support.FinalizeMappings();
+            //xamarin_android_support.FinalizeMappings();
             xamarin_android_support.Dump();
 
             xamarin_androidx.GoogleMappingsData = google_data_optimized_sorted;
             xamarin_androidx.Initialize();
             xamarin_androidx.Cecilize();
-            xamarin_androidx.FinalizeMappings();
+            //xamarin_androidx.FinalizeMappings();
             xamarin_androidx.Dump();
 
 
