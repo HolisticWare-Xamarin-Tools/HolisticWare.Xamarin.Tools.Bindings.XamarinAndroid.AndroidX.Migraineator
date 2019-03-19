@@ -92,6 +92,15 @@ namespace Xamarin.AndroidX.Mapper
             set;
         }
 
+        /// <summary>
+        /// whether duplicates are removed (Distinct() called)
+        /// </summary>
+        public bool IsDataUnique
+        {
+            get;
+            set;
+        } = true;
+
         protected
                 (
                     string TypenameFullyQualifiedAndroidSupport,
@@ -145,81 +154,82 @@ namespace Xamarin.AndroidX.Mapper
             return;
         }
 
-        public void FinalizeMappings()
-        {
-            MappingsForMigrationMergeJoin =
-                    new List
-                            <
-                                (
-                                    string TypenameFullyQualifiedAndroidSupport,
-                                    string TypenameFullyQualifiedAndroidX,
-                                    string TypenameFullyQualifiedXamarin
-                                )
-                            >();
+        //public void FinalizeMappings()
+        //{
+        //    MappingsForMigrationMergeJoin =
+        //            new List
+        //                    <
+        //                        (
+        //                            string TypenameFullyQualifiedAndroidSupport,
+        //                            string TypenameFullyQualifiedAndroidX,
+        //                            string TypenameFullyQualifiedXamarin
+        //                        )
+        //                    >();
 
-            if (filename.ToLowerInvariant().Contains("androidx"))
-            {
-                FinalizeMappingsAX();
-            }
-            else
-            {
-                FinalizeMappingsAS();
-            }
+        //    if (filename.ToLowerInvariant().Contains("androidx"))
+        //    {
+        //        FinalizeMappingsAX();
+        //    }
+        //    else
+        //    {
+        //        FinalizeMappingsAS();
+        //    }
 
-            return;
-        }
+        //    return;
+        //}
 
-        public void FinalizeMappingsAX()
-        {
-            foreach
-                    (
-                        (
-                            string JavaType,
-                            string ManagedClass,
-                            string ManagedNamespace,
-                            string JNIPackage,
-                            string JNIType
-                        )
-                            row_mxm in this.MappingsXamarinManaged
-                    )
-            {
-                int index = System.Array.BinarySearch
-                                                (
-                                                    mapping_sorted_androidx_index,
-                                                    row_mxm.JavaType
-                                                );
-                string found = mapping_sorted_androidx_index[index];
+        //public void FinalizeMappingsAX()
+        //{
+        //    foreach
+        //            (
+        //                (
+        //                    string JavaType,
+        //                    string ManagedClass,
+        //                    string ManagedNamespace,
+        //                    string JNIPackage,
+        //                    string JNIType
+        //                )
+        //                    row_mxm in this.MappingsXamarinManaged
+        //            )
+        //    {
+        //        int index = System.Array.BinarySearch
+        //                                        (
+        //                                            mapping_sorted_androidx_index,
+        //                                            row_mxm.JavaType
+        //                                        );
+        //        string found = mapping_sorted_androidx_index[index];
 
-            }
+        //    }
 
-            return;
-        }
+        //    return;
+        //}
 
-        public void FinalizeMappingsAS()
-        {
-            foreach
-                    (
-                        (
-                            string JavaType,
-                            string ManagedClass,
-                            string ManagedNamespace,
-                            string JNIPackage,
-                            string JNIType
-                        )
-                            row_mxm in this.MappingsXamarinManaged
-                    )
-            {
-                int index = System.Array.BinarySearch
-                                                (
-                                                    mapping_sorted_android_support_index,
-                                                    row_mxm.JavaType
-                                                );
+        //public void FinalizeMappingsAS()
+        //{
+        //    foreach
+        //            (
+        //                (
+        //                    string JavaType,
+        //                    string ManagedClass,
+        //                    string ManagedNamespace,
+        //                    string JNIPackage,
+        //                    string JNIType
+        //                )
+        //                    row_mxm in this.MappingsXamarinManaged
+        //            )
+        //    {
+        //        int index = System.Array.BinarySearch
+        //                                        (
+        //                                            mapping_sorted_android_support_index,
+        //                                            row_mxm.JavaType
+        //                                        );
 
-                string found = mapping_sorted_android_support_index[index];
-            }
+        //        string found = mapping_sorted_android_support_index[index];
+        //    }
 
-            return;
-        }
+        //    return;
+        //}
+
         public
             (
                 string JavaType,
@@ -442,6 +452,22 @@ namespace Xamarin.AndroidX.Mapper
             else
             {
                 CecilizeAS();
+            }
+
+            if (IsDataUnique)
+            {
+                Parallel.Invoke
+                    (
+                        () => this.TAR = this.TAR.Distinct().ToList(),
+                        () => this.TARIG = this.TARIG.Distinct().ToList(),
+                        () => this.TARNIG = this.TARNIG.Distinct().ToList(),
+                        () => this.TNAR = this.TNAR.Distinct().ToList(),
+                        () => this.TNARIG = this.TNARIG.Distinct().ToList(),
+                        () => this.TNARNIG = this.TNARNIG.Distinct().ToList(),
+                        () => this.TAUR = this.TAUR.Distinct().ToList(),
+                        () => this.TRAR = this.TRAR.Distinct().ToList(),
+                        () => this.TR = this.TR.Distinct().ToList()
+                    );
             }
 
             return;
@@ -975,9 +1001,13 @@ namespace Xamarin.AndroidX.Mapper
                         report = report.Replace("$NTAR$", this.TAR.Count().ToString());
                         report = report.Replace("$NTARIG$", this.TARIG.Count().ToString());
                         report = report.Replace("$NTARNIG$", this.TARNIG.Count().ToString());
-                        int sum = this.TARIG.Count() + this.TARNIG.Count();
-                        report = report.Replace("$SUM$", sum.ToString());
+                        int sum_tar = this.TARIG.Count() + this.TARNIG.Count();
+                        report = report.Replace("$SUM_TAR$", sum_tar.ToString());
                         report = report.Replace("$NTNAR$", this.TNAR.Count().ToString());
+                        report = report.Replace("$NTNARIG$", this.TNARIG.Count().ToString());
+                        report = report.Replace("$NTNARNIG$", this.TNARNIG.Count().ToString());
+                        int sum_tnar = this.TNARIG.Count() + this.TNARNIG.Count();
+                        report = report.Replace("$SUM_TNAR$", sum_tnar.ToString());
                         report = report.Replace("$NTAUR$", this.TAUR.Count().ToString());
                         report = report.Replace("$NTR$", this.TR.Count().ToString());
 

@@ -10,7 +10,7 @@
 
     *   [./$FILENAME$.TAR.csv](./$FILENAME$.TAR.csv)
     
-    *   check: N = $NTAR$ = `TARIG.Count()` + `TARNIG.Count()` = $NTARIG$ + $NTARNIG$ = $SUM$
+    *   check: N = $NTAR$ = `TARIG.Count()` + `TARNIG.Count()` = $NTARIG$ + $NTARNIG$ = $SUM_TAR$
 
 *   TARIG - types Android registered found in Google's Mappings
 
@@ -29,6 +29,20 @@
     *   N = $NTNAR$
 
     *   [./$FILENAME$.TNAR.csv](./$FILENAME$.TNAR.csv)
+    
+    *   check: N = $NTNAR$ = `TNARIG.Count()` + `TNARNIG.Count()` = $NTNARIG$ + $NTNARNIG$ = $SUM_TNAR$
+
+*   TNARIG - types nested Android registered in Google\'s mappings
+
+    *   N = $NTNARIG$
+
+    *   [./$FILENAME$.TNARIG.csv](./$FILENAME$.TNARIG.csv)
+    
+*   TNARNIG - types nested Android registered NOT in Google\'s mappings
+
+    *   N = $NTNARNIG$
+
+    *   [./$FILENAME$.TNARNIG.csv](./$FILENAME$.TNARNIG.csv)
     
 *   TAUR - types Android unregistered 
         
