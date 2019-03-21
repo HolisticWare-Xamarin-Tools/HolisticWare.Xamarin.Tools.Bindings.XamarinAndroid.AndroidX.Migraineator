@@ -4,3 +4,9 @@
 [submodule "externals/Core.Text"]
 	path = externals/Core.Text
 	url = https://github.com/HolisticWare/HolisticWare.Core.Text.git
+[submodule "externals/Core"]
+	path = externals/Core
+	url = https://github.com/HolisticWare/HolisticWare.Core.git
+[submodule "externals/Core.Linq"]
+	path = externals/Core.Linq
+	url = https://github.com/HolisticWare/HolisticWare.Core.Linq.git

@@ -103,24 +103,6 @@
         
         PackagePath="lib"
         -->
-        <Content Include="$(BindingsHelperFolder)/.gitignore" Pack="true">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-        <Content Include="$(BindingsHelperFolderDecompilerOutput)/.gitignore" Pack="true">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-        <Content Include="$(BindingsHelperFolderLibs)/.gitignore" Pack="true">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-        <None Include="$(BindingsHelperFolderLibs)/procyon-decompiler-0.5.30.jar" Pack="true" PackagePath="lib/">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Include="$(BindingsHelperFolderLibs)/cfr_0_132.jar" Pack="true" PackagePath="lib/">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Include="$(BindingsHelperFolderLibs)/Bytecode-Viewer-2.9.11.jar" Pack="true" PackagePath="lib/">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
     </ItemGroup>
 
   <ItemGroup>
