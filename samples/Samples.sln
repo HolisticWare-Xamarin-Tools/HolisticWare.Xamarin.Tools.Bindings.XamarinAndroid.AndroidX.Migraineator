@@ -77,6 +77,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.AndroidX.Mapper", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.AndroidX.Data", "..\source\Xamarin.AndroidX.Data\Xamarin.AndroidX.Data.csproj", "{140AF4E1-C0A8-410A-9DFD-64390C5BF573}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.AndroidX.Cecilfier.MSBuildTask", "..\source\Xamarin.AndroidX.Cecilfier.MSBuildTask\Xamarin.AndroidX.Cecilfier.MSBuildTask.csproj", "{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\externals\Core.Text\source\HolisticWare.Core.Text\HolisticWare.Core.Text.projitems*{921cfea5-564c-4975-a20f-8cad32ea88e3}*SharedItemsImports = 13
@@ -414,6 +416,18 @@ Global
 		{140AF4E1-C0A8-410A-9DFD-64390C5BF573}.Release|iPhone.Build.0 = Release|Any CPU
 		{140AF4E1-C0A8-410A-9DFD-64390C5BF573}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{140AF4E1-C0A8-410A-9DFD-64390C5BF573}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}.Release|iPhone.Build.0 = Release|Any CPU
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -444,6 +458,7 @@ Global
 		{6B44E78A-E865-4B06-AED4-D0A20F139931} = {B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}
 		{426FB8FA-6A1E-41E9-8E2A-01E4F00C7EF4} = {B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}
 		{140AF4E1-C0A8-410A-9DFD-64390C5BF573} = {B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}
+		{5F65F26F-A9E1-4CED-8A20-9B4D9C135B6E} = {B9A527F9-C9E4-48E8-8E63-40C4E244BB3E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {215510F5-7238-4944-87B4-B78A2BAF4FEB}
