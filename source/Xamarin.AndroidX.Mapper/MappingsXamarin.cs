@@ -29,6 +29,12 @@ namespace Xamarin.AndroidX.Mapper
             return;
         }
 
+        public bool MergeNestedtypes
+        {
+            get;
+            set;
+        } = true;
+
         public GoogleMappingData GoogleMappingsData
         {
             get;
@@ -153,82 +159,6 @@ namespace Xamarin.AndroidX.Mapper
 
             return;
         }
-
-        //public void FinalizeMappings()
-        //{
-        //    MappingsForMigrationMergeJoin =
-        //            new List
-        //                    <
-        //                        (
-        //                            string TypenameFullyQualifiedAndroidSupport,
-        //                            string TypenameFullyQualifiedAndroidX,
-        //                            string TypenameFullyQualifiedXamarin
-        //                        )
-        //                    >();
-
-        //    if (filename.ToLowerInvariant().Contains("androidx"))
-        //    {
-        //        FinalizeMappingsAX();
-        //    }
-        //    else
-        //    {
-        //        FinalizeMappingsAS();
-        //    }
-
-        //    return;
-        //}
-
-        //public void FinalizeMappingsAX()
-        //{
-        //    foreach
-        //            (
-        //                (
-        //                    string JavaType,
-        //                    string ManagedClass,
-        //                    string ManagedNamespace,
-        //                    string JNIPackage,
-        //                    string JNIType
-        //                )
-        //                    row_mxm in this.MappingsXamarinManaged
-        //            )
-        //    {
-        //        int index = System.Array.BinarySearch
-        //                                        (
-        //                                            mapping_sorted_androidx_index,
-        //                                            row_mxm.JavaType
-        //                                        );
-        //        string found = mapping_sorted_androidx_index[index];
-
-        //    }
-
-        //    return;
-        //}
-
-        //public void FinalizeMappingsAS()
-        //{
-        //    foreach
-        //            (
-        //                (
-        //                    string JavaType,
-        //                    string ManagedClass,
-        //                    string ManagedNamespace,
-        //                    string JNIPackage,
-        //                    string JNIType
-        //                )
-        //                    row_mxm in this.MappingsXamarinManaged
-        //            )
-        //    {
-        //        int index = System.Array.BinarySearch
-        //                                        (
-        //                                            mapping_sorted_android_support_index,
-        //                                            row_mxm.JavaType
-        //                                        );
-
-        //        string found = mapping_sorted_android_support_index[index];
-        //    }
-
-        //    return;
-        //}
 
         public
             (
@@ -468,6 +398,88 @@ namespace Xamarin.AndroidX.Mapper
                         () => this.TRAR = this.TRAR.Distinct().ToList(),
                         () => this.TR = this.TR.Distinct().ToList()
                     );
+            }
+
+            (
+                string JavaTypeFullyQualified,
+                string ManagedTypeFullyQualified
+            )[]
+            merged_tar_tnar = null;
+
+            if (MergeNestedtypes)
+            {
+                merged_tar_tnar = this.TAR.Concat(this.TNAR).ToArray();
+            }
+
+            MappingsForMigrationMergeJoin = new List
+                                                <
+                                                    (
+                                                        string TypenameFullyQualifiedAndroidSupport,
+                                                        string TypenameFullyQualifiedAndroidX,
+                                                        string TypenameFullyQualifiedXamarin
+                                                    )
+                                                >();
+
+            if (filename.ToLowerInvariant().Contains("androidx"))
+            {
+                foreach
+                    (
+                        (
+                            string JavaTypeFullyQualified,
+                            string ManagedTypeFullyQualified
+                        ) mapping_pair
+                        in merged_tar_tnar
+                    )
+                {
+                    string tnas = null;
+                    string tnax = mapping_pair.JavaTypeFullyQualified;
+                    string tnxm = mapping_pair.ManagedTypeFullyQualified;
+
+                    int index = Array.BinarySearch(this.mapping_sorted_androidx_index, tnax);
+                    if (index >= 0 && index < mapping_sorted_androidx_index.Length)
+                    {
+                        tnas = this.mapping_sorted_androidx[index].TypenameFullyQualifiedAndroidSupport;
+                    }
+
+                    MappingsForMigrationMergeJoin.Add
+                        (
+                            (
+                                TypenameFullyQualifiedAndroidSupport: tnas,
+                                TypenameFullyQualifiedAndroidX: tnax,
+                                TypenameFullyQualifiedXamarin: tnxm
+                            )
+                        );
+                }
+            }
+            else
+            {
+                foreach
+                    (
+                        (
+                            string JavaTypeFullyQualified,
+                            string ManagedTypeFullyQualified
+                        ) mapping_pair
+                        in merged_tar_tnar
+                    )
+                {
+                    string tnas = mapping_pair.JavaTypeFullyQualified;
+                    string tnax = null;
+                    string tnxm = mapping_pair.ManagedTypeFullyQualified;
+
+                    int index = Array.BinarySearch(this.mapping_sorted_android_support_index, tnas);
+                    if (index >= 0 && index < mapping_sorted_android_support_index.Length)
+                    {
+                        tnax = this.mapping_sorted_android_support[index].TypenameFullyQualifiedAndroidX;
+                    }
+                    MappingsForMigrationMergeJoin.Add
+                        (
+                            (
+                                TypenameFullyQualifiedAndroidSupport: tnas,
+                                TypenameFullyQualifiedAndroidX: tnax,
+                                TypenameFullyQualifiedXamarin: tnxm
+                            )
+                        );
+                }
             }
 
             return;
