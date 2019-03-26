@@ -14,6 +14,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 {
     public partial class AndroidXMigrator
     {
+        partial void MigrateWithSpanMemory();
+
         /// <summary>
         /// 
         /// </summary>
@@ -38,10 +40,10 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
             types_plain = asm_def.MainModule.Types;
 
 
-            System.Diagnostics.Trace.WriteLine($"===================================================================================");
-            System.Diagnostics.Trace.WriteLine($" migrating assembly                       = {this.PathAssemblyInput}");
-            System.Diagnostics.Trace.WriteLine($"                 types Mono.Cecil       # = {types_plain.Count()}");
-            System.Diagnostics.Trace.WriteLine($"                 types Mono.Cecil.Rocks # = {types_rocks.Count()}");
+            Trace.WriteLine($"===================================================================================");
+            Trace.WriteLine($" migrating assembly                       = {this.PathAssemblyInput}");
+            Trace.WriteLine($"                 types Mono.Cecil       # = {types_plain.Count()}");
+            Trace.WriteLine($"                 types Mono.Cecil.Rocks # = {types_rocks.Count()}");
 
             Stopwatch timer = new Stopwatch();
             timer.Start();
@@ -55,8 +57,8 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
             long ms = timer.ElapsedMilliseconds;
 
-            System.Diagnostics.Trace.WriteLine($"Assembly processing {ms}ms");
-            System.Diagnostics.Trace.WriteLine($"===================================================================================");
+            Trace.WriteLine($"Assembly processing {ms}ms");
+            Trace.WriteLine($"===================================================================================");
 
             asm_def.Write(this.PathAssemblyOutput);
 
@@ -65,11 +67,11 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
         private void ProcessType(TypeDefinition t)
         {
-            System.Diagnostics.Trace.WriteLine($"    processing Type");
-            System.Diagnostics.Trace.WriteLine($"                       Name        = {t.Name}");
-            System.Diagnostics.Trace.WriteLine($"                       FullName    = {t.FullName}");
-            System.Diagnostics.Trace.WriteLine($"                       IsClass     = {t.IsClass}");
-            System.Diagnostics.Trace.WriteLine($"                       IsInterface = {t.IsInterface}");
+            Trace.WriteLine($"    processing Type");
+            Trace.WriteLine($"                       Name        = {t.Name}");
+            Trace.WriteLine($"                       FullName    = {t.FullName}");
+            Trace.WriteLine($"                       IsClass     = {t.IsClass}");
+            Trace.WriteLine($"                       IsInterface = {t.IsInterface}");
 
             ProcessAttributes(t.Attributes);
             ProcessMethods(t.GetMethods());
@@ -79,7 +81,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
         private void ProcessAttributes(TypeAttributes attributes)
         {
-            System.Diagnostics.Trace.WriteLine($"                            Attribute = {attributes.ToString()}");
+            Trace.WriteLine($"                            Attribute = {attributes.ToString()}");
 
             return;
         }
@@ -88,7 +90,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
         {
             foreach (Mono.Cecil.MethodDefinition method in methods)
             {
-                System.Diagnostics.Trace.WriteLine($"                        Method = {method.Name}");
+                Trace.WriteLine($"                        Method = {method.Name}");
 
                 ReadOnlyMemory<char> memory_return_type_full_name;
                 string return_type_full_name = method.MethodReturnType?.ReturnType?.FullName;
@@ -99,7 +101,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                 {
                     memory_return_type_full_name = return_type_full_name.AsMemory();
                     has_support = memory_return_type_full_name.Span.StartsWith(memory_android_support.Span);
-                    System.Diagnostics.Trace.WriteLine($"                       returns  = {return_type_full_name}");
+                    Trace.WriteLine($"                       returns  = {return_type_full_name}");
                     if(has_support)
                     {
                         int start = memory_android_support.Span.Length;
@@ -135,7 +137,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
                         isBindingMethod = true;
 
-                        System.Diagnostics.Trace.WriteLine($"[Register(\"{attr.ConstructorArguments[0].Value}\", \"{registerAttributeNewJniSig}\")]");
+                        Trace.WriteLine($"[Register(\"{attr.ConstructorArguments[0].Value}\", \"{registerAttributeNewJniSig}\")]");
                     }
                 }
 
@@ -160,7 +162,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
                                 var newJniSig = ReplaceJniSignature(jniSig.Substring(indexOfDot + 1));
                                 instr.Operand = $"{methodName}.{newJniSig}";
 
-                                System.Diagnostics.Trace.WriteLine($"{methodName} -> {newJniSig}");
+                                Trace.WriteLine($"{methodName} -> {newJniSig}");
                             }
                             // Old style is two strings, one with method name and then `(Lparameter/Type;)Lreturn/Type;`
                             else if (jniSig.Contains('(') && jniSig.Contains(')'))
@@ -170,7 +172,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
                                 instr.Operand = newJniSig;
 
-                                System.Diagnostics.Trace.WriteLine($"{methodName} -> {newJniSig}");
+                                Trace.WriteLine($"{methodName} -> {newJniSig}");
                             }
                         }
                     }
@@ -196,7 +198,7 @@ namespace HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineat
 
                     if (has_support)
                     {
-                        System.Diagnostics.Trace.WriteLine($"                       parameter  = {method_parameter.ParameterType.Name}");
+                        Trace.WriteLine($"                       parameter  = {method_parameter.ParameterType.Name}");
                         break;
                     }
                 }

@@ -31,6 +31,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Core.Linq.NetS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HolisticWare.Core.Linq.NetStandard10", "..\externals\Core.Linq\source\HolisticWare.Core.Linq.NetStandard10\HolisticWare.Core.Linq.NetStandard10.csproj", "{D01F9C50-609D-48C7-A5A5-F1ABB797E249}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.AndroidX.Cecilfier.MSBuildTask", "Xamarin.AndroidX.Cecilfier.MSBuildTask\Xamarin.AndroidX.Cecilfier.MSBuildTask.csproj", "{66154A72-7CE9-4E2A-A962-76A0FEDE4AD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.AndroidX.Mapper", "Xamarin.AndroidX.Mapper\Xamarin.AndroidX.Mapper.csproj", "{C3D24F94-5240-47B2-8AC3-14A6BE97CFDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.AndroidX.Data", "Xamarin.AndroidX.Data\Xamarin.AndroidX.Data.csproj", "{C4626066-8E49-4FF0-B923-196454C264F6}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\externals\Core.Linq\source\HolisticWare.Core.Linq\HolisticWare.Core.Linq.projitems*{57b0eb28-7b4e-410d-b021-0dc9d719c11f}*SharedItemsImports = 13
@@ -85,6 +91,18 @@ Global
 		{D01F9C50-609D-48C7-A5A5-F1ABB797E249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D01F9C50-609D-48C7-A5A5-F1ABB797E249}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D01F9C50-609D-48C7-A5A5-F1ABB797E249}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66154A72-7CE9-4E2A-A962-76A0FEDE4AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66154A72-7CE9-4E2A-A962-76A0FEDE4AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66154A72-7CE9-4E2A-A962-76A0FEDE4AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66154A72-7CE9-4E2A-A962-76A0FEDE4AD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3D24F94-5240-47B2-8AC3-14A6BE97CFDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D24F94-5240-47B2-8AC3-14A6BE97CFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D24F94-5240-47B2-8AC3-14A6BE97CFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D24F94-5240-47B2-8AC3-14A6BE97CFDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4626066-8E49-4FF0-B923-196454C264F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4626066-8E49-4FF0-B923-196454C264F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4626066-8E49-4FF0-B923-196454C264F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4626066-8E49-4FF0-B923-196454C264F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

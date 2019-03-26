@@ -30,44 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\externals\Core.Text\source\HolisticWare.Core.Text.NetStandard13\HolisticWare.Core.Text.NetStandard13.csproj" />
     <ProjectReference Include="..\..\externals\AndroidX.Data\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data.csproj" />
-    <ProjectReference Include="..\..\externals\Core.Linq\source\HolisticWare.Core.Linq.NetStandard11\HolisticWare.Core.Linq.NetStandard11.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Xamarin.AndroidX.Cecilfier\AndroidXMigrator.cs">
-      <Link>AndroidXMigrator.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.AndroidX.Cecilfier\AndroidXMigrator.Migrate.Cecil.cs">
-      <Link>AndroidXMigrator.Migrate.Cecil.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.AndroidX.Cecilfier\AndroidXMigrator.Migrate.OriginalPatchByRedth.cs">
-      <Link>AndroidXMigrator.Migrate.OriginalPatchByRedth.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.AndroidX.Cecilfier\Settings.cs">
-      <Link>Settings.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.AndroidX.Cecilfier\AST\AbstractSyntaxTree.cs">
-      <Link>AST\AbstractSyntaxTree.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.AndroidX.Cecilfier\AST\Assembly.cs">
-      <Link>AST\Assembly.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.AndroidX.Cecilfier\AST\Item.cs">
-      <Link>AST\Item.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.AndroidX.Cecilfier\AST\Method.cs">
-      <Link>AST\Method.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.AndroidX.Cecilfier\AST\Namespace.cs">
-      <Link>AST\Namespace.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.AndroidX.Cecilfier\AST\Parameter.cs">
-      <Link>AST\Parameter.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.AndroidX.Cecilfier\AST\Type.cs">
-      <Link>AST\Type.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.AndroidX.Cecilfier\grabbed\Signatures.cs">
-      <Link>grabbed\Signatures.cs</Link>
-    </Compile>
   </ItemGroup>
 </Project>
