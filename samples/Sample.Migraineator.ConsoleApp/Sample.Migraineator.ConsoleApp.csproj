@@ -12,7 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\externals\Core.Text\source\HolisticWare.Core.Text.NetStandard13\HolisticWare.Core.Text.NetStandard13.csproj" />
-    <ProjectReference Include="..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.MigraineDiagnoser\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.MigraineDiagnoser.csproj" />
     <ProjectReference Include="..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.csproj" />
     <ProjectReference Include="..\..\externals\AndroidX.Data\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data.Extended\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Data.Extended.csproj" />
   </ItemGroup>

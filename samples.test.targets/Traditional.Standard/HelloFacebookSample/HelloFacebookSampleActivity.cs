@@ -27,11 +27,11 @@ using Android.Content;
 using Android.Graphics;
 using Android.Locations;
 using Android.OS;
-using Android.Support.V4.App;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Java.Lang;
+
 using Xamarin.Facebook;
 using Xamarin.Facebook.Login;
 using Xamarin.Facebook.Login.Widget;
@@ -40,6 +40,10 @@ using Xamarin.Facebook.Share.Model;
 using Xamarin.Facebook.Share.Widget;
 using Object = Java.Lang.Object;
 using Uri = Android.Net.Uri;
+
+//using Android.Support.V4.App;
+using AndroidX.Fragment.App;
+
 
 // NOTE: Facebook SDK rquires that the 'Value' point to a string resource
 //       in your values/ folder (eg: strings.xml file).
