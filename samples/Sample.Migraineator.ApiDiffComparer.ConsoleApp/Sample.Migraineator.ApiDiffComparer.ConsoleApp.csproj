@@ -13,6 +13,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.Core.csproj" />
+    <ProjectReference Include="..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.Migraineator.csproj" />
+    <ProjectReference Include="..\..\source\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.MigraineDiagnoser\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.AndroidX.MigraineDiagnoser.csproj" />
   </ItemGroup>
 </Project>
